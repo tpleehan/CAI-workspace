@@ -1,0 +1,72 @@
+package kr.co.jsp.board.commons;
+
+public class PageCreator {
+
+	private PageVO paging;
+	private int aticleTotalCount;
+	private int beginPage; 
+	private int endPage; 
+	private boolean prev; 
+	private boolean next; 
+	
+	private final int displayBtn = 10;
+	
+	private void calcDataOfPage() {
+		
+		// 보정 전 끝 페이지 구하기
+		endPage = (int) (Math.ceil(paging.getPage() / (double) displayBtn) * displayBtn);
+		// 시작 페이지 번호 구하기
+		beginPage = (endPage - displayBtn) + 1;
+		// 현재 시작 페이지가 1이라면 이전 버튼 비활성화
+		if (beginPage == 1) {
+			prev = false;
+		} else {
+			prev = true;
+		}
+		// 마지막 페이지 여부 확인 후 다음 버튼 비활성화 판단
+		next = (aticleTotalCount <= (endPage * paging.getCountPerPage())) ? false : true;
+		// 다음 버튼 비활성일 경우 끝 페이지 보정하기
+		if(!next) {
+			endPage = (int) Math.ceil(aticleTotalCount / (double) paging.getCountPerPage());
+		}
+	}
+	
+	public PageVO getPaging() {
+		return paging;
+	}
+	public void setPaging(PageVO paging) {
+		this.paging = paging;
+	}
+	public int getAticleTotalCount() {
+		return aticleTotalCount;
+	}
+	public void setAticleTotalCount(int aticleTotalCount) {
+		this.aticleTotalCount = aticleTotalCount;
+		calcDataOfPage(); // Service 클래스에게 총 게시물 수 받은 즉시 알고리즘 가동
+	}
+	public int getBeginPage() {
+		return beginPage;
+	}
+	public void setBeginPage(int beginPage) {
+		this.beginPage = beginPage;
+	}
+	public int getEndPage() {
+		return endPage;
+	}
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+	public boolean isPrev() {
+		return prev;
+	}
+	public void setPrev(boolean prev) {
+		this.prev = prev;
+	}
+	public boolean isNext() {
+		return next;
+	}
+	public void setNext(boolean next) {
+		this.next = next;
+	}
+	
+}

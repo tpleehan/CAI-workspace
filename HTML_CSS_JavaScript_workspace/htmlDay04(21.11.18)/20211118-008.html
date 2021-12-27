@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 넷째날 8th</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+ 
+</head>
+<body>
+  <script>
+    var avgSales = (1200 + 1300 + 1000) / 3; // 평균 판매량
+    var fourth = prompt("4분기 판매량을 입력하세요.");
+    
+    var msg_1 = "판매량이 평균 이상입니다.";
+    var msg_2 = "판매량이 평균 미달입니다.";
+    
+    var result = fourth >= avgSales ? msg_1 : msg_2;
+    document.write(result);
+  
+  </script>
+  
+</body>
+</html>

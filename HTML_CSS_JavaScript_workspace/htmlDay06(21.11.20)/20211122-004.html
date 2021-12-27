@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 여섯째날 4th</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+    body {
+      margin: 20px;
+      padding: 20px;
+      background: #f1f1f1;
+      color: #555;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .container {
+      margin-top: 35px;
+    }
+
+    .controller {
+      padding: 20px;
+    }
+    
+    .controller li {
+      margin-left: 8px;
+      display: inline-block;
+    }
+    
+    .controller li:first-child {
+      margin-left: 0;
+    }
+    
+    .controller li a {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      background: #fff;
+      transition: 0.3s;
+    }
+
+    .controller li.on a {
+      width: 50px;
+      background: #8ac007;
+    }
+
+    .picture {
+      position: relative;
+      margin-top: 30px;
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .picture ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      width: 2400px;
+      list-style: none;
+      transition: 0.4s;
+    }
+
+    .picture li {
+      float: left;
+      width: 400px;
+      height: 400px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul class="controller">
+      <li class="on"><a href="#"></a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+    
+    <div class="picture">
+      <ul>
+        <li class="on"><img src="images/work1.jpg" alt=""></li>
+        <li><img src="images/work2.jpg" alt=""></li>
+        <li><img src="images/work3.jpg" alt=""></li>
+        <li><img src="images/work4.jpg" alt=""></li>
+        <li><img src="images/work5.jpg" alt=""></li>
+        <li><img src="images/work6.jpg" alt=""></li>
+      </ul>
+    </div>
+  </div>
+</body>
+<script>
+  $(function() {
+    var distance = 0;
+
+    $(".controller li").click(function(e) {
+      e.preventDefault;
+      $(".controller li").removeClass("on");
+      $(this).addClass("on");
+
+      distance = $(this).index() * 400 * (-1);
+      $(".picture ul").css({left:distance});
+    });
+  });
+
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insert title here</title>
+</head>
+<body>
+  <h2>Emp 정보</h2>
+  <form action="">
+    <table border="1">
+      <tr>
+        <td>사원번호</td>
+        <td><input type="text" name="empno"></td>
+      </tr>
+      <tr>
+        <td>이름</td>
+        <td><input type="text" name="ename"></td>
+      </tr>
+      <tr>
+        <td>성별</td>
+        <td>
+          <input type="radio" name="gender" value="남자">남자 &nbsp;
+          <input type="radio" name="gender" value="여자">여자
+        </td>
+      </tr>
+      <tr>
+        <td>직업</td>
+        <td><input type="text" name="job"></td>
+      </tr>
+      <tr>
+        <td>상사</td>
+        <td>
+          <select name="mgr">
+            <option>7349</option>
+            <option>7359</option>
+            <option>7369</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>입사일</td>
+        <td><input type="text" name="hiredate" placeholder="2021-06-01"></td>
+      </tr>
+      <tr>
+        <td>급여</td>
+        <td><input type="text" name="salary"></td>
+      </tr>
+      <tr>
+        <td>커미션</td>
+        <td><input type="text" name="comm"></td>
+      </tr>
+      <tr>
+        <td>부서번호</td>
+        <td>
+          <select name="deptno">
+            <option>10 ACCOUNTING NEWYORK</option>
+            <option>20 RESEARCH LA</option>
+            <option>30 ITPROG TEXAS</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" value="저장">
+          <input type="reset" value="취소">
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

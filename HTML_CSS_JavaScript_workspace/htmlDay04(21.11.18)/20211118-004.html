@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 넷째날 4th</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+  <script>
+    // 대입연산자: 연산된 데이터를 변수에 저장할 때 사용
+    var num1 = 10;
+    var num2 = 3;
+
+    num1 += num2;
+    document.write(num1 + "<br>"); // 13
+
+    num1 -= num2;
+    document.write(num1 + "<br>"); // 10
+
+    num1 *= num2;
+    document.write(num1 + "<br>"); // 30
+
+    num1 %= num2;
+    document.write(num1 + "<br>"); // 0
+  </script>
+  
+</body>
+</html>
+
+<!--
+  비교연산자 true와 false를 반환
+  a > b
+  a < b
+  a == b
+  a >= b
+  a <= b
+  a != b
+  
+  a == b (데이터 타입의 형태는 구분하지 않는다.)
+  a === b (데이터 타입의 형태까지 구분한다.)
+  a = 10, b = "10" // ==을 사용하면 true
+  a = 10, b = "10" // ===을 사용하면 false
+  
+  
+  연산자 우선순위
+  1. () 괄호
+  2. 단항연산자
+  3. 산술연산자
+  4. 비교연산자
+  5. 논리연산자
+  6. 대입연산자
+  
+  
+  || or(또는)  / 하나라도 true가 포함되면 true를 반환한다.
+  && and(그리고)  / 두개 모두 true가 되어야 true 결과값을 반환한다. 아니면 false
+
+-->

@@ -1,0 +1,107 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/custom.css">
+        <title>BBS Test</title>
+        
+           
+        <!--ë©ì¸ë§ ì ì©ëë cssìì­-->   
+        <style>
+            body {
+                background-image: url(images/main.jpg);
+                background-repeat: no-repeat;
+                background-size: cover
+            }
+        </style>
+    </head>
+
+    <body>
+    <nav class="navbar navbar-default" id="nav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="##">MIN and PARK</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="##" style="margin-right: 10px;">ë©ì¸</a></li>
+                <li><a href="##">ê²ìí</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ì ìíê¸°<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">ë¡ê·¸ì¸</a></li>
+                        <li><a href="#">íìê°ì</a></li>
+                    </ul>
+                </li>
+            </ul>
+       
+        </div>
+    </nav>
+
+    
+    <section>
+    
+    <div class="container" id="mainCon">
+        <div class="jumbotron" id="jbDiv">
+            <div class="container" id="introArea">
+                <h1>ê²ìí ì¬ì´í¸</h1>
+                <p>í´ë¹ ì¬ì´í¸ë êµì¡ì© ì¬ì´í¸ë¡ì¨, íì ì¬ë¬ë¶ë¤ì´ ììì ìì , ì¶ê°, ì­ì  í´ë³´ìê¸° ë°ëëë¤.</p>
+                <p>ê¸ì ì¨ë ëê³ , ì¬ì§ì ë£ì´ë ëë ìì­ ìëë¤.</p>
+
+            </div>
+
+        </div>
+        
+        <div class="col-md-6 col-xs-12" style="padding: 0px 0px;">
+            <h2 style="color:black">ê³µì§ì¬í­</h2>
+            <table class="table table-striped" style="text-align: center; border: 2px solid #737373">
+                <thead>
+                    <tr>
+                        <th style="background-color: #9DCAFF; text-align: center;">ë²í¸</th>
+                        <th style="background-color: #9DCAFF; text-align: center;">ì ëª©</th>
+                        <th style="background-color: #9DCAFF; text-align: center;">ìì±ì</th>
+                        <th style="background-color: #9DCAFF; text-align: center;">ìì±ì¼</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><a>Test</a></td>
+                        <td>Min</td>
+                        <td>2019-09-14 08:05</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    </section>
+    
+    <footer>
+        <div class="copyright py-4 text-center text-white">
+            <div class="container bounceIn animate">
+                <small>Copyright<!-- &copy; --> 2019.<a href=""> Min and Park</a></small>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    
+    </body>
+    
+    
+
+</html>

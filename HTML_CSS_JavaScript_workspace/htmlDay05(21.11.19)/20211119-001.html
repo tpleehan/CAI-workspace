@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 다섯째날 1st</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <script>
+
+    var num = 2.1234;
+    
+    var maxNum = Math.max(10, 5, 9, 25),
+        minNum = Math.min(10, 5, 9, 25),
+        roundNum = Math.round(num),
+        floorNum = Math.round(num),
+        ceilNum = Math.ceil(num),
+        randomNum = Math.random(num),
+        piNum = Math.PI;
+
+        document.write(num + "<br>");
+        document.write(maxNum + "<br>");
+        document.write(minNum + "<br>");
+        document.write(roundNum + "<br>");
+        document.write(floorNum + "<br>");
+        document.write(ceilNum + "<br>");
+        document.write(randomNum + "<br>");
+        document.write(piNum + "<br>");
+
+
+        // 0부터 10사이까지 실수인 난수를 반환
+        Math.random()*10;
+        
+        // 0부터 10사이까지 난수를 발생하고 소수점 값을 제거
+        var math = Math.floor(Math.random()*11);
+
+        document.write(math);
+
+  </script>
+</body>
+</html>
+
+<!--
+  수학객체
+  Math.abs(숫자)
+  Math.max(숫자1, 숫자2)
+  Math.min(숫자1, 숫자2)
+  Math.random(0~1사이에서 난수를 발생)
+  Math.round(숫자) - 소수점 첫째 자리에서 반올림하여 정수를 반환
+  Math.ceil(숫자) - 소수점 첫째 자리에서 무조건 올림하여 정수를 반환
+  Math.floor(숫자) - 소수점 첫째 자리에서 무조건 내림하여 정수를 반환
+  Math.PI(원주율) - 3.14
+-->

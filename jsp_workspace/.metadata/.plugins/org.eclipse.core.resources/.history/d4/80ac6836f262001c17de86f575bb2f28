@@ -1,0 +1,26 @@
+package kr.co.jsp.user.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.co.jsp.user.model.UserDAO;
+import kr.co.jsp.user.model.UserVO;
+
+public class UpdateService implements IUserService {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		UserVO vo = new UserVO(
+					request.getParameter("id"),
+					request.getParameter("pw"),
+					request.getParameter("name"),
+					request.getParameter("email"),
+					request.getParameter("address")
+				);
+		
+		UserDAO.getInstance().updateUser(vo);
+		
+	}
+
+}

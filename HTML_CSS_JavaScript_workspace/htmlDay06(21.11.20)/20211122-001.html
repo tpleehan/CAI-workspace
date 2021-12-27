@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 여섯째날 1st</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+    
+  </style>
+</head>
+<body>
+  
+</body>
+<script>
+  var arr_1 = ["사당", "교대", "방배", "강남"];
+  var arr_2 = ["신사", "압구정", "옥수"];
+
+  var result = arr_1.join("-");
+  document.write(result + "<br>");
+  
+  result = arr_1.concat(arr_2);
+  document.write(result + "<br>");
+
+  arr_1.sort();
+  document.write(arr_1 + "<br>");
+
+  arr_2.reverse();
+  document.write(arr_2 + "<br>");
+
+</script>
+</html>
+
+<!--
+  join(연결문자 - +)
+  배열 객체의 데이터를 연결 문자 기준으로 1개의 문자형 데이터로 반환
+
+  reverse()
+  배열 객체의 데이터 순서를 거꾸로 반환
+
+  sort()
+  배열 객체의 데이터를 오름차순으로 정렬
+
+  slice(index1, index2)
+  배열 객체의 데이터 중 원하는 인덱스 구간만큼 잘라서 배열객체로 반환
+
+  splice()
+  배열 객체의 지정데이터를 삭제하고 그 구간에 새 데이터를 삽입 가능하게 해주는 메서드
+
+  concat()
+  2개의 배열 객체를 하나로 합치는 역할
+
+  pop()
+  배열에 저장된 데이터 중 마지막 인덱스에 저장된 데이터를 삭제
+
+  push(new data)
+  배열 객체의 마지막 인덱스에 새 데이터를 삽입
+
+  shift()
+  배열 객체에 저장된 데이터 중 첫 번째 인덱스에 저장된 데이터를 삭제
+
+  unshift(new data)
+  배열 객체의 가장 앞의 인덱스에 새 데이터를 삽입
+
+  length / 속성이기 때문에 ()괄호를 안쓴다.
+  배열에 저장된 총 데이터의 갯수를 반환
+  
+-->

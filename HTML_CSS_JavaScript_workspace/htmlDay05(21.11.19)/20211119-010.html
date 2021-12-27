@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 다섯째날 9th</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+    li {
+      margin-bottom: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>인접 관계 선택자</h1>
+  <ul id="wrap">
+    <li>리스트1
+      <ul>
+        <li id="list_1">리스트 1-1</li>
+        <li>리스트 1-2</li>
+        <li>리스트 2</li>
+        <li>리스트 3</li>
+      </ul>
+      <div id="title">선택요소</div>
+    </li>
+  </ul>
+  
+</body>
+<script>
+  $(function() {
+    $("#list_1").siblings()
+                .css({border:"2px dashed red"});
+    
+  });
+  
+</script>
+</html>

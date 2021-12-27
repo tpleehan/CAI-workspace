@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 넷째날 13th</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+  <style>
+    
+  </style>
+
+
+</head>
+<body>
+  <script>
+    var site = prompt("네이버, 다음, 구글 중 즐겨찾는 사이트는?");
+    var url;
+
+    switch (site) {
+      case "네이버": url="www.naver.com";
+      break;
+      
+      case "다음": url="www.daum.net";
+      break;
+      
+      case "구글": url="www.google.com";
+      break;
+      
+      default: alert("보기 중 없는 사이트입니다.");
+      location.reload();
+    }
+    
+    if(url) {
+      location.href = "http://" + url;
+    }
+
+  </script>
+</body>
+</html>
+
+<!--
+  var 변수 = 초기값;
+  switch (변수) {
+    case 값1: 코드1;
+    break;
+
+    case 값2: 코드2;
+    break;
+    
+    case 값3: 코드3;
+    break;
+    
+    case 값4: 코드4;
+    break;
+
+    default: 코드5;
+  }
+
+-->

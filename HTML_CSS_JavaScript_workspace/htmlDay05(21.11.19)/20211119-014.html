@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 다섯째날 13th</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+    
+  </style>
+</head>
+<body>
+  <p>
+    <button class="btn1">버튼1</button>
+  </p>
+  <p>내용1</p>
+  <p>
+    <button class="btn2">버튼2</button>
+  </p>
+  <p>내용2</p>
+</body>
+<script>
+
+  $(function() {
+    $(".btn1").click(function() {
+      $(".btn1").parent().next().css({color:"red"});
+    });
+    
+  });
+  
+  $(".btn2").on ({
+    "mouseover focus": function() {
+    $(".btn2").parent().next().css({color:"green"})
+    },
+
+    "mouseout blur": function() {
+      $(".btn2").parent().next().css({color:"black"});
+    }
+    
+  });
+  
+</script>
+</html>

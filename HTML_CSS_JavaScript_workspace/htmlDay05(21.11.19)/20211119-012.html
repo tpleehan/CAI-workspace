@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 다섯째날 11th</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+    .aqua {
+      background: aqua;
+    }
+
+    .red {
+      background: red;
+    }
+    
+    .green {
+      background: green;
+    }
+
+    .yellow {
+      background: yellow;
+    }
+  </style>
+</head>
+<body>
+  <p>
+    <p id="p1">내용1</p>
+    <p id="p2" class="red">내용2</p>
+    <p id="p3">내용3</p>
+    <p id="p4" class="green">내용4</p>
+    <p id="p5">내용5</p>
+    <p id="p6" class="yellow">내용6</p>
+    <button id="btn1">버튼</button>
+  </p>
+</body>
+<script>
+  $(function() {
+    $("#btn1").click(function() {
+      $("#p1").addClass("aqua");
+      $("#p2").removeClass("red");
+      $("#p3").togleClass("green");
+      $("#p4").togleClass("green");
+
+    });
+
+  });
+  
+</script>
+</html>

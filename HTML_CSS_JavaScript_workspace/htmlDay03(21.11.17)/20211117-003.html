@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 셋째날 3rd</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #wrap {
+      width: 100%;
+      height: 300px;
+      background: yellow;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 30px;
+      text-align: center;
+      color: black;
+    }
+
+    @media (min-width: 800px) {
+      #wrap {
+        background: red;
+        width: 750px;
+        height: 600px;
+      }
+
+      h1 {
+        font-size: 50px;
+        color: black;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      #wrap {
+        background: green;
+        width: 1000px;
+        height: 800px;
+      }
+
+      h1 {
+        font-size: 120px;
+        color: purple;
+      }
+    }
+   
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <h1>HTML</h1>
+  </div>
+</body>
+</html>
+
+<!--
+  반응형 웹
+  
+  장점
+  1. 비용이 적게 든다. (제작비용)
+  2. 유지관리가 용이하다. (하나의 사이트만 관리하기 때문)
+  3. 소스 수정이 용이하다.
+
+  단점
+  1. 컨텐츠가 방대한 사이트의 경우 반응형 웹으로는 만들 수 없다.
+  2. 유지관리하는데 어렵고 비용이 많이 든다.
+  3. 소스 수정이 어렵다.
+-->

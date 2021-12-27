@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 셋째날 4th</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 100px;
+      padding: 0;
+    }
+
+    p {
+      width: 250px;
+      height: 220px;
+      border: 1px solid black;
+    }
+
+    p:before {
+      content: "";
+      display: block;
+      clear: both;
+      width: 220px;
+      height: 2px;
+      background: red;
+    }
+
+    p:after {
+      content: "";
+      display: block;
+      clear: both;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: orangered;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore vel impedit debitis, fugiat expedita tenetur corporis dolorem perferendis sit est fugit? Est quis in modi fugiat expedita dignissimos, minima sequi!</p>
+</body>
+</html>
+
+<!--
+  :befor 요소의 콘텐츠 시작부분에 생성된 콘텐츠를 추가한다.
+  :after 요소의 콘텐츠 끝부분에 생성된 콘텐츠를 추가한다.
+-->

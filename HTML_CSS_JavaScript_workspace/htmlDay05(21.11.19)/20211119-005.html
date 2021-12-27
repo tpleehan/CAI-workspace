@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹표준 다섯째날 5th</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/9448297042.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+  body {
+    margin: 0;
+    background-color: #f1f1f1;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  #navbar {
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: block;
+    transition: top 0.3s;
+  }
+
+  #navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  #navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  </style>
+</head>
+<body>
+  <div id="navbar">
+    <a href="#home">Home</a>
+    <a href="#News">News</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div style="padding: 15px 15px 2500px; font-size: 30px; margin-top: 30px;">
+    <p><b>This example demonstrate how to hide a navbar when the user start</b></p>
+    <p>Scroll down this frame to see the effect!</p>
+    <p>Scroll up to show the navbar.</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam voluptatibus nisi sequi voluptate doloremque quae fugiat omnis dolores asperiores id dolorum aperiam nobis soluta vel repellat consectetur nesciunt, assumenda officia!</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit modi laudantium repudiandae sed in tempora non cum numquam quisquam, similique maxime! Laborum id neque provident cupiditate quis earum, obcaecati facere!</p>
+  </div>
+  <script>
+    var prevScrollPos = window.pageYOffset;
+
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+        
+      } else {
+        document.getElementById("navbar").style.top = "-50px";
+        
+      }
+
+      prevScrollPos = currentScrollPos;
+    }
+  </script>
+</body>
+</html>

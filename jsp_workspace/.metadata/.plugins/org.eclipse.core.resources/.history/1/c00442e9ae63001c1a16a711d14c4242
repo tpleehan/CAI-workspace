@@ -1,0 +1,10 @@
+package kr.co.jsp.user.controller;
+
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("*.user")
+public class UserController extends HttpServlet {
+
+	public UserController() {
+	}
+}
