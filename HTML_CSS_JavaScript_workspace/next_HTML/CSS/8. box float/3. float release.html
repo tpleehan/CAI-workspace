@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    
+    .container {
+      width: 700px;
+      padding: 20px;
+      border: 3px solid red;
+      
+      /* 많이 사용되지만 정석은 아니다. clearfix를 권장*/
+      /* overflow: hidden; */
+    }
+
+    .box {
+      width: 200px;
+      height: 150px;
+      border: 3px solid green;
+      background: yellow;
+      font-size: 50px;
+      float: left;
+      
+    }
+
+    .clear-box {
+      clear: both;
+    }
+
+    /* float를 fixing하기 위해서 클래스 이름을 clearfix라고 사용하는 것이 관례이다. */
+    .clearfix::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    span {
+      width: 200px;
+      height: 200px;
+      background: orange;
+      /* 인라인 요소에 float를 적용하면 블록요소로 자동 변환된다. */
+      float: left;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <span>Hello</span>
+
+  <div class="container clearfix">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <!-- <div class="clear-box"></div> -->
+  </div>
+
+  <div class="container clearfix">
+    <div class="box">1</div>
+    <div class="box">2</div>
+  </div>
+
+  <div class="container clearfix">
+    <div class="box">1</div>
+    <div class="box">2</div>
+  </div>
+
+</body>
+</html>
