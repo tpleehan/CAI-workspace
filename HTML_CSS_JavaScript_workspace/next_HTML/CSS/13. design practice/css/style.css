@@ -44,10 +44,15 @@ ul, ol, dl, li {
     clear: both;
 }
 
+
+
 /*============ header ============*/
+
 header {
     position: fixed;
     padding: 0 15px;
+    left: 0;
+    top: 0;
     width: 100%;
     z-index: 50;
     background: #263238;
@@ -90,7 +95,36 @@ header .container {
     background: #304047;
 }
 
+
+
 /*============ 본문 ============*/
+
+section {
+  margin-top: 75px;
+}
+
+
+/* 섹션 전체에 패딩 추가 */
+.prod-list, .prod-link {
+  border: 1px solid #ddd;
+  display: block;
+  text-align: center;
+}
+
+/*
+ 기본 부트스트랩의 패딩값 - 15px
+ ul과 li 사이, li와 li 사이의 패딩 줄이기
+*/
+.prod-list,
+.prod-list > li[class^="col-"] {
+  padding: 5px;
+}
+
+/* 상품을 hover시 테두리 색상 변경 적용 */
+.prod-link:hover {
+  border-color: #4285f4 ;
+}
+
 .prod-link > .arrow {
     display: block; /* 인라인 요소는 position 속성 사용 불가*/
     position: absolute;
@@ -117,4 +151,249 @@ header .container {
 
 .prod-link:hover .hover {
     opacity: 1;
+}
+
+
+
+/*============ footer ============*/
+
+footer {
+  margin-top: 70px;
+  background: #304047;
+  padding: 30px 0 15px;
+}
+
+footer .copyright {
+  font-size: 13px;
+  color: #fff;
+  line-height: 20px;
+}
+
+footer .footer-menu li {
+  display: inline-block;
+  padding: 0 10px
+}
+
+footer .footer-menu li a {
+  color: #f1f1f1;
+  font-size: 13px;
+}
+
+
+
+
+
+/*============ join form ============*/
+
+.titlebox {
+  width: 250px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  margin: 70px auto;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  font-size: 20px;
+}
+
+.join-form {
+  margin: 0 auto;
+  float: none;
+}
+
+.join-form form {
+  border-radius: 8px;
+  padding: 15px;
+  /*
+  box-shadow: 1, 2, 3, 4, color
+  1 - 수평 방향 그림자 위치 -> 양수: 오른쪽 / 음수: 왼쪽
+  2 - 수직 방향 그림자 위치 -> 양수: 박스 아래 / 음수: 박스 위
+  3 - 그림자 선명도 -> 양수: 그림자 끝이 흐려짐 / 음수: X (음수 값을 줄 수 없다.)
+  4 - 그림자 확산 거리 -> 양수: 그림자 확대 / 음수: 그림자 축소
+  color - 그림자의 색상
+  */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.input-group-addon {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.form-control, .form-group .btn {
+  border-radius: 0;
+}
+
+.form-control:hover {
+  border-color: #555;
+}
+
+
+
+
+
+/*============ login form ============*/
+
+.login-form {
+  margin: 100px auto 0;
+  float: none;
+}
+
+.login-form form {
+  border-radius: 8px;
+  padding: 70px 120px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+/*============ board_list ============*/
+
+.board-table {
+  margin: 0 auto;
+  float: none;
+}
+
+.search-wrap {
+  margin-bottom: 20px;
+}
+
+.search-btn, 
+.search-input,
+.search-select {
+  float: right;
+}
+
+.search-input {
+  width: 200px;
+}
+
+.search-select {
+  width: 100px;
+}
+
+.table-bordered > thead > tr > th {
+  background: #e7f2f9;
+  color: #003366;
+}
+
+.table-bordered > tbody > tr > td > a, 
+.table-bordered > tbody > tr > td > a:hover {
+  color: black;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.text-center .btn {
+  float: right;
+  border: 0;
+  border-radius: 0;
+  padding: 5px 10px;
+}
+
+
+
+
+
+/*============ board_write ============*/
+
+.write-wrap {
+  width: 70%;
+  margin: 0 auto;
+  float: none;
+}
+
+.t-control {
+  width: 100px;
+}
+
+.t-control input {
+  width: 200px;
+}
+
+.t-control textarea {
+  resize: none;
+}
+
+.titlefoot {
+  text-align: center;
+  margin: 70px auto;
+}
+
+
+
+
+
+/*============ board_content ============*/
+
+.content-wrap {
+  margin: 0 auto;
+  float: none;
+}
+
+.btn-dark {
+  background: #303030;
+  color: #fff;
+}
+
+.content-wrap #content {
+  resize: none;
+}
+
+
+
+
+
+/*============ reply ============*/
+.reply-wrap {
+  background: #f5f5f5;
+  padding: 15px;
+  border: 1px solid #ddd;
+  position: relative;
+}
+
+.reply-wrap .reply-image {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+}
+
+.reply-wrap .reply-content {
+  padding-left: 60px;
+}
+
+.reply-content textarea {
+  resize: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.reply-input > .form-control {
+  width: 200px;
+  margin-bottom: 5px;
+}
+
+.reply-input {
+  float: left;
+}
+
+.reply-group button {
+  float: right;
+}
+
+.reply-group small {
+  margin-left: 10px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.reply-group a {
+  text-decoration: none;
+  color: #777;
+  float: right;
 }
