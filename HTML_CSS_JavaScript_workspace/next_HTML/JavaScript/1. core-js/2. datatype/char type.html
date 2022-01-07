@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    var greetings;
+    greetings = "안녕하세요";
+    console.log(greetings);
+    greetings = '안녕'; // 일반적으로 js에선 ''(홑따옴표)를 주로 사용한다.
+    console.log(greetings);
+    greetings = `반갑습니다.`;
+    console.log(greetings);
+
+    var ex_str = '그는 나에게 "안녕하세요." 라고 말했다.';
+    console.log(ex_str);
+    ex_str = "그는 나에게 \"안녕하세요.\" 라고 말했다.";
+    console.log(ex_str);
+
+    var temp = '<ul>\n\t<li>\n\t\t<a href="#">Home</a>\n\t</li>\n</ul>';
+    console.log(temp);
+    
+    // Template literals: 백틱(``)으로 감싼 문자열은 공백과 들여쓰기 등을 모두 문자로 인정 시켜준다.
+    var temp2 = 
+    `<ul>
+      <li>
+        <a href="#">Home</a>
+      </li>
+    </ul>`;
+    console.log(temp2);
+        
+  </script>
+
+</body>
+</html>

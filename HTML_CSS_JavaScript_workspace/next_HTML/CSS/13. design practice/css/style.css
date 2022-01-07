@@ -35,7 +35,7 @@ ul, ol, dl, li {
 }
 
 .btn {
-    border-radius: 4px;
+    border-radius: 0px;
 }
 
 .clearfix::after {
@@ -350,6 +350,7 @@ footer .footer-menu li a {
 
 
 /*============ reply ============*/
+
 .reply-wrap {
   background: #f5f5f5;
   padding: 15px;
@@ -396,4 +397,95 @@ footer .footer-menu li a {
   text-decoration: none;
   color: #777;
   float: right;
+}
+
+
+
+
+
+/*============ board2(이미지 게시판) ============*/
+
+.prod-list-inner img {
+  width: 100%;
+}
+
+.prod-content {
+  padding: 15px 0;
+}
+
+.prod-content .info span {
+  display: block;
+}
+
+.prod-content .info {
+  float: left;
+}
+
+.prod-content .price {
+  float: right;
+}
+
+.prod-color {
+  opacity: 0; /* 투명도 말고 z-index로도 처리 가능 */
+  margin-top: -35px;
+  transition: all 0.2s ease-in-out;
+  float: left;
+}
+
+.prod-color li {
+  width: 50px;
+  float: left;
+}
+
+.prod-list-inner:hover .prod-color {
+  opacity: 1;
+}
+
+
+
+
+
+/*============ detail ============*/
+
+.detail-info {
+  margin-bottom: 120px;
+}
+
+.detail-info .title {
+  font-size: 24px;
+}
+
+.detail-info .price {
+  font-size: 30px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.detail-info .delivery {
+  color: #888;
+}
+
+.detail-control .left {
+  float: left;
+}
+
+.detail-control .right {
+  float: right;
+}
+
+.detail-control .price .left {
+  font-size: 18px;
+  line-height: 45px;
+}
+
+.detail-control .price .right {
+  font-size: 30px;
+}
+
+.detail-control .order .left,
+.detail-control .order .right {
+  width: 50%;
+  height: 60px;
+  font-size: 18px;
 }
