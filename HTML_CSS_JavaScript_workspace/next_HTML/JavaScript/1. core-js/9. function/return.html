@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    /**
+     * void 함수: 리턴값이 없는 함수
+     * void 함수는 단독 호출해서 사용되며
+     * 다른 함수의 인자(매개값)로 전달이 불가능하다.
+     */
+
+    function greeting(nickname) {
+      var bad_nick = ['바보', '말미잘', '해삼', '멍청이'];
+      if (bad_nick.includes(nickname)) {
+        console.log('나쁜 말을 하면 안됩니다.');
+        return; // 함수 강제 종료
+        // console.log('실행이 안된다.');
+      }
+      console.log(nickname + '님 환영합니다.');
+    }
+
+    greeting('바보');
+    greeting('댕댕이');
+    
+    var result = greeting('멍청이');
+    console.log(result);
+
+
+    function operateAll(n1, n2) {
+      return {
+        plus : n1 + n2,
+        minus : n1 - n2,
+        multi : n1 * n2,
+        divide : n1 / n2
+      } 
+    }
+
+    var results = operateAll(10, 2);
+    console.log(results.plus);
+    console.log(results.minus);
+    console.log(results['multi']);
+    console.log(results['divide']);
+
+  </script>
+  
+</body>
+</html>

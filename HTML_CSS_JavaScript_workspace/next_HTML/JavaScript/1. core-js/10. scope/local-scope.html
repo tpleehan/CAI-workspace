@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 전역변수는 생명주기가 길기 때문에 
+    // 가공해서 사용할 경우 해당 블록 안 지역변수로 사용하는 것이 좋다.
+    var x = 'global x';
+
+    function outer(x) {
+      var y = 'outer local y';
+      console.log('x: ' + x);
+      console.log('y: ' + y);
+
+      function inner() {
+        var x = 'inner local x';
+        var z = 'inner local z';
+        console.log(x);
+        console.log(y);
+        console.log(z);
+      }
+      // console.log(z);
+      inner();
+    }
+
+    outer('outer local x');
+    console.log(x);
+
+  </script>
+
+</body>
+</html>

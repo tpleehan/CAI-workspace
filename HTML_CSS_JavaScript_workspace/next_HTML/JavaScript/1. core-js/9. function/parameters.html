@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+    // begin부터 end까지 총합을 구하는 함수
+    function calcRangeTotal(begin, end) {
+      var total = 0;
+
+      /**
+       * JS에서 매개변수는 큰 의미가 없다.
+       * 단순히 매개값으로 들어오는 것에 이름을 붙여 사용하는 형태이다.
+       * 함수에 전달되는 매개변수는 arguments 객체에서 전부 확인이 가능하다.
+       */
+      console.log(arguments);
+      console.log('길이: ' + arguments.length);
+      for (var n = begin; n <= end; n++) {
+        total += n;
+      }
+      return total;
+    }
+
+    // java script의 함수는 매개변수 개수를 다르게 줘도 작동한다. (좋은 코드 X)
+    var totalNumber = calcRangeTotal(10, 30);
+    console.log('실행 결과값: ' + totalNumber);
+  
+
+    function selectRandomFood() {
+      var rn = Math.random();
+      return rn > 0.5 ? '짜장면' : '짬뽕';
+    }
+
+    console.log('랜덤 음식: ' + selectRandomFood());
+
+
+    /**
+     * 자바의 함수는 매개변수 타입을 지정하지만
+     * 자바스크립트의 함수는 매개변수 타입을 지정하지 않기 때문에
+     * 타입을 잘 못 전달하면 결과 값은 NaN이 호출된다.
+     */
+    /*
+    function multiply(n1, n2) {
+      return n1 * n2;
+    }
+    var res = multiply(3, '오전');
+    console.log(res);
+     */
+    
+    /**
+     * typeof를 이용해서 매개값의 타입 확인
+     */
+    function multiply(n1, n2) {
+      if (typeof n1 !== 'number' || typeof n2 !== 'number') {
+        console.log('숫자를 전달하세요.');
+        return;
+      }
+      return n1 * n2;
+    }
+
+    var res = multiply(3, '오전');
+    console.log(res);
+
+    // 매개변수 값을 직접 지정할 수 있다. default (language = '기본값')
+    function sayHello(language = '한국어') {
+      if (language === '한국어') {
+        console.log('안녕하세요.');
+      } else if (language === '영어') {
+        console.log('Hello');
+      } else if (language === '일본어') {
+        console.log('こんにちは');
+      }
+    }
+
+    sayHello('한국어');
+    sayHello('영어');
+    sayHello('일본어');
+    
+    sayHello();
+    
+  </script>
+  
+</body>
+</html>

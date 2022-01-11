@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+    // 바뀌지 않는 값 final이라고 생각하면 된다.
+    // 값의 변경 가능성이 있을 경우 const를 사용하지 않는다. (let을 사용)
+    // const x; // error (Missing initializer in const declaration)
+    const x = '겨울';
+    console.log(x);
+
+    // x = '봄'; (값 변경이 불가능)
+
+    // const와 객체 (객체, 배열, 함수)
+    const person = {
+      name : 'park',
+      age : 20
+    };
+    person.name = 'kim';
+    console.log(person);
+
+    // const 객체로 선언했기 때문에 객체 자체를 새롭게 변경하지 못한다.
+    // error (Uncaught TypeError: Assignment to constant variable)
+    person = {
+      name : 'lee',
+      age : 33
+    };
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 전역 변수
+    var x = 'global';
+
+    // 함수 내에서 유효한 y는 지역변수 (해당 태그에서만 사용가능)
+    function foo(y) {
+      // 지역 변수
+      var x = 'local';
+      console.log('function x: ' + x);
+      console.log('function y: ' + y);
+    }
+
+    foo('parameter');
+
+    console.log('x: ' + x);
+    
+
+  </script>
+
+</body>
+</html>

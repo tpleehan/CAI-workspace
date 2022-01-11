@@ -10,7 +10,7 @@
 
   <script>
     /*
-    Q1. 아래 문제를 각각 풀어본다.
+    Q1.
     1. 빈 객체 user를 만든다.
     2. user에 키가 name, 값이 John인 프로퍼티를 동적 추가한다.
     3. user에 키가 surname, 값이 Smith인 프로퍼티를 동적 추가한다.
@@ -19,31 +19,41 @@
     */
 
     var user = {};
-    console.log(user);
+    // console.log(user);
     user.name = 'John';
-    console.log(user);
+    // console.log(user);
     user.surname = 'Smith';
-    console.log(user);
+    // console.log(user);
     user.name = 'Pete';
 
     delete user.name;
     console.log(user);
 
     /*
-    Q2. 모든 팀원의 월급에 대한 정보를 담고있는 객체가 있다고 가정
-      변수 이름: salaries, 세명의 월급 정보를 직접 작성
+    Q2.
+    모든 팀원의 월급에 대한 정보를 담고있는 객체가 있다고 가정
+    변수 이름: salaries, 세명의 월급 정보를 직접 작성
     */
 
     var salaries = {
-      salary : [100, 200, 300]
+      kim : 1000000,
+      park : 1600000,
+      lee : 1300000
     };
 
     /*
-    - 모든 팀원의 월급을 합한 값을 구하고,
-      그 값을 변수 total에 저장해 주는 코드를 작성 후 평균 월급을 구하기      
+    모든 팀원의 월급을 합한 값을 구하고,
+    그 값을 변수 total에 저장해 주는 코드를 작성 후 평균 월급을 구하기      
     */
-    var total = (salaries.salary[0] + salaries.salary[1] + salaries.salary[2]) / salaries.salary.length;
-    console.log(total);
+    var total = 0
+    for (var salary in salaries) {
+      total += salaries[salary];
+    }
+    
+    console.log('급여 총합: ' + total + '원');
+    var avg = total / salary.length;
+    console.log('급여 평균: ' + avg + '원');
+    
 
   </script>
 
