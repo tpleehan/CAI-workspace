@@ -60,7 +60,7 @@
 
     // 6. id="list"인 요소에 <li> 요소 중 3번째 이전 요소만 경계선을 2px dotted aqua 적용. (1, 2번째만 선택)
     const $lessThan3Li = document.querySelectorAll('#list > li:nth-child(-n + 2)');
-
+    // console.log($lessThan3Li);
     [...$lessThan3Li].forEach($li => $li.style.border = '2px dotted aqua');
     
     // 7. id="list"인 요소에 <li> 요소 중 3번째 이후 요소만 경계선을 2px dashed violet 적용 (3번째부터 끝까지 선택)

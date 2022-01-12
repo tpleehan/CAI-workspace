@@ -79,7 +79,7 @@ function alertCountDown(countDown) {
 };
 
 
-// 핵심 실행부 (main의 역할을 하는 함수) //즉시 실행
+// 핵심 실행부 (main의 역할을 하는 함수) *즉시 실행
 // 즉시 실행 함수 선언하여 따로 호출하지 않아도
 // 바로 실행될 수 있도록 작성
 (function() {

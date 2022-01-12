@@ -16,7 +16,7 @@
     </ul>
   </div>
 
-  <div id="board">
+  <table id="board">
     <tr>
       <td>A</td>
       <td>B</td>
@@ -25,7 +25,7 @@
       <td>C</td>
       <td>D</td>
     </tr>
-  </div>
+  </table>
 
   <script>
     
@@ -55,7 +55,7 @@
     // table 태그는 자식태그로 tbody를 자동으로 삽입
     const $board = document.getElementById('board');
     const $tbody = $board.children;
-    console.log($tbody);
+    console.log($tbody[0].children);
 
   </script>
 
