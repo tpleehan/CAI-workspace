@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <ul>
+    <li class="red">Apple</li>
+    <li class="red">Banana</li>
+    <li class="red">Grape</li>
+    <li class="red">Peach</li>
+  </ul>
+
+  <script>
+    
+
+    // 유사배열 NodeList 리턴
+    // const $elements = document.querySelectorAll('.red');
+    
+    // 유사배열 HTMLCollection 리턴
+    const $elements = document.getElementsByClassName('red');
+    console.log($elements);
+
+    // 배열 형태가 아님 (배열의 구조와 비슷하고 유사하지만 배열은 아니다.)
+    // Uncaught TypeError: $elements.pop is not a function
+    // let $ele = $elements.pop();
+
+    // 유사 배열 객체를 배열처럼 제어할 때 순수 배열로 변경해서 사용해야 한다.
+    // const realArray = Array.from($elements);
+    const realArray = [...$elements] // ES6 문법
+    let $ele = realArray.pop();
+    console.log($ele);
+    console.log(realArray);
+    
+    for (let i = 0; i < realArray.length; i++) {
+      realArray[i].className = 'blue';
+    }
+
+  </script>
+
+</body>
+</html>
