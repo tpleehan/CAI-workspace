@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!--
+    이벤트와 innerHTML or textContent를 활용해서
+    카운트를 누적해서 올리거나 내린다.
+  -->
+
+  <h2>자바스크립트 카운트</h2>
+  <input type="text" id="result" value="0" readonly>
+  
+  <button id="plus">+</button>
+  <button id="minus">-</button>
+
+  <script>
+    
+    const $result = document.getElementById('result');
+    console.log(typeof $result.value);
+    const $plus = document.getElementById('plus');
+    const $minus = document.getElementById('minus');
+
+    let count = 0;
+
+    $plus.addEventListener('click', () => {
+      let current = parseInt($result.value);
+      $result.value = current + 1;      
+    });
+
+    $minus.addEventListener('click', () => {
+      let current = parseInt($result.value);
+      $result.value = current - 1;
+
+      if ($result.value < 0) {
+        alert('0 이하로 내릴 수 없습니다.');
+        $result.value = 0;
+      }
+    });
+
+
+  </script>
+
+</body>
+</html>

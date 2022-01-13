@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <label>
+    <input type="checkbox">
+    <em class="message"></em>
+  </label>
+
+  <script>
+
+    const $checkbox = document.querySelector('input[type="checkbox"]');
+    const $em = document.querySelector('.message');
+
+    // 매개값이 하나일 때 e로 쓰고 그 이상일 땐 () 괄호를 넣어야 한다.
+    $checkbox.addEventListener('change', e => {
+      // 실제 이벤트가 일어난 요소
+      // console.log(e.target);
+
+      console.log(e);
+
+      $em.textContent = e.target.checked ? '체크 활성' : '체크 비활성';
+
+      /*
+      if (e.target.checked) {
+        $em.textContent = '체크 활성';
+      } else {
+        $em.textContent = '체크 비활성';
+      }
+      */
+    });
+
+  </script>
+
+</body>
+</html>

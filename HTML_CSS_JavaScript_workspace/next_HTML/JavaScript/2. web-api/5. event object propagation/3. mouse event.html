@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background: #fff700;
+      border: 5px solid orange;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+  </style>
+
+</head>
+<body>
+  
+  <div class="box"></div>
+
+  <script>
+
+    // 드래그 대상 요소 취득
+    const $box = document.querySelector('.box');
+
+    // 드래그 시작 지점의 마우스 포인터 위치
+    const initialMousePosition = {
+      x : 0,
+      y : 0
+    };
+
+    // offset: 이동할 거리
+    const offset = {
+      x : 0,
+      y : 0
+    };
+
+    // 이벤트 핸들러 정의
+    const move = function(e) {
+      
+      // offset
+      // 현재(드래그하는 시점) 마우스 포인터 좌표를 확인해서 드래그 시작 시점의 좌표를 뺀다. 
+
+      offset.x = e.clientX - initialMousePosition.x;
+      offset.y = e.clientY - initialMousePosition.y;
+
+      console.log(`x: ${offset.x}, y: ${offset.y}`);
+
+      $box.style.left = offset.x + 'px';
+      $box.style.top = offset.y + 'px';
+
+    }
+
+    // mousedown(마우스버튼을 눌렀을 때) 
+    // 이벤트가 발생하면 드래그 시작점의 마우스 포인터를 저장
+    $box.addEventListener('mousedown', function(e) {
+
+      /**
+       * 이동거리를 계산하기 위해 mousedown 이벤트 발생(드래그 시작)
+       * 
+       * 드래그 시작 지점의 마우스 포인터 좌표(clientX / clientY)를 저장
+       * 
+       * 한번 이상 드래그로 이동한 경우 move에서 
+       * left, top만큼 이동한 상태로 offset.x, offset.y만큼 뺀다.
+       */
+
+       initialMousePosition.x = e.clientX - offset.x;
+       initialMousePosition.y = e.clientY - offset.y;
+       console.log('드래그 시작지점 x: ' + initialMousePosition.x);
+       console.log('드래그 시작지점 y: ' + initialMousePosition.y);
+
+       // 마우스 이동이 시작되면 따로 선언한 move함수 호출
+       document.addEventListener('mousemove', move);
+
+    });
+
+    // mouseup 이벤트가 발생하면 mousemove 이벤트를 제거해서 이동을 멈춘다.
+    $box.addEventListener('mouseup', function() {
+      document.removeEventListener('mousemove', move);
+    });
+
+  </script>
+
+</body>
+</html>

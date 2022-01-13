@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <input type="text" id="name" value="kim" class="user-name">
+
+  <p id="text">Hello</p>
+
+  <script>
+
+    const $input = document.querySelector('input[type="text"]');
+
+    // input의 value 속성의 값을 얻기
+    // const inputValue = $input.attributes.value.value;
+    const inputValue = $input.getAttribute('value');
+    console.log(inputValue);
+
+    // value 속성의 값 변경
+    // $input.attributes.value.value = '안녕';
+    $input.setAttribute('value', '안녕하세요');
+
+    // p태그에 title 속성 추가
+    const $paragraph = document.querySelector('#text');
+    $paragraph.setAttribute('title', 'Hi~');
+
+    console.log($input.hasAttribute('class'));
+    console.log($paragraph.hasAttribute('hello'));
+
+    if (!$input.hasAttribute('class')) {
+      // 클래스가 없을 경우 부여 (setAttribute)
+      $input.setAttribute('class');      
+    } else {
+      // 클래스가 있을 경우 제거
+      $input.removeAttribute('class');
+    }
+
+    $paragraph.removeAttribute('title');
+
+  </script>
+  
+</body>
+</html>
