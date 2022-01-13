@@ -22,12 +22,11 @@
   <script>
     
     const $result = document.getElementById('result');
-    console.log(typeof $result.value);
+    // console.log(typeof $result.value);
     const $plus = document.getElementById('plus');
     const $minus = document.getElementById('minus');
 
-    let count = 0;
-
+    /*
     $plus.addEventListener('click', () => {
       let current = parseInt($result.value);
       $result.value = current + 1;      
@@ -42,6 +41,19 @@
         $result.value = 0;
       }
     });
+    */
+
+    $plus.onclick = function() {
+      $result.value++;
+    };
+
+    $minus.onclick = function() {
+      if ($result.value > 0) {
+        $result.value--;
+      } else {
+        alert('0 이하로 내릴 수 없습니다.');
+      }
+    };
 
 
   </script>
