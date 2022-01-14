@@ -1,3 +1,5 @@
 #Tomcat publish data
-#Mon Dec 27 22:52:13 KST 2021
+#Fri Jan 14 10:03:36 KST 2022
+org.eclipse.jst.jee.server\:MyWeb=C\:\\App\\apache-tomcat-9.0.52\\wtpwebapps\\MyWeb
+org.eclipse.jst.jee.server\:JspBasic=C\:\\App\\apache-tomcat-9.0.52\\wtpwebapps\\JspBasic
 org.eclipse.jst.jee.server\:mvcWeb=C\:\\App\\apache-tomcat-9.0.52\\wtpwebapps\\mvcWeb

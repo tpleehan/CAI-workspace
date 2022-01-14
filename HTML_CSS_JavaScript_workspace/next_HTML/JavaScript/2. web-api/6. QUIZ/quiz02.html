@@ -21,40 +21,64 @@
 
   <script>
     
-    const $result = document.getElementById('result');
-    // console.log(typeof $result.value);
+    const $count = document.getElementById('result');
+    console.log(typeof $count.value);
     const $plus = document.getElementById('plus');
     const $minus = document.getElementById('minus');
 
-    /*
+    // console.log($count);
+    // console.log($plus);
+    // console.log($minus);
+    
+  
     $plus.addEventListener('click', () => {
-      let current = parseInt($result.value);
-      $result.value = current + 1;      
+      let current = parseInt($count.value);
+      $count.value = current + 1;      
     });
 
     $minus.addEventListener('click', () => {
-      let current = parseInt($result.value);
-      $result.value = current - 1;
+      let current = parseInt($count.value);
+      $count.value = current - 1;
 
-      if ($result.value < 0) {
+      if ($count.value < 0) {
         alert('0 이하로 내릴 수 없습니다.');
-        $result.value = 0;
+        $count.value = 0;
       }
     });
-    */
-
+    
+    /*    
     $plus.onclick = function() {
-      $result.value++;
+      $count.value++;
     };
-
+    
     $minus.onclick = function() {
-      if ($result.value > 0) {
-        $result.value--;
+      if ($count.value > 0) {
+        $count.value--;
       } else {
         alert('0 이하로 내릴 수 없습니다.');
       }
     };
+    */
 
+    /*
+    ex)
+    $plus.onclick = function() {
+      // $count.value++;
+      let value = $count.getAttribute('value');
+      value++;
+      $count.setAttribute('value', value);
+    }
+
+    $minus.onclick = () => {
+      if (+$count.value === 0) {
+        alert('0 미만으로 내릴 수 없습니다.');
+        return;
+      }
+
+      $count.value--;
+
+    }
+    */
 
   </script>
 
