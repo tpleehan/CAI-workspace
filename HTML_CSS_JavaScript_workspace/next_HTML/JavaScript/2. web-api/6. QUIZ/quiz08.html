@@ -37,13 +37,31 @@
      *    X 버튼을 클릭하면 해당 할 일을 지운다.
      */
 
-    const $nameTitle = document.querySelector('name-title');
-    const $nameInput = document.querySelector('name-input');
+    const $btn1 = document.querySelector('.btn1');
+    const $btn2 = document.querySelector('.btn2');
     
-    const $todoForm = document.querySelector('todo-form');
-    const $todoInput = document.querySelector('todo-input');
+    $btn1.addEventListener('click', () => {
+
+      const $nameInput = document.querySelector('.name-input');
+      const $nameTitle = document.querySelector('.name-title');
+
+      $nameTitle.innerHTML = $nameInput.value + '님 환영합니다.';
+      $btn1.style.display = 'none';
+      $nameInput.style.display = 'none';
+
+    });
     
-    const $todoList = document.querySelector('todo-list');
+    $btn2.addEventListener('click', () => {
+    
+      const $todoInput = document.querySelector('.todo-input');
+      const $todoList = document.querySelector('.todo-list');
+      const li = document.createElement('li');
+
+      li.appendChild(document.createTextNode($todoInput.value));
+      $todoList.appendChild(li);
+      $todoInput.value = null;
+
+    });
 
   </script>
 
