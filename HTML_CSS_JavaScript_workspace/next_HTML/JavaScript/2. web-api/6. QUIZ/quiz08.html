@@ -65,9 +65,10 @@
 
       removeBtn.addEventListener('click', () => {
         
-        for (let i = 0; i <= $todoList.children.length; i--) {
+        for (let i = 0; i <= $todoList.children.length; i++) {
           // console.log($todoList.children[i]);
           $todoList.children[i].remove();
+          return;
         }
 
       });
