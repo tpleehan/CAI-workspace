@@ -42,39 +42,87 @@
     
     $btn1.addEventListener('click', () => {
 
-      const $nameInput = document.querySelector('.name-input');
-      const $nameTitle = document.querySelector('.name-title');
+      const $name_input = document.querySelector('.name-input');
+      const $name_title = document.querySelector('.name-title');
 
-      $nameTitle.innerHTML = $nameInput.value + '님 환영합니다.';
+      $name_title.innerHTML = $name_input.value + '님 환영합니다.';
       $btn1.style.display = 'none';
-      $nameInput.style.display = 'none';
+      $name_input.style.display = 'none';
 
     });
     
     $btn2.addEventListener('click', () => {
     
-      const $todoInput = document.querySelector('.todo-input');
-      const $todoList = document.querySelector('.todo-list');
+      const $todo_input = document.querySelector('.todo-input');
+      const $todo_list = document.querySelector('.todo-list');
       const newLi = document.createElement('li');
       const removeBtn = document.createElement('button');
       removeBtn.innerHTML = 'X';
-      const li = newLi.appendChild(document.createTextNode($todoInput.value));
+      const li = newLi.appendChild(document.createTextNode($todo_input.value));
 
-      $todoList.appendChild(newLi).appendChild(removeBtn);
-      $todoInput.value = null;
+      $todo_list.appendChild(newLi).appendChild(removeBtn);
+      $todo_input.value = null;
 
-      removeBtn.addEventListener('click', () => {
+      removeBtn.addEventListener('click', (e) => {
         
-        for (let i = 0; i <= $todoList.children.length; i++) {
-          // console.log($todoList.children[i]);
-          $todoList.children[i].remove();
-          return;
-        }
+        e.target.parentNode.remove();
+
+        // 반복문을 사용할 필요 없이 event target으로 지우면 된다.
+        // 반복문 사용시 순차적으로 자식 객체가 지워진다.
+        // for (let i = 0; i <= $todo_list.children.length; i++) {
+          // console.log(e.target.parentNode);
+          // $todo_list.removeChild($todo_list.children[i]);
+          // return;
+        // }
 
       });
 
     });
 
+    /*
+    ex)
+    const $name_form = document.querySelector('.name-form');
+    const $btn1 = document.querySelector('.btn1');
+    const $name_input = document.querySelector('.name-input');
+    const $name_title = document.querySelector('.name-title');
+    
+    $btn1.addEventListener('click', function() {
+      $name_title.textContent = $name_input.value + '님 환영합니다.';
+      $name_input.style.display = 'none';
+      $btn1.style.display = 'none';
+    });
+    
+    const $todo_input = document.querySelector('.todo-input');
+    const $btn2 = document.querySelector('.btn2');
+
+    function handleTodo() {
+      createTodo($todo_input.value);
+      $todo_input.value = '';
+    }
+
+    function createTodo(text) {
+      // li 생성
+      const $li = document.createElement('li');
+      $li.textContent = text;
+
+      // 버튼 생성
+      const $del_btn = document.createElement('button');
+      $del_btn.textContent = 'X';
+
+      // li에 버튼 추가
+      $li.appendChild($del_btn);
+
+      // li를 ul에 추가
+      document.querySelector('.todo-list').appendChild($li);
+
+      // 삭제 버튼 클릭 시 이벤트 발생
+      $del_btn.addEventListener('click', () => {
+        document.querySelector('.todo-list').removeChild($del_btn.parentNode);
+      });
+    }
+
+    $btn2.addEventListener('click', handleTodo);   
+    */
   </script>
 
 </body>
