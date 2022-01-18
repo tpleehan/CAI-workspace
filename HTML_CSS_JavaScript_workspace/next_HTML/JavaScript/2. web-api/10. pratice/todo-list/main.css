@@ -1,0 +1,87 @@
+
+.wrapper {
+  font-size: 18px;
+  background: lightgray;
+  height: 100vh;
+  position: relative;
+}
+
+section.todo-template {
+  width: 40%;
+  height: 50%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+section.todo-template .app-title {
+  padding: 20px 20px;
+  font-size: 25px;
+  color: #eee;
+  text-align: center;
+  background: #5bc0de;
+  border-bottom: 1px solid #5bc0de;
+}
+
+section.todo-template .todo-insert {
+  height: 5vh;
+}
+
+section.todo-template .todo-insert input {
+  width: 90%;
+  height: 100%;
+  border: none;
+  padding: 0;
+  background: darkslategray;
+  font-size: 15px;
+  color: #fff;
+}
+
+section.todo-template .todo-insert input::placeholder {
+  color: #eee;
+}
+
+section.todo-template .todo-insert input:focus {
+  outline: none;
+}
+
+section.todo-template .todo-insert button {
+  padding: 5px 0px 0px;
+  border: 0;
+  width: 10%;
+  height: inherit;
+  overflow: inherit;
+  background: gray;
+  position: absolute;
+  font-size: 20px;
+  color: #fff;  
+}
+
+.todo-list-item {
+  position: relative;
+  padding: 15px 15px 15px 5px;
+  margin: 15px 15px 15px 5px;
+}
+
+.modify {
+  display: inline-block;
+  position: absolute;
+  right: 30px;
+  font-size: 25px;
+  margin-right: 15px;
+  color: green;
+}
+
+.remove {
+  display: inline-block;
+  position: absolute;
+  right: 2px;
+  font-size: 25px;
+  color: red;  
+}

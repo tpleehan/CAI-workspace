@@ -68,21 +68,21 @@
       
       const $toggle_menu = document.querySelectorAll('.toggle-menu');
 
+      for (let $ele of $toggle_menu) {
+        $ele.classList.toggle('active', '#' + $ele.id === e.target.dataset.id);
+        // $ele.classList.toggle('active', document.querySelector(e.target.dataset.id) === $ele);
+      }
+
       /*
       for (let i = 0; i < $toggle_menu.length; i++) {
         if ($toggle_menu[i].classList.contains('active')) {
           $toggle_menu[i].classList.remove('active');
         }
-
-        const $target = e.target.dataset.id;
-        document.querySelector($target).classList.add('active');
       }
+      
+      const $target = e.target.dataset.id;
+      document.querySelector($target).classList.add('active');
       */
-
-      for (let $ele of $toggle_menu) {
-        $ele.classList.toggle('active', '#' + $ele.id === e.target.dataset.id);
-        // $ele.classList.toggle('active', document.querySelector(e.target.dataset.id) === $ele);
-      }
 
     };
 
