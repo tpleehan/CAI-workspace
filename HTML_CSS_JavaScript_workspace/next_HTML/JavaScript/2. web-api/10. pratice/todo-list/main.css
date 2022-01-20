@@ -92,6 +92,15 @@ section.todo-template .content .todo-list .todo-list-item .checkbox input {
   margin-right: 20px;
 }
 
+section.todo-template .content .todo-list .todo-list-item .checkbox .mod-input {
+  margin-left: 4rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 200px;
+  padding: 4px;
+  font-size: 12px;
+}
+
 section.todo-template .content .todo-list-item .modify {
   color: green;
   position: absolute;

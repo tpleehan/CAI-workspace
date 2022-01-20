@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- spring은 기본적으로 singleton으로 지정 되어 있다. 싱글톤을 안쓰려면 scope="prototype"으로 지정한다. -->
+	<bean id="person" class="basic.ex03.Person" scope="prototype">
+		<property name="name" value="홍길동" />
+		<property name="age" value="20" />
+	</bean>
+	
+</beans>

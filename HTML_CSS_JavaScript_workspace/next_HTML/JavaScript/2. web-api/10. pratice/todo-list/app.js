@@ -161,21 +161,47 @@ function removeToDoData($delTarget) {
 
 }
 
-// 수정 모드 진입 함수
+// 수정 모드 진입 이벤트 함수
+function enterModifyMode($modSpan) {
+
+  // 수정 모드 진입 버튼 교체 (lnr-undo -> lnr-checkmark-circle)
+  $modSpan.classList.replace('lnr-undo', 'lnr-checkmark-circle');
+
+  // span.text를 input 태그로 교체 (삭제 후 추가)
+  const $label = $modSpan.parentNode.previousElementSibling;
+  const $textSpan = $label.lastElementChild;
+
+  const $modInput = document.createElement('input');
+  $modInput.setAttribute('type', 'text'); // input의 기본타입은 text이지만 비밀번호 타입일 경우 타입 지정
+  $modInput.classList.add('mod-input');
+  $modInput.setAttribute('value', $textSpan.textContent);
+
+  $label.replaceChild($modInput, $textSpan);
+
+}
+
 // 수정 완료 이벤트 처리 함수
 /* 할 일 수정 처리 수행 함수 정의 */
-function modifyToDoData($modTarget) {
+function modifyToDoData($modCompleteSpan) {
   
-  const $input = document.createElement('input');
-  
-  if ($modTarget.className === 'undo') {
-    $modTarget.classList.toggle('lnr-undo');
-    
-  } else {
-    $modTarget.classList.toggle('lnr-checkmark-circle');
-    // document.querySelector('.todo-list-item span').appendChild($input);
-    
-  }
+  // 버튼 원래대로 돌리기
+  $modCompleteSpan.classList.replace('lnr-checkmark-circle', 'lnr-undo');
+
+  // input을 span.text로 변경
+  const $label = $modCompleteSpan.parentNode.previousElementSibling;
+  const $modInput = $label.lastElementChild;
+
+  const $textSpan = document.createElement('span');
+  $textSpan.textContent = $modInput.value;
+  $textSpan.classList.add('text');
+
+  $label.replaceChild($textSpan, $modInput);
+
+  const idx = findIndexByDataId(+$label.parentNode.dataset.id);
+  todos[idx].text = $textSpan.textContent;
+
+  console.log(todos);
+
 }
 
 // 메인 역할을 하는 즉시 실행 함수
@@ -217,13 +243,18 @@ function modifyToDoData($modTarget) {
   });
 
   // 할 일 수정 이벤트
-  $todoList.addEventListener('click' , e => {
+  $todoList.addEventListener('click', e => {
 
-    if(!e.target.matches('.todo-list .modify span')) {
+    if(e.target.matches('.todo-list .modify span.lnr-undo')) {
+      enterModifyMode(e.target); // 수정 모드 진입
+      
+    } else if (e.target.matches('.todo-list .modify span.lnr-checkmark-circle')) {
+      modifyToDoData(e.target); // 수정모드에서 수정을 확정하려는 이벤트
+
+    } else {
       return;
-    }
 
-    modifyToDoData(e.target);
+    }
 
   });
 
