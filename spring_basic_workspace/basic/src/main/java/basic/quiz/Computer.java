@@ -3,8 +3,19 @@ package basic.quiz;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class Computer {
+	
+	/**
+	 * 객체, 변수에 @Autowired 선언하면 생성자를 생성할 필요 없다.
+	 * 
+	 * @Qualifier 는 단독적으로 사용할 수 없고 @Autowired 붙은 곳에 사용할 수 있다.
+	 * 
+	 * @Autowired 
+	 * @Qualifier
+	 * 둘이 같이 다닌다고 생각하면 된다.
+	 */
 
 	@Autowired
+
 	private Monitor monitor;
 	
 	@Autowired
