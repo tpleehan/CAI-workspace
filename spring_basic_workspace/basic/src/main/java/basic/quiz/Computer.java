@@ -11,7 +11,6 @@ public class Computer {
 	 */
 
 	@Autowired
-
 	private Monitor monitor;
 	
 	@Autowired
