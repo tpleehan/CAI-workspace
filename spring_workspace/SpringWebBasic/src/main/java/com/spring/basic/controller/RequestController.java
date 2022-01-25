@@ -1,4 +1,4 @@
-package com.spring.basic;
+package com.spring.basic.controller;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.model.UserVO;
+import com.spring.basic.model.UserVO;
 
 // 자동으로 스프링 컨테이너에 해당 클래스의 빈을 등록하는 어노테이션
 // 빈을 등록 해야 HandlerMapping이 이 클래스의 객체를 검색할 수 있다.
@@ -121,5 +121,47 @@ public class RequestController {
 		System.out.println("NAME: " + user.getUserName());
 		System.out.println("HOBBY: " + user.getHobby());
 	}
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	
+	// req-quiz 정답
+	
+	// 화면을 보여줄 메서드
+	@GetMapping("/quiz")
+	public String quiz() {
+		System.out.println("req-quiz 요청 들어옴");
+		return "request/req-quiz";
+	}
+	/*
+	@PostMapping("/quiz")
+	public String quiz(@RequestParam("userId") String id,
+					   @RequestParam("userPw") String pw) {
+		
+		if(id.equals("abc1234") && pw.equals("aaa1111")) {
+			return "request/login-success";
+			
+		} else {
+			return "request/login-fail";
+			
+		}
+		
+	}
+	*/
+	
+	@PostMapping("/quiz")
+	public String quiz(UserVO user){
+		
+		if(user.getUserId().equals("abc1234") && 
+		   user.getUserPw().equals("aaa1111")) {
+			return "request/login-success";
+			
+		} else {
+			return "request/login-fail";
+			
+		}
+		
+	}
+	
+	
 	
 }
