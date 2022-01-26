@@ -153,8 +153,18 @@ public class ResponseController {
 			// 파라미터로 처리되지 않기 때문에 el을 이용해서 바로 꺼내서 사용할 수 있다.
 			ra.addFlashAttribute("msg", "아이디는 필수 값 입니다.");
 			return "redirect:/response/login";
+			
+		} else if(pw.equals("")) {
+			ra.addFlashAttribute("msg", "비밀번호는 필수 값 입니다.");
+			return "redirect:/response/login";
+			
+		} else if(!pw.equals(pwChk)) {
+			ra.addFlashAttribute("msg", "비밀번호 확인란을 확인하세요.");
+			return "redirect:/response/login";
+			
 		} else {
 			return null;
+			
 		}
 	}
 	
