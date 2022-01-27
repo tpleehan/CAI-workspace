@@ -26,17 +26,17 @@ public class BoardService implements IBoardService {
 
 	@Override
 	public BoardVO getArticle(int bId) {
-		return dao.getArticle(bId);
+		return dao.getArticle(bId - 1);
 	}
 
 	@Override
 	public void deleteArticle(int bId) {
-
+		dao.deleteArticle(bId - 1);
 	}
 
 	@Override
 	public void updateArticle(BoardVO vo, int bId) {
-
+		dao.updateArticle(vo, bId);
 	}
 
 }

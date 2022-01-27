@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,17 +30,24 @@
 		<tr>
 			<td>${bId.index + 1}</td>
 			<td>
-				<a href="<c:url value="/board/content?boardNo=${bId.index +1}" />">${article.title}</a>
+				<a href="<c:url value="/board/content?boardNo=${bId.index + 1}" />">${article.title}</a>
 			</td>
 			<td>${article.writer}</td>
 			<td>
-				<a href="<c:url value="/board/delete?boardNo=${bId.index +1}" />">[삭제]</a>
+				<a href="<c:url value="/board/delete?boardNo=${bId.index + 1}" />">[삭제]</a>
 			</td>
 		</tr>
 		</c:forEach>
 	</table>
 	
 	<a href="/basic/board/write">게시물 작성</a>
+
+	<script>
+		const msg = "${msg}";
+		if (msg === "delSuccess") {
+			alert('삭제가 완료되었습니다.');
+		}
+	</script>
 
 </body>
 </html>

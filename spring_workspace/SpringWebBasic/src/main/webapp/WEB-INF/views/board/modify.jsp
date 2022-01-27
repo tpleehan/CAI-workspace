@@ -12,14 +12,16 @@
 
 	<h2>${board}번 게시물 내용</h2>
 
-	<p>
-		# 작성자 : ${board.writer} <br>
-		# 제목: ${board.title} <br>
-		# 내용 : <textarea rows="5" readonly>${board.content}</textarea>
-	</p>
-	
+	<form method="post">
+		<p>
+			# 작성자 : <input type="text" name="writer" value="${board.writer}"> <br>
+			# 제목: <input type="text" name="writer" value="${board.title}"> <br>
+			# 내용 : <textarea rows="5">${board.content}</textarea>
+		</p>
+	    <input type="submit" value="수정">
+	</form>
 	<a href="<c:url value="/board/list" />">글 목록</a>
-	<a href="<c:url value="/board/update" />">글 수정</a>
+	
 
 </body>
 </html>
