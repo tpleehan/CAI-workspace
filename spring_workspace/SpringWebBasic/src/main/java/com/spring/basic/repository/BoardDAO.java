@@ -30,7 +30,7 @@ public class BoardDAO implements IBoardDAO {
 
 	@Override
 	public void deleteArticle(int bId) {
-		articles.remove(getArticle(bId));
+		articles.remove(bId);
 	}
 
 	@Override

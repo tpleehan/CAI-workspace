@@ -26,15 +26,15 @@
 			- 컨텍스트 루트를 제외하고 연결이 가능하다. (컨텍스트 루트 변경 가능성을 대비)
 		 --%>
 		
-		<c:forEach var="article" items="${articles}" varStatus="bId">
+		<c:forEach var="article" items="${articles}" varStatus="num">
 		<tr>
-			<td>${bId.index + 1}</td>
+			<td>${num.index + 1}</td>
 			<td>
-				<a href="<c:url value="/board/content?boardNo=${bId.index + 1}" />">${article.title}</a>
+				<a href="<c:url value="/board/content?boardNo=${num.index + 1}" />">${article.title}</a>
 			</td>
 			<td>${article.writer}</td>
 			<td>
-				<a href="<c:url value="/board/delete?boardNo=${bId.index + 1}" />">[삭제]</a>
+				<a href="<c:url value="/board/delete?boardNo=${num.index + 1}" />">[삭제]</a>
 			</td>
 		</tr>
 		</c:forEach>

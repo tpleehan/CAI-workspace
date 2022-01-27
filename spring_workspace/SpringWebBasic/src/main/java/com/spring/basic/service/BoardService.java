@@ -36,7 +36,7 @@ public class BoardService implements IBoardService {
 
 	@Override
 	public void updateArticle(BoardVO vo, int bId) {
-		dao.updateArticle(vo, bId);
+		dao.updateArticle(vo, bId - 1);
 	}
 
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,43 +59,41 @@ public class BoardController {
 	 */
 	// 글 내용 상세보기 요청 처리 메서드
 	@GetMapping("/content")
-	public void content(@RequestParam("boardNo") int bId, Model model) {
-		System.out.println("/board/content: GET");
-		model.addAttribute("board", service.getArticle(bId));
+	public void content(@ModelAttribute("boardNo") int boardNo, Model model) {
+		System.out.println("/board/content?boardNo=" + boardNo);
+		model.addAttribute("article", service.getArticle(boardNo));
 	}
-
 	
 	/**
 	 * form 태그에 작성자, 제목, 내용을 수정할 수 있는 폼을 만들어서 수정
 	 * 글 번호는 숨겨서 폼 데이터와 함께 보내야 한다.
 	 */
 	// 글 수정 화면 이동 요청
-	@GetMapping("/update")
-	public String modify(BoardVO vo, int bId) {
-		System.out.println("/board/update: GET");
-		
-		return "board/modify";
+	@GetMapping("/modify")
+	public void modify(@ModelAttribute("boardNo") int boardNo, Model model) {
+		System.out.println("/board/modify?boardNo=" + boardNo );
+		model.addAttribute("article", service.getArticle(boardNo));
 	}
-	
 	
 	/**
 	 * modify.jsp를 생성해서 form태그에 사용자가 처음에 작성했던 내용이 드러나도록 배치 후 수정을 받는다.
 	 * 수정 처리하는 메서드: modify(), 요청 url: /modify -> POST
 	 * 수정 처리 완료 이후 방금 수정한 글의 상세보기 요청이 다시 들어올 수 있도록 작성
 	 */
-	@PostMapping("/update")
-	public String modify() {
-		System.out.println("/board/update: GET");
-		
-		return "redirect:/board/content";
+	// 글 수정 처리 요청
+	@PostMapping("/modify")
+	public String modify(@RequestParam("boardNo") int boardNo, BoardVO vo) {
+		System.out.println("/board/modify: POST " + boardNo);
+		service.updateArticle(vo, boardNo);
+		return "redirect:/board/content?boardNo=" + boardNo;
 	}
 	
 
 	// 글 삭제 처리 요청 메서드
 	@GetMapping("/delete")
-	public String delete(@RequestParam("boardNo") int bId, RedirectAttributes ra) {
-		System.out.println("/delete 요청");
-		service.deleteArticle(bId);
+	public String delete(@RequestParam("boardNo") int boardNo, RedirectAttributes ra) {
+		System.out.println("/board/delete?boardNo=" + boardNo);
+		service.deleteArticle(boardNo);
 		ra.addFlashAttribute("msg", "delSuccess");
 		
 		return "redirect:/board/list";
