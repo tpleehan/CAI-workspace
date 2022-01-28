@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,24 +44,24 @@ public class BoardController {
 
 	// 글 내용 상세보기 요청 처리 메서드
 	@GetMapping("/content")
-	public void content(@ModelAttribute("boardNo") int boardNo, Model model) {
+	public void content(@RequestParam("boardNo") int boardNo, Model model) {
 		System.out.println("/board/content?boardNo=" + boardNo);
 		model.addAttribute("article", service.getArticle(boardNo));
 	}
 	
 	// 글 수정 화면 이동 요청
 	@GetMapping("/modify")
-	public void modify(@ModelAttribute("boardNo") int boardNo, Model model) {
+	public void modify(@RequestParam("boardNo") int boardNo, Model model) {
 		System.out.println("/board/modify?boardNo=" + boardNo );
 		model.addAttribute("article", service.getArticle(boardNo));
 	}
 	
 	// 글 수정 처리 요청
 	@PostMapping("/modify")
-	public String modify(@RequestParam("boardNo") int boardNo, BoardVO vo) {
-		System.out.println("/board/modify: POST " + boardNo);
-		service.updateArticle(vo, boardNo);
-		return "redirect:/board/content?boardNo=" + boardNo;
+	public String modify(BoardVO vo) {
+		System.out.println("/board/modify: POST " + vo.getBoardNo());
+		service.updateArticle(vo);
+		return "redirect:/board/content?boardNo=" + vo.getBoardNo();
 	}
 	
 	// 글 삭제 처리 요청 메서드
@@ -71,6 +72,14 @@ public class BoardController {
 		ra.addFlashAttribute("msg", "delSuccess");
 		
 		return "redirect:/board/list";
+	}
+	
+	// 게시글 검색 처리 요청
+	@GetMapping("/searchList")
+	public String searchList(@RequestParam("keyword") String keyword, Model model) {
+		model.addAttribute("articles", service.searchList(keyword));
+		
+		return "board/list";
 	}
 	
 }
