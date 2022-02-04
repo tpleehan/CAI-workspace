@@ -37,78 +37,88 @@ header.masthead {
                      </span>
 					
 				</h2>
-					<table class="table table-bordered table-hover">
-						<thead>
-							<tr style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">
-								<th>#번호</th>
-								<th>작성자</th>
-								<th>제목</th>
-								<th>작성일</th>
-								<th>조회수</th>
-							</tr>
-						</thead>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">
+							<th>#번호</th>
+							<th>작성자</th>
+							<th>제목</th>
+							<th>작성일</th>
+							<th>조회수</th>
+						</tr>
+					</thead>
 
-						<!-- 게시물이 들어갈 공간 -->
-							<tr style="color: #643691;">
-								<td>글번호</td>
-								<td>이름</td>
+					<!-- 게시물이 들어갈 공간 -->
+					<c:forEach var="b" items="${articles}">
+						<tr style="color: #643691;">
+							<td>${b.boardNo}</td>
+							<td>${b.writer}</td>
 
-								<td><a style="margin-top: 0; height: 40px; color: orange;" href="#">
-										제목
-									</a>
-								</td>
+							<td><a style="margin-top: 0; height: 40px; color: orange;" href="<c:url value='/board/content/${b.boardNo}'/>">
+									${b.title}
+								</a>
+							</td>
 
-								<td>날짜</td>
-								<td>조회수</td>
-							</tr>
-						
-					</table>
+							<td>${b.regDate}</td>
+							<td>${b.viewCnt}</td>
+						</tr>
+					</c:forEach>
 					
-					<!-- 페이징 처리 부분  -->
-					<ul class="pagination justify-content-center">
-                       	<li class="page-item">
-							<a class="page-link" href="#" 
-							style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">이전</a>
-						</li>
-						
-						<li class="page-item">
-						   <a href="#" class="page-link" style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691;">1</a>
-						</li>
-					   
-					    <li class="page-item">
-					      <a class="page-link" href="#" 
-					      style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a>
-					    </li>
-				    </ul>
-					<!-- 페이징 처리 끝 -->
-					</div>
+				</table>
+				
+				<!-- 페이징 처리 부분  -->
+				<ul class="pagination justify-content-center">
+                      	<li class="page-item">
+						<a class="page-link" href="#" 
+						style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">이전</a>
+					</li>
+					
+					<li class="page-item">
+					   <a href="#" class="page-link" style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691;">1</a>
+					</li>
+				   
+				    <li class="page-item">
+				      <a class="page-link" href="#" 
+				      style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a>
+				    </li>
+			    </ul>
+				<!-- 페이징 처리 끝 -->
 				</div>
 			</div>
-					<!-- 검색 버튼 -->
-					<div class="row">
-						<div class="col-sm-2"></div>
-	                    <div class="form-group col-sm-2">
-	                        <select id="condition" class="form-control" name="condition">                            	
-	                            <option value="title">제목</option>
-	                            <option value="content">내용</option>
-	                            <option value="writer">작성자</option>
-	                            <option value="titleContent">제목+내용</option>
-	                        </select>
-	                    </div>
-	                    <div class="form-group col-sm-4">
-	                        <div class="input-group">
-	                            <input type="text" class="form-control" name="keyword" id="keywordInput" placeholder="검색어">
-	                            <span class="input-group-btn">
-	                                <input type="button" value="검색" class="btn btn-cpp btn-flat" id="searchBtn">                                       
-	                            </span>
-	                        </div>
-	                    </div>
-	                    <div class="col-sm-2">
-							<a href="#" class="btn btn-cpp float-right">글쓰기</a>
-						</div>
-						<div class="col-sm-2"></div>
-					</div>
-					
-		
+		</div>
+		<!-- 검색 버튼 -->
+		<div class="row">
+			<div class="col-sm-2"></div>
+                  <div class="form-group col-sm-2">
+                      <select id="condition" class="form-control" name="condition">                            	
+                          <option value="title">제목</option>
+                          <option value="content">내용</option>
+                          <option value="writer">작성자</option>
+                          <option value="titleContent">제목+내용</option>
+                      </select>
+                  </div>
+                  <div class="form-group col-sm-4">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="keyword" id="keywordInput" placeholder="검색어">
+                          <span class="input-group-btn">
+                              <input type="button" value="검색" class="btn btn-cpp btn-flat" id="searchBtn">                                       
+                          </span>
+                      </div>
+                  </div>
+                  <div class="col-sm-2">
+				<a href="<c:url value='/board/write'/>" class="btn btn-cpp float-right">글쓰기</a>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	
 	</div>
 <jsp:include page="../include/footer.jsp" />
+
+<script>
+	
+	const msg = '${msg}';
+	if(msg === 'delSuccess') {
+		alert('삭제가 완료되었습니다.');
+	}
+
+</script>
