@@ -35,6 +35,8 @@ header.masthead {
 	        <form id="formObj" role="form" action="<c:url value='/board/delete'/>" method="post">
 	        	
 	        	<input type="hidden" name="boardNo" value="${article.boardNo}">
+	        	<input type="hidden" name="page" value="${p.page}">
+	        	<input type="hidden" name="countPerPage" value="${p.countPerPage}">
 	        	
 		        <input id="list-btn" class="btn" type="button" value="목록"
 					style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #388E3C; opacity: 0.8">&nbsp;&nbsp;
@@ -81,7 +83,7 @@ header.masthead {
 		// 목록 버튼 클릭 이벤트 처리
 		$('#list-btn').click(function() {
 			console.log('목록 버튼 클릭');
-			location.href='/board/list';
+			location.href='/board/list?page=${p.page}&countPerPage=${p.countPerPage}&keyword=${param.keyword}&condition=${param.condition}';
 		});
 		
 		// 수정 버튼 클릭 이벤트 처리
