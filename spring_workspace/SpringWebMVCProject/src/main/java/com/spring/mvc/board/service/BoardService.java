@@ -25,7 +25,19 @@ public class BoardService implements IBoardService {
 
 	@Override
 	public List<BoardVO> getArticleList(SearchVO search) {
-		return mapper.getArticleList(search);
+		
+		List<BoardVO> list = mapper.getArticleList(search);
+		
+		for (BoardVO article : list ) {
+			long now = System.currentTimeMillis();
+			long regTime = article.getRegDate().getTime();
+			
+			if (now - regTime < 60 * 60 * 24 * 1000) {
+				article.setNewMark(true);
+			} 
+		}
+		
+		return list;
 	}
 	
 	/*
