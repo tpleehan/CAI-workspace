@@ -53,6 +53,13 @@
 								style="ime-mode: inactive; margin-bottom: 25px; height: 40px; border: 1px solid #d9d9de"
 								placeholder="최소 8자"></td>
 						</tr>
+						
+						<!-- 자동 로그인 체크박스 -->
+						<tr>
+							<td>
+								<input type="checkbox" id="auto-login" name="auto-login"> 자동로그인
+							</td>
+						</tr>
 						<tr>
 							<td style="padding-top: 10px; text-align: center">
 								<p>
@@ -436,12 +443,18 @@
 				const id = $('#signInId').val();
 				const pw = $('#signInPw').val();
 				
+				// 자동 로그인 체크박스에 체크 되었는지 여부
+				// is() 함수는 상태 여부를 판단하여 논리값을 리턴한다.
+				const autoLogin = $('#auto-login').is(':checked');
+				
 				console.log('id: ' + id);
 				console.log('pw: ' + pw);
 				
+				// 체크의 여부를 확인하여 자동로그인 구현 기능 여부 확인
 				const userInfo = {
 					"account" : id,
 					"password" : pw,
+					"autoLogin" : autoLogin
 				};
 				
 				$.ajax({
