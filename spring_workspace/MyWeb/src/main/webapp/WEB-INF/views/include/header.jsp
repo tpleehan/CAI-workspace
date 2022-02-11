@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>인덱스를 만들어 보자</title>
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />">
+    <link rel="stylesheet" href="<c:url value='/css/style.css' />">
+    <script src="<c:url value='/js/jquery-3.6.0.min.js' />"></script>
+    <script src="<c:url value='/js/bootstrap.js' />"></script>
     <style>
 
     </style>
@@ -27,15 +30,17 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#"><img width="30px" src="img/logo.svg" alt="logo"></a>
+                            <a class="navbar-brand" href="#"><img width="30px" src="<c:url value='/img/logo.svg' />" alt="logo"></a>
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Main</a></li>
-                                <li><a href="#">Form</a></li>
-                                <li><a href="#">Grid Board</a></li>
+                                <li class="active"><a href="<c:url value='/' />">Main</a></li>
+                                <li><a href="<c:url value='/freeBoard/freeList' />">자유게시판</a></li>
+                                <li><a href="#">SNS</a></li>
+                                <!-- 
                                 <li><a href="#">Grid Board2</a></li>
                                 <li><a href="#">Board</a></li>
+                                 -->
                             </ul>
                             <!-- 드롭다운으로 로그인 추가 -->
                             <ul class="nav navbar-nav navbar-right">

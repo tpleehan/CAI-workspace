@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.myweb.reply.mapper.IReplyMapper">
+<!-- 
+	<resultMap type="com.spring.mvc.board.model.ReplyVO" id="ReplyMap">
+		<result property="replyId" column="reply_id" />
+		<result property="replyPw" column="reply_id" />
+		<result property="replyDate" column="reply_date" />
+		<result property="updateDate" column="update_date" />
+	</resultMap>
+ -->
+	<!-- 댓글 등록 -->
+	<!-- void replyRegist(ReplyVO vo); -->
+	<insert id="replyRegist">
+		INSERT INTO freereply
+		(rno, bno, reply, reply_id, reply_pw)
+		VALUES(freereply_seq.NEXTVAL, #{bno}, #{reply}, #{replyId}, #{replyPw})
+	</insert>
+	
+	<!-- 목록 요청 -->
+	<!-- List<ReplyVO> getList(Map<String, Object> data); -->
+	
+	<!-- 댓글 개수 -->
+	<!-- int getTotal(int bno); -->
+	
+	<!-- 비밀번호 확인 -->
+	<!-- int pwCheck(ReplyVO vo); -->
+	
+	<!-- 댓글 수정 -->
+	<!-- void update(ReplyVO vo); -->
+	
+	<!-- 댓글 삭제 -->
+	<!-- void delete(int rno); -->
+
+</mapper>
