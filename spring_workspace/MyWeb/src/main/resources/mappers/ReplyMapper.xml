@@ -24,6 +24,10 @@
 	
 	<!-- 댓글 개수 -->
 	<!-- int getTotal(int bno); -->
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM freereply
+	</select>
 	
 	<!-- 비밀번호 확인 -->
 	<!-- int pwCheck(ReplyVO vo); -->
