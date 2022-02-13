@@ -46,10 +46,20 @@
 
 	<!-- 수정 -->
 	<!-- void update(FreeBoardVO vo); -->
-
+	<update id="update">
+		UPDATE freeboard
+		SET
+			title = #{title}
+			content = #{content}
+		WHERE
+			bno = #{bno}
+	</update>
+	
 	<!-- 삭제 -->
 	<!-- void delete(int bno); -->
+	<delete id="delete">
+		DELETE FROM freeboard
+		WHERE bno = #{bno}
+	</delete>
 	
-	
-
 </mapper>

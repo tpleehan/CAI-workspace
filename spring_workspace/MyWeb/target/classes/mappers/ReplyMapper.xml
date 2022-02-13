@@ -31,11 +31,27 @@
 	
 	<!-- 비밀번호 확인 -->
 	<!-- int pwCheck(ReplyVO vo); -->
+	<select id="pwCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM freereply
+		WHERE reply_id = #{replyId}
+	</select>
 	
 	<!-- 댓글 수정 -->
 	<!-- void update(ReplyVO vo); -->
+	<update id="update">
+		UPDATE freereply
+		SET
+			reply = #{reply}
+		WHERE
+			rno = #{rno}
+	</update>
 	
 	<!-- 댓글 삭제 -->
 	<!-- void delete(int rno); -->
+	<delete id="delete">
+		DELETE FROM freereply
+		WHERE rno = #{rno}
+	</delete>
 
 </mapper>
