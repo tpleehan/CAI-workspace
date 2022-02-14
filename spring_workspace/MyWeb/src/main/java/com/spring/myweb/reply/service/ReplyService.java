@@ -1,5 +1,6 @@
 package com.spring.myweb.reply.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.myweb.command.ReplyVO;
 import com.spring.myweb.reply.mapper.IReplyMapper;
+import com.spring.myweb.util.PageVO;
 
 @Service
 public class ReplyService implements IReplyService {
@@ -21,33 +23,32 @@ public class ReplyService implements IReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> getList(Map<String, Object> data) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ReplyVO> getList(PageVO vo, int bno) {
+		Map<String, Object> data = new HashMap<>();
+		data.put("paging", vo);
+		data.put("bno", bno);
+		
+		return mapper.getList(data);
 	}
 
 	@Override
 	public int getTotal(int bno) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mapper.getTotal(bno);
 	}
 
 	@Override
 	public int pwCheck(ReplyVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mapper.pwCheck(vo);
 	}
 
 	@Override
 	public void update(ReplyVO vo) {
-		// TODO Auto-generated method stub
-
+		mapper.update(vo);
 	}
 
 	@Override
 	public void delete(int rno) {
-		// TODO Auto-generated method stub
-
+		mapper.delete(rno);
 	}
 
 }
