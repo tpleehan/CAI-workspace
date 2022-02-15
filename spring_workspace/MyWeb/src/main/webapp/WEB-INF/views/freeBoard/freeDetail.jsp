@@ -35,8 +35,8 @@
             <textarea id="content" class="form-control" rows="10" readonly>${article.content}</textarea>
           </div>
 
-          <button class="btn btn-primary">수정</button>
-          <button class="btn btn-dark">목록</button>
+          <button type="button" class="btn btn-primary" onclick="location.href='<c:url value="/freeBoard/freeModify?bno=${article.bno}" />'">수정</button>
+          <button type="button" class="btn btn-dark" id="listBtn">목록</button>
         </form>
       </div>
     </div>
@@ -123,6 +123,12 @@
 <%@ include file="../include/footer.jsp"%>
 
 <script>
+	
+	$(function() {
+		$('#listBtn').click(function() {
+			location.href="<c:url value='/freeBoard/freeList' />"
+	 	});
+	});
 	
 	$(document).ready(function() {
 		

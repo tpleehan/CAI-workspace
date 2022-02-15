@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.myweb.user.mapper.IUserMapper">
+
+	<!-- 아이디 중복 확인 -->
+	<!-- int idCheck(String id); -->
+	
+	<!-- 회원 가입 -->
+	<!-- void join(UserVO vo); -->
+	
+	<!-- 로그인 -->
+	<!-- UserVO login(@Param("id") String id, @Param("pw") String pw); -->
+	
+	<!-- 회원 정보 얻어오기 -->
+	<!-- UserVO getInfo(String id); -->
+	
+	<!-- 회원 정보 수정 -->
+	<!-- void updateUser(UserVO vo); -->
+	
+	<!-- 회원 정보 삭제 -->
+	<!-- void deleteUser(@Param("id") String id, @Param("pw") String pw); -->
+
+</mapper>

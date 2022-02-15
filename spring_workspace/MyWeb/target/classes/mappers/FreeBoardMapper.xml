@@ -4,6 +4,21 @@
 
 <mapper namespace="com.spring.myweb.freeboard.mapper.IFreeBoardMapper">
 	
+	<sql id="search">
+		<if test="condition == 'title'">
+			WHERE title LIKE '%' || #{keyword} || '%'
+		</if>
+		<if test="condition == 'content'">
+			WHERE content LIKE '%' || #{keyword} || '%'
+		</if>
+		<if test="condition == 'writer'">
+			WHERE writer LIKE '%' || #{keyword} || '%'
+		</if>
+		<if test="condition == 'titleContent'">
+			WHERE title LIKE '%' || #{keyword} || '%'
+			OR content LIKE '%' || #{keyword} || '%'
+		</if>
+	</sql>
 	
 	<!-- 글 등록  -->
 	<!-- void regist(FreeBoardVO vo); -->
@@ -16,11 +31,12 @@
 	<!-- 글 목록 -->
 	<!-- List<FreeBoardVO> getList(PageVO vo); -->
 	<select id="getList" resultType="com.spring.myweb.command.FreeBoardVO">
-		SELECT * FROM			
+		SELECT * FROM
 			(
 			SELECT ROWNUM AS rn, tbl.* FROM
 				(
 				SELECT * FROM freeboard
+				<include refid="search" />
 				ORDER BY bno DESC
 				) tbl
 			)
@@ -35,6 +51,7 @@
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*)
 		FROM freeboard
+		<include refid="search" />
 	</select>
 
 	<!-- 상세보기 -->
@@ -49,8 +66,9 @@
 	<update id="update">
 		UPDATE freeboard
 		SET
-			title = #{title}
-			content = #{content}
+			title = #{title},
+			content = #{content},
+			updatedate = sysdate
 		WHERE
 			bno = #{bno}
 	</update>

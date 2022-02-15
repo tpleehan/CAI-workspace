@@ -14,15 +14,15 @@
 				</div>
 				<hr>
 
-				<form action="#">
+				<form action="<c:url value='/freeBoard/freeList' />">
 					<div class="search-wrap clearfix">
 						<button type="submit" class="btn btn-info search-btn">검색</button>
-						<input type="text" class="form-control search-input"> 
-						<select class="form-control search-select">
-							<option>제목</option>
-							<option>내용</option>
-							<option>작성자</option>
-							<option>제목+내용</option>
+						<input type="text" name="keyword" class="form-control search-input" value="${pc.paging.keyword}"> 
+						<select class="form-control search-select" name="condition">
+							<option value="title" ${pc.paging.condition == 'title' ? 'selected' : ''}>제목</option>
+							<option value="content" ${pc.paging.condition == 'content' ? 'selected' : ''}>내용</option>
+							<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : ''}>작성자</option>
+							<option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected' : ''}>제목+내용</option>
 						</select>
 					</div>
 				</form>
@@ -93,7 +93,7 @@
 						<input type="hidden" name="keyword" value="${pc.paging.keyword}">
 						<input type="hidden" name="condition" value="${pc.paging.condition}">
 						
-						<button class="btn btn-info">글쓰기</button>
+						<button type="button" class="btn btn-info" onclick="location.href='<c:url value="/freeBoard/freeRegist"/>'">글쓰기</button>
 					</div>
 				</form>
 
@@ -105,6 +105,11 @@
 <%@ include file="../include/footer.jsp"%>
 
 <script>
+
+	const msg = '${msg}';
+	if(msg !== '') {
+		alert(msg);
+	}
 	
 	/*
 	 * 사용자가 페이지 관련 버튼을 클릭했을 때 각각의 a태그의 href에 각각 다른 url을 작성해서 요청을 보냈다.
