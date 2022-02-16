@@ -30,11 +30,34 @@
 	
 	<!-- 회원 정보 얻어오기 -->
 	<!-- UserVO getInfo(String id); -->
+	<select id="getInfo" resultType="com.spring.myweb.command.UserVO">
+		SELECT * FROM users
+		WHERE userId = #{id}
+	</select>
 	
 	<!-- 회원 정보 수정 -->
 	<!-- void updateUser(UserVO vo); -->
+	<update id="updateUser">
+		UPDATE users
+		SET 
+			userPw = #{userPw},
+			userPhone1 = #{userPhone1},
+			userPhone2 = #{userPhone2},
+			userEmail1 = #{userEmail1},
+			userEmail2 = #{userEmail2},
+			addrBasic = #{addrBasic},
+			addrDetail = #{addrDetail},
+			addrZipNum = #{addrZipNum}
+		WHERE 
+			userId = #{userId}
+	</update>
 	
 	<!-- 회원 정보 삭제 -->
 	<!-- void deleteUser(@Param("id") String id, @Param("pw") String pw); -->
+	<delete id="deleteUser">
+		DELETE FROM users
+		WHERE userId = #{id}
+		AND userPw = #{pw}
+	</delete>
 
 </mapper>
