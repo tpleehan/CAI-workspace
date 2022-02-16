@@ -1,7 +1,5 @@
 package com.spring.myweb.user.service;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.spring.myweb.command.UserVO;
 
 public interface IUserService {
@@ -13,7 +11,7 @@ public interface IUserService {
 	void join(UserVO vo);
 	
 	// 로그인
-	UserVO login(@Param("id") String id, @Param("pw") String pw);
+	UserVO login(String id, String pw);
 	
 	// 회원 정보 얻어오기
 	UserVO getInfo(String id);
@@ -22,6 +20,6 @@ public interface IUserService {
 	void updateUser(UserVO vo);
 	
 	// 회원 정보 삭제
-	void deleteUser(@Param("id") String id, @Param("pw") String pw);
+	void deleteUser(String id, String pw);
 	
 }

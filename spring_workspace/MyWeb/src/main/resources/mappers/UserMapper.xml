@@ -6,12 +6,27 @@
 
 	<!-- 아이디 중복 확인 -->
 	<!-- int idCheck(String id); -->
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(*) FROM users
+		WHERE userid = #{id}
+	</select>
 	
 	<!-- 회원 가입 -->
 	<!-- void join(UserVO vo); -->
+	<insert id="join">
+		INSERT INTO users
+		(userId, userPw, userName, userPhone1, userPhone2, userEmail1, userEmail2, addrBasic, addrDetail, addrZipNum)
+		VALUES
+		(#{userId}, #{userPw}, #{userName}, #{userPhone1}, #{userPhone2}, #{userEmail1}, #{userEmail2}, #{addrBasic}, #{addrDetail}, #{addrZipNum})
+	</insert>
 	
 	<!-- 로그인 -->
 	<!-- UserVO login(@Param("id") String id, @Param("pw") String pw); -->
+	<select id="login" resultType="com.spring.myweb.command.UserVO"> 
+		SELECT * FROM users
+		WHERE userId = #{id} 
+		AND userPw = #{pw}
+	</select>
 	
 	<!-- 회원 정보 얻어오기 -->
 	<!-- UserVO getInfo(String id); -->
