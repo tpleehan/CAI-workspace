@@ -48,22 +48,29 @@
                 <option>018</option>
               </select>
               <input type="text" name="userPhone2" id="hp" class="form-control" placeholder="전화번호를 입력하세요.">
-              <div class="input-group-addon">
-                <button class="btn btn-primary">본인인증</button>
-              </div>
+
             </div>
           </div>
           <div class="form-group email-form">
-            <label for="email">이메일</label><br>
-            <input type="text" class="form-control" name="userEmail1" id="userEmail1" placeholder="이메일">
-            <select class="form-control" name="userEmail2" id="userEmail2">
-              <option>@naver.com</option>
-              <option>@daum.net</option>
-              <option>@gmail.com</option>
-              <option>@hanmail.com</option>
-              <option>직접 입력</option>
-            </select>
-          </div>	
+            <label for="email">이메일</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="userEmail1" id="userEmail1" placeholder="이메일">
+              <select class="form-control" name="userEmail2" id="userEmail2">
+                <option>@naver.com</option>
+                <option>@daum.net</option>
+                <option>@gmail.com</option>
+                <option>@hanmail.com</option>
+                <option>직접 입력</option>
+              </select>
+              <div class="input-group-addon">
+			    <button type="button" class="btn btn-primary" id="mail-check-btn">이메일인증</button>
+              </div>
+            </div>
+            <div class="mail-check-box">
+              <input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력하세요." disabled="disabled" maxlength="6">
+            </div>
+            <span id="mail-check-warning"></span>
+          </div>
           <div class="form-group">
             <label for="addr-num">주소</label>
             <div class="input-group">
@@ -95,9 +102,12 @@
 
 <%@ include file="../include/footer.jsp"%>
 
+<!-- 카카오API 사용하기 위한 cdn -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" ></script>
 
 <script>
+
+	let code = '';
 	
 	// 아이디 중복 체크
 	$('#idCheckBtn').click(function() {
@@ -137,6 +147,49 @@
 		}); // ajax id 중복 
 		 
 	}); // end idCheckBtn 
+	
+	// 이메일 인증번호 전송
+	$('#mail-check-btn').click(function() {
+		const email = $('#userEmail1').val() + $('#userEmail2').val();
+		console.log('완성된 이메일: ' + email);
+		const checkInput = $('.mail-check-input'); // 인증번호 입력 하는 곳
+		
+		$.ajax({
+			type : 'get',
+			url : '<c:url value="/user/mailCheck?email=" />' + email,
+			success : function(data) {
+				console.log('data: ' + data);
+				checkInput.attr('disabled', false);
+				code = data;
+				alert('인증번호 전송되었습니다. 확인 후 입력란에 정확히 입력하세요.');
+			}
+			
+		}); // end ajax (이메일 인증번호 전송)
+		
+	}); // 이메일 인증번호 전송
+	
+	// 인증번호 비교
+	// blur()는 focus가 벗어나면 이벤트 발생 
+	$('.mail-check-input').blur(function() {
+		const inputCode = $(this).val();
+		const $resultMsg = $('#mail-check-warning');
+		
+		if(inputCode === code) {
+			$resultMsg.html('인증번호가 일치합니다.');
+			$resultMsg.css('color', 'green');
+			$('#mail-check-btn').attr('disabled', true);
+			// disabled를 적용하면 서버로 이동이 안된다. readonly인 읽기전용으로 해야 한다.
+			$('#userEmail1').attr('readonly', true);
+			$('#userEmail2').attr('readonly', true);
+			$('#userEmail2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+			$('#userEmail2').attr('onChange', 'this.selectedIndex = this.initialSelect');
+			
+		} else {
+			$resultMsg.html('인증번호를 다시 확인해 주세요.');
+			$resultMsg.css('color', 'red');
+		}
+		
+	}); // 인증번호 비교
 	
 	// 폼 데이터 검증(회원 가입 버튼을 눌렀을 경우)
 	$('#joinBtn').click(function() {

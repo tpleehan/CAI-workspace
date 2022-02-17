@@ -26,4 +26,17 @@ public class FreeBoardMapperTest {
 			mapper.regist(vo);
 		}
 	}
+	
+	/*
+	@Test
+	public void registTest() {
+		for(int i = 1; i <= 30; i++) {
+			FreeBoardVO vo = new FreeBoardVO();
+			vo.setTitle("마이테스트 테스트 " + i);
+			vo.setWriter("kim1234");
+			vo.setContent("테스트 글쓰기 내용 " + i);
+			mapper.regist(vo);
+		}
+	}
+	*/
 }

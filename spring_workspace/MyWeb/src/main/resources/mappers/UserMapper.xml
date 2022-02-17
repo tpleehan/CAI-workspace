@@ -4,6 +4,28 @@
   
 <mapper namespace="com.spring.myweb.user.mapper.IUserMapper">
 
+	<!-- VO클래스의 멤버변수가 컬렉션 타입일 경우에 collection 태그를 이용한다. -->
+	<!-- 새로운 resultMap으로 선언해줘야 한다. -->
+	<resultMap type="com.spring.myweb.command.UserVO" id="myPageInfo">
+		<id property="userId" column="USERID" />
+		<result property="userName" column="USERNAME"/>
+		<result property="userPhone1" column="USERPHONE1"/>
+		<result property="userPhone2" column="USERPHONE2"/>
+		<result property="userEmail1" column="USEREMAIL1"/>
+		<result property="userEmail2" column="USEREMAIL2"/>
+		<result property="addrBasic" column="ADDRBASIC"/>
+		<result property="addrDetail" column="ADDRDETAIL"/>
+		<result property="addrZipNum" column="ADDRZIPNUM"/>
+		<collection property="userBoardList" resultMap="List" />
+	</resultMap>
+	
+	<!-- collection에 들어갈 객체가 어떤 식으로 포장 될 지 명시해 주는 resultMap -->
+	<resultMap type="com.spring.myweb.command.FreeBoardVO" id="List">
+		<id property="bno"  column="bno" />
+		<result property="title" column="title" />
+		<result property="regdate" column="regdate" />
+	</resultMap>
+
 	<!-- 아이디 중복 확인 -->
 	<!-- int idCheck(String id); -->
 	<select id="idCheck" resultType="int">
@@ -30,9 +52,25 @@
 	
 	<!-- 회원 정보 얻어오기 -->
 	<!-- UserVO getInfo(String id); -->
-	<select id="getInfo" resultType="com.spring.myweb.command.UserVO">
-		SELECT * FROM users
-		WHERE userId = #{id}
+	<select id="getInfo" resultMap="myPageInfo">
+		SELECT 
+			userId,
+			userName,
+			userPhone1,
+			userPhone2,
+			userEmail1,
+			userEmail2,
+			addrBasic,
+			addrDetail,
+			addrZipNum,
+			f.bno,
+			f.title,
+			f.regDate	
+		FROM users u 
+		LEFT OUTER JOIN freeboard f 
+		ON u.userId = f.writer
+		WHERE userId = #{userId}
+		ORDER BY f.bno DESC
 	</select>
 	
 	<!-- 회원 정보 수정 -->

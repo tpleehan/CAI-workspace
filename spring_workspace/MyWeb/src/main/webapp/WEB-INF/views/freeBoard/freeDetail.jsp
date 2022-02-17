@@ -35,7 +35,7 @@
             <textarea id="content" class="form-control" rows="10" readonly>${article.content}</textarea>
           </div>
 
-          <button type="button" class="btn btn-primary" onclick="location.href='<c:url value="/freeBoard/freeModify?bno=${article.bno}" />'">수정</button>
+          <button type="button" class="btn btn-primary" onclick="location.href='<c:url value="/freeBoard/freeModify?bno=${article.bno}&writer=${article.writer}" />'">수정</button>
           <button type="button" class="btn btn-dark" id="listBtn">목록</button>
         </form>
       </div>
