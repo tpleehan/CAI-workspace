@@ -36,27 +36,35 @@ public class BoardAuthHandler implements HandlerInterceptor {
 //		String id = user.getUserId();
 //		System.out.println("interceptor id: " + id);
 		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html; charset=utf-8");
+		
 		if(user != null) {
 			if(!writer.equals(user.getUserId())) {
-				PrintWriter out = response.getWriter();
-				response.setContentType("text/html; charset=utf-8");
-				out.print("<script>");
-				out.print("alert('권한이 없습니다.');"
-						+ "location.href='/myweb'");
-				out.print("</script>");
+				System.out.println("해당 글 작성자가 아닌 유저");
+				
+				out.print("<script>"
+							+ "alert('권한이 없습니다.');"
+							+ "location.href='/myweb'"
+						+ "</script>");
+
+				out.close();
 				
 				return false;
 			
+			} else {
+				System.out.println("해당 글 작성자 유저");
+				return true;
 			}
-			return true;
 			
 		} else {
-			PrintWriter out = response.getWriter();
-			response.setContentType("text/html; charset=utf-8");
-			out.print("<script>");
-			out.print("alert('권한이 없습니다.');"
-					+ "location.href='/myweb'");
-			out.print("</script>");
+			System.out.println("로그인을 하지 않은 유저");
+			out.print("<script>"
+						+ "alert('권한이 없습니다.');"
+						+ "location.href='/myweb'"
+					+ "</script>");
+
+			out.close();
 			
 			return false;
 		}
