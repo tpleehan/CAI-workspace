@@ -25,13 +25,15 @@ public class BoardAuthHandler implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
+		System.out.println("게시판 권한 인터셉터 동작");
+		
 		String writer = request.getParameter("writer");
 		System.out.println("interceptor writer: " + writer);
 		
 		HttpSession session = request.getSession();
 		
-		UserVO user = (UserVO) session.getAttribute("login");
-		System.out.println("interceptor user: " + user);
+		UserVO vo = (UserVO) session.getAttribute("login");
+		System.out.println("interceptor user: " + vo);
 		
 //		String id = user.getUserId();
 //		System.out.println("interceptor id: " + id);
@@ -39,10 +41,9 @@ public class BoardAuthHandler implements HandlerInterceptor {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html; charset=utf-8");
 		
-		if(user != null) {
-			if(!writer.equals(user.getUserId())) {
+		if(vo != null) {
+			if(!writer.equals(vo.getUserId())) {
 				System.out.println("해당 글 작성자가 아닌 유저");
-				
 				out.print("<script>"
 							+ "alert('권한이 없습니다.');"
 							+ "location.href='/myweb'"
@@ -69,6 +70,25 @@ public class BoardAuthHandler implements HandlerInterceptor {
 			return false;
 		}
 
+		
+		/*
+		if(vo != null) {
+			if(writer.equals(vo.getUserId())) {
+				return true; // 컨트롤러로 요청의 진입을 허용
+			}
+		}
+		
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print("<script> \r\n");
+		out.print("alert('권한이 없습니다.'); \r\n");
+		out.print("history.back(); \r\n");
+		out.print("</script>");
+		
+		out.flush();
+		
+		return false;
+		*/
 	}
 	
 }

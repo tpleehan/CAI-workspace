@@ -89,7 +89,7 @@
 
 	$('#delBtn').click(function() {
 		if(confirm('삭제 하시겠습니까?')) {
-			$('form[name="updateForm"]').attr('action', '<c:url value="/freeBoard/delete"/>');
+			$('form[name="updateForm"]').attr('action', '<c:url value="/freeBoard/freeDelete"/>');
 			
 			$('form[name="updateForm"]').submit();
 			

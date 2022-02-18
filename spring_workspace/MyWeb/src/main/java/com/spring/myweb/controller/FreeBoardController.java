@@ -72,7 +72,7 @@ public class FreeBoardController {
 	}
 	
 	// 글 삭제 처리
-	@PostMapping("/delete")
+	@PostMapping("/freeDelete")
 	public String freeDelete(FreeBoardVO vo, RedirectAttributes ra) {
 		service.delete(vo.getBno());
 		ra.addFlashAttribute("msg", "게시글이 정상 삭제 되었습니다.");
