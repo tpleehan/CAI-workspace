@@ -6,14 +6,31 @@
 
 	<!-- 글 등록 -->
 	<!-- void insert(SNSBoardVO vo); -->
+	<insert id="insert">
+		INSERT INTO snsboard
+		(bno, writer, uploadpath, fileloca, filename, filerealname, content)
+		VALUES(snsboard_seq.NEXTVAL, #{writer}, #{uploadpath}, #{fileloca}, #{filename}, #{filerealname}, #{content})	
+	</insert>
 	
 	<!-- 글 목록 -->
 	<!-- List<SNSBoardVO> getList(); -->
+	<select id="getList">
+		SLECT * FROM snsboard
+		ORDER BY bno DESC
+	</select>
 	
 	<!-- 글 상세보기 -->
 	<!-- SNSBoardVO getDetail(int bno); -->
+	<select id="getDetail">
+		SELECT * FROM snsboard
+		WHERE bno = #{bno}
+	</select>
 	
 	<!-- 글 삭제 -->
 	<!-- void delete(int bno); -->
+	<delete id="delete">
+		DELETE FROM snsboard
+		WHERE bno = #{bno}
+	</delete>
 
 </mapper>
