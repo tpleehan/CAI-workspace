@@ -16,25 +16,23 @@ public class SNSBoardService implements ISNSBoardService {
 	
 	@Override
 	public void insert(SNSBoardVO vo) {
-		// TODO Auto-generated method stub
+		mapper.insert(vo);
 
 	}
 
 	@Override
 	public List<SNSBoardVO> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.getList();
 	}
 
 	@Override
 	public SNSBoardVO getDetail(int bno) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.getDetail(bno);
 	}
 
 	@Override
 	public void delete(int bno) {
-		// TODO Auto-generated method stub
+		mapper.delete(bno);
 
 	}
 
