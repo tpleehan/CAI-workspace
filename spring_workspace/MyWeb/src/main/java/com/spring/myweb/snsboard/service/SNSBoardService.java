@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.myweb.command.SNSBoardVO;
 import com.spring.myweb.snsboard.mapper.ISNSBoardMapper;
+import com.spring.myweb.util.PageVO;
 
 @Service
 public class SNSBoardService implements ISNSBoardService {
@@ -21,8 +22,8 @@ public class SNSBoardService implements ISNSBoardService {
 	}
 
 	@Override
-	public List<SNSBoardVO> getList() {
-		return mapper.getList();
+	public List<SNSBoardVO> getList(PageVO paging) {
+		return mapper.getList(paging);
 	}
 
 	@Override
