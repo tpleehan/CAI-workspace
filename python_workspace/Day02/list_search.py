@@ -6,9 +6,6 @@
 4. reverse(): 리스트 데이터를 역순으로 배치
 '''
 
-from unicodedata import name
-
-
 points = [99, 14, 87, 100, 55, 100, 99, 100, 22]
 
 perfect = points.count(100)

@@ -2,8 +2,6 @@
 
 # namelist에 이름, phonelist에 전화번호를 저장해서 
 # 이름과 전화번호 리스트의 인덱스가 동일하게 증가할 수 있도록 조작
-from unicodedata import name
-
 
 namelist = []
 phonelist = []

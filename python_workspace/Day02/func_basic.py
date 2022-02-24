@@ -8,9 +8,6 @@
 '''
 
 # 함수의 정의 (1 ~ x까지의 누적합을 구하는 로직)
-from audioop import add
-
-
 def calc_sum(end):
     sum = 0
     for n in range(1, end + 1):
@@ -26,9 +23,8 @@ print('1 ~ 100가지의 누적합: ', calc_sum(100))
 - 인수는 함수를 호출할 때 함수 실행에 필요한 값들을 전달하는 매개체 역할을 하며, 매개변수(parameter)라고 부른다.
 - 인수의 개수는 제한이 없어 많은 값을 함수에 전달할 수도 있고 하나도 전달하지 않을 수 있다.
 
-- 파이썬의 경우에는 데이터 타입을 작성하지 않기 때문에
-해당 함수를 처음 사용하는 사람도 인수 이름만 보고 무슨 값을
-전달해야 할 지 의미를 알기 쉽게 지정하는 것이 좋다.
+- 파이썬의 경우에는 데이터 타입을 작성하지 않기 때문에 해당 함수를 처음 사용하는 사람도
+ 인수 이름만 보고 무슨 값을 전달해야 할 지 의미를 알기 쉽게 지정하는 것이 좋다.
 '''
 
 
@@ -76,3 +72,19 @@ print(result)
 print(add(add(5, 7), add(9, 8))) # add(12, 17)이라 생각하면 된다.
 
 # n = int(input('정수: ')) -> n = int('3')
+
+# 만약 여러 개의 값을 한번에 return 해야 할 때는 컬렉션 자료형을 사용한다. (list, tuple, set)
+def operate_all(n1, n2):
+    return n1 + n2, n1 - n2, n1 * n2, n1 / n2 # tuple
+    # return n1 - n2 (x)
+    # return n1 * n2 (x)
+    # return n1 / n2 (x)
+
+print(type(operate_all(10, 5)))
+
+def multi(n1, n2):
+    result = n1 * n2
+    print(f'{n1} x {n2} = {result}')
+
+# abc = multi(9, 6) --> None
+# print(abc)

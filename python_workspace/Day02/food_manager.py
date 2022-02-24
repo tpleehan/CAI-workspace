@@ -2,8 +2,6 @@
 * 사전을 사용한 음식점 메뉴판 관리 프로그램.
 - key: 음식명, value: 음식의 가격
 '''
-from select import select
-
 
 foods = {}
 
