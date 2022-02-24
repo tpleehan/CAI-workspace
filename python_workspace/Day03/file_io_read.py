@@ -37,8 +37,7 @@ finally:
     f.close
 '''
 
-# readlines()는 파일 데이터를 한 줄씩 읽어서 리스트에 담아서 리턴한다.
-# 읽은 데이터를 리스트 문법을 사용해서 처리할 수 있다.
+# readlines()는 파일 데이터를 한 줄씩 읽고 리스트에 담아서 리턴하기 때문에 읽은 데이터를 리스트 문법을 사용해서 처리할 수 있다.
 try:
     f = open(file_path, 'r')
     
@@ -51,3 +50,4 @@ except:
     print('파일 로드 실패')
 finally:
     f.close
+    

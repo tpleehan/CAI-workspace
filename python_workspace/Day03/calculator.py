@@ -32,7 +32,7 @@ ex) if __name__ == '__main__':
 현재 모듈에서 실행할 때는 이름이 main으로 저장되고 다른 모듈에서 실행할 때는 이름이 모듈 이름으로 저장된다.
 '''
 
-if __name__ == '__main__': # 현재 모듈에서는 main, 다른 모듈에서
+if __name__ == '__main__': # 현재 모듈에서는 main, 다른 모듈에서 calculator (모듈명이라고 생각하면 된다.)
     print('__name__의 값:', __name__)
 
     # test code
@@ -40,3 +40,4 @@ if __name__ == '__main__': # 현재 모듈에서는 main, 다른 모듈에서
     info()
     print(sub(100, 15))
     print('이런 식으로 쓰면 됩니다.')
+    

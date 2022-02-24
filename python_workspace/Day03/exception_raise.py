@@ -21,3 +21,4 @@ try:
     print(result2)
 except:
     print('매개값은 양수로 주세요.')
+    
