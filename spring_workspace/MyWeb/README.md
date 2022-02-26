@@ -24,11 +24,11 @@
 ## 마이페이지 - 내글
 <img src="https://user-images.githubusercontent.com/60464237/155839926-509d8dc2-1bbc-4f23-ac11-9654d841a5d1.png" />
 
-## sns
+## SNS
 <img src="https://user-images.githubusercontent.com/60464237/155839927-e4b68f76-0324-48e4-a168-fe35765f32b4.png" />
 
-## sns 글작성
+## SNS 글작성
 <img src="https://user-images.githubusercontent.com/60464237/155839928-7efdc3a5-d17d-4b39-bb82-5efce0e4c277.png" />
 
-## sns - 게시글 등록 후
+## SNS - 게시글 등록 후
 <img src="https://user-images.githubusercontent.com/60464237/155839929-c47643fc-5581-421d-956d-51e1f4c1e9b9.png" />
