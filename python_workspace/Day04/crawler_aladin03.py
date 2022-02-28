@@ -70,15 +70,81 @@ worksheet.write('E1', '출판일', cell_format)
 worksheet.write('F1', '가격', cell_format)
 worksheet.write('G1', '링크', cell_format)
 
+cur_page_num = 2 # 현재 페이지 번호
+target_page_num = 9 # 목적지 페이지 번호
+rank = 1 # 순위
+cnt = 2 # 엑셀 행 수 카운트 해줄 변수
+
 while True:
 	# bs4 초기화
 	soup = BeautifulSoup(browser.page_source, 'html.parser')
 
 	div_ss_book_box_list = soup.find_all('div', class_='ss_book_box')
 
-
 	for div_ss_book_box in div_ss_book_box_list:
 		
 		# 이미지
 		img_url = div_ss_book_box.select_one('table div > a > img.i_cover') # 여러개를 가져 오려면 .select
-		print(img_url)
+		# print(img_url)
+
+		# 타이틀, 작가, 가격정보를 모두 포함하는 ul 지목
+
+		ul = div_ss_book_box.select_one('div.ss_book_list > ul')
+		# 타이틀
+		title = ul.select_one('li > a.bo3')
+
+		# 작가
+		author = title.find_parent().find_next_sibling()
+
+		# 작가쪽 영역 데이터 상세 분해
+		author_data = author.text.split('|')
+		author_name = author_data[0].strip()
+		company = author_data[1].strip()
+		pub_day = author_data[2].strip()
+
+		# 가격
+		price = author.find_next_sibling()
+		price_data = price.text.split(', ')[0]
+
+		# 책 상세 정보 페이지 링크
+		# title 변수에 a태그를 지목해 놓은 상태
+		# title -> a태그의 요소 전부를 가지고 있는 상태
+		# href로 작성된 키를 전달하고 해당 value를 받아 변수에 저장
+		page_link = title['href']
+		
+		try:
+			# 이미지 바이트 변환 처리
+			# BytesIO 객체의 매개값으로 img_url이라는 변수에 준비해 놓은 img태그의 src값을 전달
+			img_data = BytesIO(req.urlopen(img_url['src']).read())
+
+			# 엑셀에 이미지 저장
+			# worksheet.insert_image('배치할 셀번호', 이미지제목, {'image_data': 바이트로 변환한 이미지, 기타 속성...})
+			worksheet.insert_image(f'A{cnt}', img_url['src'], {'image_data':img_data, 'x_scale':0.5, 'y_scale':0.5})
+		except:
+			# 파이썬에선 블록구조에 아무것도 쓰지 않으면 에러가 발생한다.
+			# 블록 구조 내부에 작성할 코드가 없고 넘기려면 pass라는 키워드를 많이 사용한다.
+			pass
+			
+		# 엑셀에 나머지 텍스트 저장
+		worksheet.write(f'B{cnt}', title.text)
+		worksheet.write(f'C{cnt}', author_name)
+		worksheet.write(f'D{cnt}', company)
+		worksheet.write(f'E{cnt}', pub_day)
+		worksheet.write(f'F{cnt}', price_data)
+		worksheet.write(f'G{cnt}', page_link)
+
+		cnt += 1
+		rank += 1
+
+	# 다음 페이지(탭)로 전환
+	cur_page_num += 1
+	browser.find_element_by_xpath(f'//*[@id="newbg_body"]/div[3]/ul/li[{cur_page_num}]/a').click()
+	del(soup)
+	time.sleep(3)
+
+	if cur_page_num > target_page_num:
+		print('크롤링 종료')
+		break # while True break
+
+browser.close()
+workbook.close()	
