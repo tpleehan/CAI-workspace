@@ -221,9 +221,7 @@ footer .footer-info {
 
 
 
-/* ---------------------------- main ---------------------------- */
-
-
+/* ---------------------------- index ---------------------------- */
 #wrapper {
 	position: relative;
 	min-height: 100vh;
@@ -286,3 +284,255 @@ section .notice-content h3 {
 section .notice-content p {
 	display: inline;
 }
+
+
+
+
+
+/* ---------------------------- 장바구니 ---------------------------- */
+.cart-left {
+	float: left;
+}
+.cart-left h1 {
+	font-size: 23px;
+}
+
+.cart-right {
+	float: right;
+	margin-top: 15px;
+}
+.cart-right li {
+	display: inline-block;
+	font-size: 18px;
+}
+
+.coupon {
+	float: left;
+}
+.point {
+	float: right;
+}
+
+.input-coupon-row {
+    margin-top: 20px;
+	box-shadow: none;
+	float: right;
+}
+
+.input-coupon {
+	width: 200px;
+	height: 30px;
+	border: 1px solid;
+	color: #5f5f5f;
+	background: #f6f6f6;
+}
+
+/* 빈 장바구니 */
+#empty_cart {
+	margin: 200px;
+	text-align: center;
+}
+#empty_cart span {
+	font-size: 20px;
+}
+#empty_cart i {
+	font-size: 90px;
+	color: #e0e0e0;
+}
+
+/* 담긴 장바구니 */
+.carts {
+	margin-top: 20px;
+	margin-bottom: 200px;
+}
+.product_thumbnail img {
+	width: 90px;
+}
+
+.product-info-cover {
+	display: flex;
+	border: 1px solid #d5dbe2;
+	background-color: #f8f9fa;
+}
+
+.product-info {
+	font-size: 18px;
+	color: #000;
+	font-weight: 700;
+	padding: 10px;
+}
+.product-clear {
+	margin: 12px;
+	margin-left: 580px;
+	font-size: 15px;
+	text-decoration: underline;
+	font-weight: 700;
+	color: #616568;
+}
+.product_item_container {
+	box-shadow: unset;
+    border: 1px solid #d5dbe2;
+}
+.product_item {
+	display: block;
+}
+.product_thumbnail {
+	display: inline-block;
+}
+.product-column-info {
+	display: inline;
+}
+.product_title {
+	display: inline-block;
+}
+.product-menu {
+	float: right;
+	margin: 10px;
+	margin-right: 20px;
+}
+.product-amount {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+}
+.product-menu-button .btn-wishlist {
+	display: block;
+	border: 1px solid;
+	margin-bottom: 5px;
+}
+.product-menu-button .btn-remove {
+	border: 1px solid;
+}
+
+.total_amount h2 {
+	display: inline;
+	font-size: 26px;
+	font-weight: bold;
+}
+.carts_payments {
+	background-color: #fff;
+	box-shadow: 0 2px 3px rgb(0 10 18 / 10%), 0 0 0 1px rgb(0 10 18 / 10%);
+	color: #454545;
+	max-width: 100%;;
+	
+}
+.total_amount_container {
+	padding: 15px;
+}
+.total_amount span {
+	float: right;
+	font-weight: bold;
+	font-size: 26px;
+}
+.total_amount span del {
+	font-size: 13px;
+}
+.total_amount_container .field {
+	padding: 3px;
+	height: 50px;
+	margin-bottom: 10px;
+}
+.total_amount_container label {
+	color: #595959;
+	font-size: 13px;
+	margin: -10px;
+}
+.total_amount_container input {
+	display: block;
+	border: 1px solid;
+	padding: 5px;
+	width: 100%;
+	background: #dbdbdb;
+}
+
+.total_amount_container .field button {
+	width: 49%;
+	height: 40px;
+    padding-right: 3px;
+    padding-left: 3px;
+    border-radius: 4px;
+}
+
+
+.total_amount_container .checkbox {
+	margin: 10px;
+}
+.total_amount_container .checkbox input {
+	width: 10px;
+	height: 10px;
+	border: 1px solid #dbdbdb;
+}
+.total_amount_container .checkbox .agree {
+	color: red;
+}
+
+.carts_payments .btn-make-payment button {
+	width: 100%;
+}
+
+
+
+
+
+/* ---------------------------- 구매 상세 내역 ---------------------------- */
+.purcharse_detail {
+	margin-bottom: 150px;
+}
+.cart-detail {
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.purchase_detail_info {
+	border-radius: 6px;
+	box-shadow: 0 2px 3px rgb(0 10 18 / 10%), 0 0 0 1px rgb(0 10 18 / 10%);
+	color: #454545;
+	display: block;
+	padding: 1.25rem;
+}
+.purchase_detail_thumbnail {
+	position: relative;
+	width: 100px;
+}
+.purchase_details .product_title {
+	position: absolute;
+	font-size: 20px;
+	left: 150px;
+	top: 10px;
+}
+.purchase_details .product_amount {
+	position: absolute;
+	right: 30px;
+	top: 10px;
+}
+.purchase_details .move_product {
+	position: absolute;
+	right: 30px;
+	bottom: 10px;
+}
+
+/* 총계 */
+.purcharse_detail .card {
+	background-color: #fff;
+    box-shadow: 0 2px 3px rgb(0 10 18 / 10%), 0 0 0 1px rgb(0 10 18 / 10%);
+    color: #454545;
+    max-width: 100%;
+    position: relative;
+}
+.purcharse_detail .total_amount_container {
+	padding: 30px;
+}
+.purcharse_detail .total_amount_container .total_amount {
+	padding-bottom: 20px;
+}
+.purcharse_detail .total_amount_container .card-purchase-table {
+	font-size: 18px;
+}
+
+.purchase-notice {
+	margin-top: 60px;
+	text-align: center;
+	font-size: 20px;
+}
+

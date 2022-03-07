@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<!-- font awesome -->
+	<script src="https://kit.fontawesome.com/ec7c1dce8a.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/main.css">
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+  	</script>
+	<script src="./js/bootstrap.js"></script>
+
+</head>
+<body>
+
+	<div id="wrapper">
+		<header data-include-path="./include/header.html"></header>
+		
+		<section class="purcharse_detail">
+			<div class="container">
+				<div class="row">				
+					<div class="cart-detail">
+						<h1>
+							구매 상세 내역
+							<small>(주문번호: 1234567)</small>
+						</h1>
+					</div>
+					
+					<div class="col-sm-7">
+						<div>
+							<div class="purchase_detail_info">
+								<div class="purchase_detail_thumbnail">
+									<img src="./img/java.png" alt="java">
+								</div>
+								<div class="purchase_details">
+									<div class="product_title">
+										<a href="#">자바를 배워볼까</a>
+									</div>
+									<div class="product_amount">
+										<span>
+											<del>₩77,000</del>
+											<br>
+											₩61,600
+										</span>
+									</div>
+									<div class="move_product"> 
+										<a href="#"><span>강의 가기</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						<div class="card">
+							<div class="card-content">
+								<div class="total_amount_container">
+									<div class="total_amount">
+										<h2>총계
+											<span>
+												<del>₩77,000</del> 
+												₩61,600
+											</span>
+										</h2>
+									</div>
+									<div class="card-purchase-table">
+										<table class="table table-bordered">
+											<tbody>
+											<tr>
+												<th>주문 상태</th>
+												<td>
+													<span class="payment_status">결제완료</span>
+												</td>
+											</tr>
+											<tr>
+												<th>주문 시각</th>
+												<td>
+													<time>2022년 3월 07일 13시 05분</time>
+												</td>
+											</tr>
+											<tr>
+												<th>결제 수단</th>
+												<td>신용카드</td>
+											</tr>
+											<tr>
+												<td>
+													<a href="#">영수증 확인</a>
+												</td>
+												<td style="border-left: hidden;">
+													<a href="#" target="" class="">거래명세서 확인</a>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<p class="purchase-notice">
+					구매해 주셔서 정말 감사합니다.
+					<br>
+					보다 나은 서비스를 제공하도록 하겠습니다.
+					<br>
+					함께해 주셔서 감사합니다. 🙇🏻‍♂️🙇🏻‍♀️
+					<br>
+				</p>
+			</div>
+
+
+		</section>
+		
+		<footer data-include-path="./include/footer.html"></footer>
+	</div>	
+
+	<script>
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
