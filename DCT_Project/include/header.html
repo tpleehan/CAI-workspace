@@ -43,8 +43,8 @@
 							<input type="text" class="search-input-bar" placeholder="검색">
 							<span><i class="fa-solid fa-magnifying-glass"></i></span>
 						</div>
-						<div class="">
-							<a role="button" href="#" class="btn-login">로그인</a>
+						<div class="btn-movement">
+							<a role="button" href="#" class="btn-login" data-toggle="modal" data-target="#loginModal">로그인</a>
 							<a role="button" href="#" class="btn-sign-in">회원가입</a>
 						</div>
 					</div>
@@ -52,6 +52,32 @@
 			</div>
 		</nav>
 	</header>
-
+	
+	<!-- Modal -->
+	<div id="loginModal" class="modal fade">
+		<div class="modal-dialog">
+			<form method="post">
+				<!-- Modal Content -->
+				<div class="modal-content">
+					<div class="modal-header-logo">
+						<img class="logo" src="../img/logo.png" alt="modal-header-logo">
+					</div>
+					<div class="modal-body">
+						<input type="text" placeholder="아이디 또는 이메일을 입력해주세요.">
+						<br>
+						<input type="password" placeholder="비밀번호를 입력해주세요.">
+					</div>
+					<div class="modal-sign-more">
+						<a href="#">아이디/비밀번호 찾기</a>
+						<a href="#">회원가입</a>
+					</div>
+					<div class="btn-modal-footer">
+						<button type="submit" class="btn btn-success" data-dismiss="modal">로그인</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	
 </body>
 </html>
