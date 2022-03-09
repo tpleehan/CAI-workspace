@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/ec7c1dce8a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+    <script src="./js/bootstrap.js"></script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <header data-include-path="./include/header.html"></header>
+
+        <section>
+            <div class="mypage_header">
+                <div class="container">
+                    <h2>마이페이지</h2>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="columns">
+                    <div class="col-md-3">
+                        <div class="aside_menu">
+                            <aside class="sidebar_left">
+                                <div class="menu_container">
+                                    <p class="menu-label">학습 관리</p>
+                                    <ul class="menu-list">
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>내가 본 강의</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>내가 올린 강의</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>작성한 게시글</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>멘토링</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <p class="menu-label">수강 신청 관리</p>
+                                    <ul class="menu-list">
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>수강바구니</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>위시리스트</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>쿠폰함</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>구매내역</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <p class="menu-label">설정</p>
+                                    <ul class="menu-list">
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>프로필</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <section class="modify_header">
+                            <div class="big_class">
+                                <h3>기본 정보 수정</h3>
+                                <div class="line"></div>
+                                <form class="modify_info1">
+                                    <ul class="user_info">
+                                        <li>
+                                            <p>이름</p>
+                                        </li>
+                                        <ul class="user_selection_name">
+                                            <input id="user-name" type="text" name="name" minlength="2">
+                                            <button><span>변경</span></button>
+                                        </ul>
+                                        <li>
+                                            <p>이메일</p>
+                                        </li>
+                                        <ul class="user_selection_name">
+                                            <input id="user-name" type="text" name="name" minlength="2">
+                                            <button><span>변경</span></button>
+                                        </ul>
+                                        <li>
+                                            <p>휴대전화</p>
+                                        </li>
+                                        <ul class="user_selection_name">
+                                            <input id="user-name" type="text" name="name" minlength="2">
+                                            <button><span>변경</span></button>
+                                        </ul>
+                                        <li>
+                                            <p>비밀번호</p>
+                                        </li>
+                                        <ul class="user_selection_name">
+                                            <input id="user-name" type="text" name="name" minlength="2">
+                                            <button><span>변경</span></button>
+                                        </ul>
+                                    </ul>
+                                </form>
+                            </div>
+                            <div class="big_class">
+                                <h3>기본 배송 정보</h3>
+                                <div class="line"></div>
+                                <form class="modify_info1">
+                                    <ul class="user_info">
+                                        <ul class="user_selection_name">
+                                            <input id="zipcode" type="text" name="name" readonly="readonly">
+                                            <button><span>검색</span></button><br><br>
+                                            <input id="address" type="text" name="name" placeholder="검색 버튼으로 주소를 검색해 주세요"><br><br>
+                                            <input id="address_extra" type="text" name="name" placeholder="상세 버튼어쩌구해 주세요">
+                                    </ul>
+                                </form>
+                            </div>
+                            <div class="big_class">
+                                <div class="line"></div>
+                                <ul class="hi">
+                                    <p>
+                                        <span><input type="checkbox" id="email-agree"> 마케팅 수신 동의에 동의합니다.</span>
+                                    </p>
+                                </ul>
+                                <button class="ac-button is-lg is-solid is-primary e-sign-up-button form__button ">수정하기</button>
+                                <p><a href="#">계정 삭제하기</a></p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!--footer-->
+    <footer data-include-path="./include/footer.html"></footer>
+
+    <script>
+        window.addEventListener('load', function () {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function (el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status ==
+                            200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

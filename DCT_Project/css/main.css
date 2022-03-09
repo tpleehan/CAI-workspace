@@ -165,7 +165,7 @@ li {
 }
 
 
-/* 모달 */
+/* 로그인 모달 */
 .modal-content {
 	height: 400px;
 	width: 400px;
@@ -270,7 +270,7 @@ footer .footer-info {
 
 
 
-/* ---------------------------- index ---------------------------- */
+/* ---------------------------- main ---------------------------- */
 #wrapper {
 	position: relative;
 	min-height: 100vh;
@@ -640,3 +640,309 @@ section .notice-content p {
 	font-size: 20px;
 }
 
+
+
+
+
+/* ---------------------- 자유게시판 ---------------------- */
+
+.community-header {
+	color: aliceblue;
+	font-size: 30px;
+	background-color: rgb(61, 58, 58);
+	padding: 1em 0;
+}
+
+.community-body nav.community-body-nav ul h6{
+	color: purple;
+	font-size: 16px;
+	margin: 40px 0;
+}
+
+.community-body nav.community-body-nav ul li{
+	margin: 20px 0;
+}
+
+.community-body nav.community-body-nav ul li span{
+	color: plum;
+	font-size: 20px;
+}
+
+section.community-body > div > div > div > div.community-body-content > table > tbody > tr > td:nth-child(3) {
+	text-align: center;
+}
+
+section.community-body > div > div > div > div.community-body-content > table > tbody > tr > td:nth-child(4) {
+	text-align: center;
+}
+
+thead tr th {
+	text-align: center;
+}
+
+.pagination-list {
+	text-align: center;
+}
+
+
+
+
+
+/* ---------------------- 멘토링 ---------------------- */
+
+section .prod-list li {
+	padding: 20px;
+}
+section .prod-list img {
+	width: 50px;
+}
+
+section .prod-list span {
+	display: inline-block;
+}
+
+section .prod-list img {
+	width: 50px;
+}
+
+
+
+
+
+/* ---------------------- 글쓰기 ---------------------- */
+
+section.community-body .write-bottom {
+	text-align: center;
+}
+
+
+
+
+
+/* 회원가입 */
+#main {
+    min-height: 800px;
+}
+:after, :before {
+    box-sizing: inherit;
+}
+main {
+    display: block;
+}
+
+.join-form .titlebox h4 {
+	text-align: center;
+}
+
+.join-group {
+	border-radius: 8px;
+	width: 600px;
+	margin: 0 auto;
+	padding: 15px; 
+	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15)
+}
+
+.pg_signup .form-join {
+    display: flex;
+    flex-direction: column;
+}
+
+:after, :before {
+    box-sizing: inherit;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.input-group-addon .btn btn-primary {
+	border-color: rgba(233, 161, 233, 0.651);
+    font-weight: 700;
+    background-color: rgba(233, 161, 233, 0.651);
+}
+
+.ac-button.is-solid.is-primary {
+    border-color: rgba(233, 161, 233, 0.651);
+    font-weight: 700;
+    background-color: rgba(233, 161, 233, 0.651);
+}
+
+.pg_signup .form__button {
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+
+
+
+.ac-button.is-solid {
+    border: 1px solid;
+    color: #fff;
+}
+
+.ac-button.is-lg {
+    padding: 0 16px;
+    height: 48px;
+    line-height: 1.47;
+    font-size: 15px;
+    letter-spacing: -.3px;
+}
+
+.ac-button.is-primary {
+    border-color: rgba(233, 161, 233, 0.651);
+    font-weight: 700;
+    background-color: rgba(233, 161, 233, 0.651);
+}
+
+.ac-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    line-height: 1.47;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-appearance: none;
+    padding: 0 12px;
+    height: 0px;
+    line-height: 1.43;
+    font-size: 14px;
+    letter-spacing: -.3px;
+    border: 1px solid;
+    color: #fff;
+}
+
+/* 회원가입 종료 */
+
+/* 마이 페이지 */
+.columns .aside_menu{
+	float: left;
+	margin-right: 130px;
+	height: 100%;
+} 
+
+.container .row .col-md-4{
+	width: 400px;
+	height: 230px;
+	background: rgb(193, 167, 194);
+	color: #fff;
+	margin: 10px;
+	padding: .5rem 1rem;
+	border: 3px dotted rgb(167, 166, 166);
+}
+
+.container .row .col-md-2{
+	margin-left: 9px;
+}
+
+.container .row .col-md-7{
+	width: 820px;
+	height: 130px;
+	background: rgb(193, 167, 194);
+	color: #fff;
+	margin: 10px;
+	padding: .5rem 1rem;
+	border: 3px dotted rgb(167, 166, 166);
+}
+
+.profile .box_profile { /* 프로필 */
+	display: inline;
+}
+
+.title .box_profile .box_title { /* 최근 학습 강의*/
+	display: flex;
+}
+
+.box_statistics{
+	display: inline;
+}
+
+.box_title .box_sta{
+	display: flex;
+}
+
+.box_title .box_content {
+	display: flex;
+	overflow: auto;
+}
+
+
+.box_title .box_content .columns_1 .status_value span{
+	opacity: .5;
+	font-size: 3em;
+}
+
+.box_title .columns_1 {
+	display: inline;
+}
+
+.box_content .columns_1 .status_value{
+	display: inline;
+}
+
+.box_content .columns_1 .status_label {
+	display: inline;
+	text-align: center;
+}
+
+.container .row{
+	margin: 5px 0;
+	
+}
+
+.col-md-4 {
+	display: inline;
+}
+
+.col-md-4 .box_statistics{
+	display: flex;
+}
+
+.title .box_profile .box_title .qna_title {
+	float: right;
+	margin-right: 270px;
+}
+
+.title .box_profile .box_title .qna_writer {
+	float: right;
+	margin-right: auto;
+}
+
+.title .box_profile .box_title .qna_answer {
+	float: right;
+	margin-right: auto;
+}
+
+/* 마이 페이지 종료 */
+
+/* 회원 정보 수정 */
+.modify_header .line{
+	margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.2rem solid #424242;
+}
+
+.modify_header .big_class .user_info p {
+	font-size: 1.5rem;
+	color: black;
+}
+
+.modify_header .big_class .user_info .user_selection_name input  {
+	border: 1px solid #000000;
+}
+
+
+.modify_header .big_class .hi #email-agree {
+	border: 1px solid #000;
+	width: 10px;
+	height: 10px
+}
+
+.big_class input {
+	width: 150px;
+}
+
+.big_class #address, #address_extra {
+	width: 300px;
+}

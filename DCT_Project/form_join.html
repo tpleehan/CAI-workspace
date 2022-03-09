@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- font awesome -->
+	<script src="https://kit.fontawesome.com/ec7c1dce8a.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/main.css">
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+  	</script>
+	<script src="./js/bootstrap.js"></script>
+
+</head>
+<body id="pg_signup">
+
+    <div id="wrapper">
+		<header data-include-path="./include/header.html"></header>
+
+    <main id="main">
+	<section class="signup">
+		<div class="container">
+			<div class="row">
+				<div class="join-form">
+					<div class="titlebox">
+						<h4>회원가입</h4>
+					</div>
+                    <div class="join-group">
+                        <form action="form-join">
+                            <div class="form-group">
+                                <label for="id">ID</label>
+                                <div class="input-group">
+                                    <input type="text" id="id" class="form-control" placeholder="아이디(영문 포함 4~12자 이상)">
+                                    <div class="input-group-addon">
+                                        <button class="btn btn-primary">아이디 중복 확인</button>
+                                    </div>
+                                </div>
+                                <span id="msgid">*필수 사항입니다.</span> <!--아이디 중복 여부 메시지 공간-->
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" class="form-control" placeholder="비밀번호 (영 대/소문자, 숫자 조합 8~16자)">
+                                <span id="msgPw"></span> <!--비밀번호 유효성 메세지 공간-->
+                            </div>
+                            <div class="form-group">
+                                <label for="pw-confirm">Password</label>
+                                <input type="password" id="pw-confirm" class="form-control" placeholder="비밀번호를 확인해 주세요.">
+                                <span id="msgPw-c"></span> <!--비밀번호 유효성 메세지 공간-->
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="password" id="name" class="form-control" placeholder="이름을 입력해 주세요.">
+                                <span id="msgPw-c"></span> <!--비밀번호 유효성 메세지 공간-->
+                            </div>
+                            <div class="form-group">
+                                <label for="hp">Phone</label>
+                                <div class="input-group">
+                                    <input type="teml" id="hp" class="form-control" placeholder="전화번호를 입력해 주세요.">
+                                    <div class="input-group-addon">
+                                        <button class="btn btn-primary">본인인증</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="addr-num">Address</label>
+                                <div class="input-group">
+                                    <input type="text" id="addr-num" class="form-control" placeholder="우편번호" readonly>
+                                    <div class="input-group-addon">
+                                        <button class="btn btn-primary">우편번호검색</button>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="기본주소">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="상세주소">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button class="ac-button is-lg is-solid is-primary e-sign-up-button form__button ">가입하기</button>
+                                </div>
+				    	</form>
+                   </div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+    <!--footer-->
+    <footer data-include-path="./include/footer.html"></footer>
+
+	<script>
+ 
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+ 
+    </script>
+
+</body>
+</html>

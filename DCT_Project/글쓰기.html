@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- font awesome -->
+	<script src="https://kit.fontawesome.com/ec7c1dce8a.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/main.css">
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+  	</script>
+	<script src="./js/bootstrap.js"></script>
+
+</head>
+<body>
+	
+	<div id="wrapper">
+		<header data-include-path="./include/header.html"></header>
+		
+		<section class="community-header">
+			<div class="container">
+				<div class="row">
+					<div class=" col-md-12">
+						<h2>글 쓰기</h2>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="community-body">
+			<div class="container">
+				<div class="row">
+					<div class=" col-md-12">
+						<div class="write-body">
+							<form action="#">
+								<table class="table">
+									<tbody class="t-control">
+										<tr>
+											<td class="t-title">NAME</td>
+											<td><input type="text" class="form-control"></td>
+										</tr>
+										<tr>
+											<td class="t-title">TITLE</td>
+											<td><input type="text" class="form-control"></td>
+										</tr>
+										<tr>
+											<td class="t-title">COMMENT</td>
+											<td><textarea class="form-control" rows="7"></textarea></td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="write-bottom">
+									<button type="submit" class="btn">등록</button>
+									<button class="btn"><a href="#">목록</a></button>
+								</div>
+							</form>
+						</div>					
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer data-include-path="./include/footer.html"></footer>
+	
+	</div>	
+
+	<script>
+ 
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+ 
+    </script>
+</body>
+</html>
