@@ -479,6 +479,7 @@ section .notice-content p {
 }
 .product_item {
 	display: block;
+	margin: 15px;
 }
 .product_thumbnail {
 	display: inline-block;
@@ -488,14 +489,15 @@ section .notice-content p {
 }
 .product_title {
 	display: inline-block;
+	margin-left: 20px;
+	font-size: 18px;
 }
 .product-menu {
 	float: right;
-	margin: 10px;
-	margin-right: 20px;
+	margin-right: 15px;
 }
 .product-amount {
-	font-size: 14px;
+	font-size: 18px;
 	font-weight: bold;
 	text-align: right;
 }
@@ -571,6 +573,32 @@ section .notice-content p {
 }
 
 .carts_payments .btn-make-payment button {
+	width: 100%;
+}
+
+
+
+
+
+/* ---------------------------- 구매 내역 ---------------------------- */
+.purchase-list-table .purchase-list-tbody tr > th {
+	vertical-align: middle;
+	text-align: center;
+}
+.purchase-list-table .purchase-list-tbody > tr > td {
+	vertical-align: middle;
+	text-align: center;
+}
+.purchase-list-table .pay_price {
+	text-align: right !important;
+}
+.purchase-list-table .pay_price span {
+	display: inline-block;
+	width: 100%;
+}
+.purchase-list-table .discounted {
+	background: #efefef;
+	border-bottom: 1px solid;
 	width: 100%;
 }
 
@@ -715,11 +743,15 @@ section.community-body .write-bottom {
 	text-align: center;
 }
 
+textarea {
+	resize: none;
+}
 
 
 
 
-/* 회원가입 */
+
+/* ---------------------- 회원가입 ---------------------- */
 #main {
     min-height: 800px;
 }
@@ -886,11 +918,8 @@ form {
 	text-align: center;
 }
 
-.container .row{
-	margin: 5px 0;
-	
-}
 
+#wrapper > section > div.container > div > div.container > div > div.col-md-7
 .col-md-4 {
 	display: inline;
 }
