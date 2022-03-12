@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>admin_product</title>
+	<!-- font awesome -->
+	<script src="https://kit.fontawesome.com/ec7c1dce8a.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/main.css">
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+  	</script>
+	<script src="./js/bootstrap.js"></script>
+</head>
+
+<body>
+
+    <header data-include-path="./include/header.html"></header>
+
+    <section>
+        <div class="container">
+            <div class="logo_name col-md-2">
+            <p style="font-size: 40px; font-family: cursive;">DREAMS</p>
+            <p style="font-size: 40px; font-family: cursive;">COME</p>
+            <p style="font-size: 40px; font-family: cursive;">TRUE</p>
+            </div>
+        <img src="/img/logo.png" alt="logo">
+        </div>
+
+        <div class="container">
+            <div class="col-md-2">
+                <ul>
+                    <span class="admin_list">
+                        <li><a href="#">> 전체페이지</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 공지사항 관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li ><a href="#">> 회원 관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 게시글 관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 강의관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 멘토링관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 쿠폰/포인트관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 알림</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 채팅</a></li>
+                    </span>
+                </ul>
+            </div>
+
+            <span class="admin-mentoring-title">
+                멘토링
+                <p>멘토링 강의를 관리합니다</p>
+            </span>
+            <button type="button" class="btn btn-primary btn-admin-mentoring" onclick="">멘토링 관리</button>
+        
+            
+            <div class="col md-8" >
+            <table class="admin_notice_table"style="width:80%">
+                <tr class="background_header">
+                    <th class="admin_notice_th">번호</th>
+                    <th class="admin_notice_th">멘토링 제목</th>
+                    <th class="admin_notice_th">강사(닉네임)</th>
+                    <th class="admin_notice_th">가격</th>
+                    <th class="admin_notice_th">등록일</th>
+                    <th class="admin_notice_th">체크</th>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td class="admin_notice_td"><a href="#">프로그래머 고민해결사!</a></td>
+                    <td class="admin_notice_td">김프로그래머</td>
+                    <td class="admin_notice_td">2,000원</td>
+                    <td class="admin_notice_td">2023.03.11</td>
+                    <td class="admin_notice_td"><input type="checkbox" style="width: 10px; height: 10px; border: 1px solid;"></td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td class="admin_notice_td"><a href="#">프로그래머 고민해결사!</a></td>
+                    <td class="admin_notice_td">김프로그래머</td>
+                    <td class="admin_notice_td">2,000원</td>
+                    <td class="admin_notice_td">2023.03.11</td>
+                    <td class="admin_notice_td"><input type="checkbox" style="width: 10px; height: 10px; border: 1px solid;"></td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td class="admin_notice_td"><a href="#">프로그래머 고민해결사!</a></td>
+                    <td class="admin_notice_td">김프로그래머</td>
+                    <td class="admin_notice_td">2,000원</td>
+                    <td class="admin_notice_td">2023.03.11</td>
+                    <td class="admin_notice_td"><input type="checkbox" style="width: 10px; height: 10px; border: 1px solid;"></td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td class="admin_notice_td"><a href="#">프로그래머 고민해결사!</a></td>
+                    <td class="admin_notice_td">김프로그래머</td>
+                    <td class="admin_notice_td">2,000원</td>
+                    <td class="admin_notice_td">2023.03.11</td>
+                    <td class="admin_notice_td"><input type="checkbox" style="width: 10px; height: 10px; border: 1px solid;"></td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td class="admin_notice_td"><a href="#">프로그래머 고민해결사!</a></td>
+                    <td class="admin_notice_td">김프로그래머</td>
+                    <td class="admin_notice_td">2,000원</td>
+                    <td class="admin_notice_td">2023.03.11</td>
+                    <td class="admin_notice_td"><input type="checkbox" style="width: 10px; height: 10px; border: 1px solid;"></td>
+                </tr>
+                <tr>
+                    <th>6</th>
+                    <td class="admin_notice_td"><a href="#">프로그래머 고민해결사!</a></td>
+                    <td class="admin_notice_td">김프로그래머</td>
+                    <td class="admin_notice_td">2,000원</td>
+                    <td class="admin_notice_td">2023.03.11</td>
+                    <td class="admin_notice_td"><input type="checkbox" style="width: 10px; height: 10px; border: 1px solid;"></td>
+                </tr>
+                <tr>
+                    <th>7</th>
+                    <td class="admin_notice_td"><a href="#">프로그래머 고민해결사!</a></td>
+                    <td class="admin_notice_td">김프로그래머</td>
+                    <td class="admin_notice_td">2,000원</td>
+                    <td class="admin_notice_td">2023.03.11</td>
+                    <td class="admin_notice_td"><input type="checkbox" style="width: 10px; height: 10px; border: 1px solid;"></td>
+                </tr>
+
+            </table>
+        </div>
+        </div>
+        </section>
+
+
+        <footer data-include-path="./include/footer.html"></footer>
+
+
+        <script>
+
+            window.addEventListener('load', function () {
+                var allElements = document.getElementsByTagName('*');
+                Array.prototype.forEach.call(allElements, function (el) {
+                    var includePath = el.dataset.includePath;
+                    if (includePath) {
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                            if (this.readyState == 4 && this.status == 200) {
+                                el.outerHTML = this.responseText;
+                            }
+                        };
+                        xhttp.open('GET', includePath, true);
+                        xhttp.send();
+                    }
+                });
+            });
+
+
+        </script>
+    </div>
+</body>
+
+</html>
