@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/ec7c1dce8a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+    <script src="./js/bootstrap.js"></script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <header data-include-path="./include/header.html"></header>
+
+        <section>
+            <div class="mypage_header">
+                <div class="container">
+                    <h2>마이페이지</h2>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="columns">
+                    <div class="aside_menu">
+                        <aside class="sidebar_left">
+                            <div class="menu_container">
+                                <p class="menu-label">학습 관리</p>
+                                <ul class="menu-list">
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>내가 본 강의</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>내가 올린 강의</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>작성한 게시글</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>멘토링</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p class="menu-label">수강 신청 관리</p>
+                                <ul class="menu-list">
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>수강바구니</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>위시리스트</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>쿠폰함</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>구매내역</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p class="menu-label">설정</p>
+                                <ul class="menu-list">
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>프로필</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="my-posts">
+                                    <div>
+                                        <ul class="my-post">
+                                            <li class="my-question"><b>질문</b></li>
+                                            <li class="my-free">자유주제</li>
+                                            <li class="my-study">스터디</li>
+                                            <li class="my-bookmark">북마크</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="my-post-cover">
+                                    <div class="my-post-list">
+                                        <div>
+                                            <ul class="my-post">
+                                                <li class="my-question-all"><b>전체</b></li>
+                                                <li class="my-question-sol">해결</li>
+                                                <li class="my-question-nosol">미해결</li>
+                                            </ul>
+                                        </div>
+                                        <ul class="post-list-content">
+                                            <h4 class="content-empty">강의실과 커뮤니티에서 질문을 시작해 보세요.</h4>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+                                <!--footer-->
+                                <footer data-include-path="./include/footer.html"></footer>
+
+                                <script>
+                                    window.addEventListener('load', function () {
+                                        var allElements = document.getElementsByTagName('*');
+                                        Array.prototype.forEach.call(allElements, function (el) {
+                                            var includePath = el.dataset.includePath;
+                                            if (includePath) {
+                                                var xhttp = new XMLHttpRequest();
+                                                xhttp.onreadystatechange = function () {
+                                                    if (this.readyState == 4 && this.status ==
+                                                        200) {
+                                                        el.outerHTML = this.responseText;
+                                                    }
+                                                };
+                                                xhttp.open('GET', includePath, true);
+                                                xhttp.send();
+                                            }
+                                        });
+                                    });
+                                </script>
+
+</body>
+</html>

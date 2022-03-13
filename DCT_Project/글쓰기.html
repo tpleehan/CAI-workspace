@@ -32,34 +32,23 @@
 			</div>
 		</section>
 
-		<section class="community-body">
+		<section class="board-write">
 			<div class="container">
 				<div class="row">
-					<div class=" col-md-12">
-						<div class="write-body">
-							<form action="#">
-								<table class="table">
-									<tbody class="t-control">
-										<tr>
-											<td class="t-title">글쓴이</td>
-											<td><input type="text" class="form-control" readonly></td>
-										</tr>
-										<tr>
-											<td class="t-title">제목</td>
-											<td><input type="text" class="form-control" placeholder="제목을 입력해주세요."></td>
-										</tr>
-										<tr>
-											<td class="t-title">내용</td>
-											<td><textarea class="form-control" rows="20"></textarea></td>
-										</tr>
-									</tbody>
-								</table>
-								<div class="write-bottom">
-									<button type="submit" class="btn">등록</button>
-									<button class="btn"><a href="#">목록</a></button>
-								</div>
-							</form>
-						</div>					
+					<div class="write-wrap">
+						<form action="#">
+							<div class="form-group col-md-12">
+								<input type="text" class="form-control" name="title" placeholder="제목을 입력하세요." readonly>
+							</div>
+							<div class="col-md-7"></div>
+							<div class="form-group col-md-12">
+								<textarea name="content" class="form-control" rows="20" readonly></textarea>
+							</div>
+							<div class="content-button col-md-12">
+								<button class="btn btn-dark">목록</button>
+								<button class="btn btn-primary">등록</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

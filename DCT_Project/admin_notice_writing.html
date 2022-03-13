@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notice_admin</title>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/ec7c1dce8a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+        </script>
+    <script src="./js/bootstrap.js"></script>
+</head>
+
+<body>
+
+
+
+    <header data-include-path="./include/header.html"></header>
+
+
+
+    <section>
+
+        <div class="container">
+
+
+            <div class="logo_name col-md-2">
+                <p>DREAMS</p>
+                <p>COME</p>
+                <p>TRUE</p>
+            </div>
+
+
+
+
+            <img src="/img/logo.png" alt="">
+        </div>
+
+        <div class="container">
+
+            <div class="col-md-2">
+                <ul class="admin_content">
+
+                    <span class="admin_list">
+                        <li><a href="#">> 전체페이지</a></li>
+                    </span>
+                    <span class="admin_list " style="color: blakc;">
+                        <li><a href="#">> 공지사항 관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 회원 관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 게시글 관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 상품관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 멘토링 관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 쿠폰/포인트관리</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 알림</a></li>
+                    </span>
+                    <span class="admin_list">
+                        <li><a href="#">> 채팅</a></li>
+                    </span>
+
+                </ul>
+
+            </div>
+            
+            <span class="admin_middle_name">공지사항 관리</span>
+            <span class="admin_small_name">전체공지사항을 관리합니다</span>
+            <hr>
+
+        </div>
+        
+    </section>
+
+
+    <footer data-include-path="./include/footer.html"></footer>
+
+
+    <script>
+
+        window.addEventListener('load', function () {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function (el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+
+
+    </script>
+    </div>
+</body>
+
+</html>

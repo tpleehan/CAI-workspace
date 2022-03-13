@@ -773,6 +773,91 @@ textarea {
 	resize: none;
 }
 
+.board-write .content-button {
+	text-align: right;
+}
+
+
+
+
+
+/* ---------------------- 글상세 ---------------------- */
+
+.board-content {
+	margin-top: 15px;
+}
+
+.board-content .content-button {
+	text-align: right;
+}
+
+.content-reply .content-button {
+	text-align: right;
+}
+
+#wrapper > section.board-content > div > div > div > form > div:nth-child(1) {
+	margin-bottom: 15px;
+}
+
+#wrapper > section.board-content > div > div > div > form > div:nth-child(2) {
+	margin-bottom: 15px;
+}
+
+#wrapper > section.board-content > div > div > div > form > div:nth-child(4) {
+	margin-bottom: 15px;
+}
+
+#wrapper > section.board-content > div > div > div > form > div:nth-child(5) {
+	margin-bottom: 30px;
+}
+
+#wrapper > section.board-content > div > div > div > form > div:nth-child(6) {
+	margin-bottom: 30px;
+}
+
+#wrapper > section.content-reply > div > div > div > div.col-md-12.reply-list > div > div.col-md-12.reply-prof {
+	height: 40px;
+	padding: 0;
+	margin-bottom: 15px;
+}
+
+#wrapper > section.content-reply > div > div > div > div.col-md-12.reply-list > div > div.col-md-12.reply-prof > div {
+	height: 40px;
+	display: inline-block;
+}
+
+#wrapper > section.content-reply > div > div > div > div.col-md-12.reply-list > div > div.col-md-12.reply-prof > img {
+	width: 40px;
+}
+#wrapper > section.content-reply > div > div > div > div.col-md-12.reply-list > div > div.col-md-12.reply-prof > div > div.prof-name {
+	font-size: 16px;
+}
+#wrapper > section.content-reply > div > div > div > div.col-md-12.reply-list > div > div.col-md-12.reply-prof > div > div.reply-date {
+	font-size: 16px;
+	margin-top: 8px;
+}
+
+#wrapper > section.content-reply > div > div > div > div.col-md-12.reply-list > div > div.reply-list-content > div > textarea {
+	margin: 0;
+	overflow: visible;
+}
+
+#wrapper > section.content-reply > div > div > div > div.col-md-12.reply-list > div > div.reply-list-content > div > a:nth-child(2) {
+	float: right;
+}
+
+#wrapper > section.content-reply > div > div > div > div.col-md-12.reply-list > div > div.reply-list-content > div > a:nth-child(3) {
+	float: right;
+}
+
+#wrapper > section.content-reply > div > div > div > div.reply-form > form > div.col-md-12.reply-content {
+	margin: 20px 0 10px 0;
+}
+
+#wrapper > section.content-reply > div > div > div > div.reply-form > form > div.col-md-12.content-button {
+	margin-bottom: 200px;
+}
+
 
 
 
@@ -1002,11 +1087,187 @@ form {
 	width: 300px;
 }
 
+/* 작성한 게시글 */
+.my-posts{
+	display: flex;
+	border: 1.5px solid pink;
+	color: #000;
+}
+
+.my-post-list{
+	margin-top: 30px;
+	display: flex;
+	border: 1.5px solid pink;
+	color: #000;
+}
+
+.my-post li{
+	list-style-type: none;
+	float: left;
+	margin-left: 20px;
+}
+
+.my-question {
+	border-bottom: 2px solid black;
+}
+
+.my-question-all{
+	border-bottom: 2px solid black;
+}
 
 
-.logo_name p::first-letter {
-	color: blue;
-  }
+.ac-button {
+	/*
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    line-height: 1.47;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-appearance: none;
+    padding: 0 12px;
+    height: 0px;
+    line-height: 1.43;
+    font-size: 14px;
+    letter-spacing: -.3px;
+    border: 1px solid;
+	*/
+    color: #000;
+}
+
+.content-empty {
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -.3px;
+    font-size: 13px;
+    margin: auto;
+    padding-top: 108px;
+    height: 240px;
+    text-align: center;
+    color: #abb0b5;
+    font-weight: 500;
+}
+
+/*자유 주제*/
+
+.post-list-content .content-empty2 {
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -.3px;
+    font-size: 13px;
+    margin-left: 150px;
+    padding-top: 108px;
+    height: 240px;
+    text-align: center;
+    color: #abb0b5;
+    font-weight: 500;
+	
+}
+
+/* 내가 본 강의 */
+
+.my-lectures{
+	display: flex;
+}
+
+.my-lectures-part li{
+	list-style-type: none;
+	float: left;
+	margin-left: 20px;
+	display: flex;
+}
+
+.control_order_by {
+	margin-top: 30px;
+	display: flex;
+	color: #000;
+	width: 100%;
+}
+
+ .clearfix::after{
+	 display: flex;
+ }
+
+ .control__wrapper {
+	 display: flex;
+	 margin-top: 20px;
+ }
+
+ .control_container .control {
+	 display: flex;
+ }
+
+ .lecture-label {
+	 margin-right: 20px;
+ }
+
+ .select-study {
+	 border: 1px solid black;
+ }
+
+.is-link {
+	height: 6px;
+	display: block;
+	width: 100%;
+    border-radius: 0;
+    margin-top: 0.4rem;
+}
+
+/* 수강 확인증 */
+
+.vouchers-list{
+	list-style: none;
+	margin-top: auto;
+	margin-bottom: 5px;
+	border-bottom: 1px solid #e9ebee;
+	height: 50px;
+}
+
+.ac-gif__img {
+	display: block;
+    width: 50px;
+    height: 32px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: 50% 50%;
+    object-position: 50% 50%;
+	margin-top: 10px;
+}
+
+.vouchers-list .voucher-item {
+	list-style-type: none;
+	font-weight: 400;
+    line-height: 1.47;
+    letter-spacing: -.3px;
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 24px;
+    font-weight: 500;
+}
+
+.voucher-title a {
+	cursor: pointer;
+}
+
+.container .lecture-img {
+	float: left;
+	width: 100px;
+	text-align: center;
+}
+
+.container .voucher-title {
+	float: left;
+	width: 100px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
+
+
 
 
 /* ---------------------------- notice ---------------------------- */
@@ -1156,6 +1417,21 @@ form {
 }
 
 
+.admin_middle_name{
+	font-size: 40px;
+	
+}
+.admin_small_name{
+	font-size: 20px;
+}
+
+.logo_name p{
+	font-size: 40px; font-family: cursive;
+}
+.logo_name p::first-letter{
+	color:#2962ff;
+}
+
 
 
 /* ---------------------------- 관리자 상품관리 ---------------------------- */
@@ -1185,3 +1461,362 @@ form {
 .btn-admin-mentoring {
 	float: right;
 }
+
+
+
+
+/* ======== lecture ======== */
+
+.lec-search-wrap {
+	margin-bottom: 20px;
+}
+
+.search2-btn {
+  float: right;
+}
+
+.lec-search-wrap > input {
+  width: 40%;
+}
+
+.search2-input {
+  float: right;
+  
+}
+
+
+.lecture{
+width: 90%;
+margin: 0 auto;
+
+height: 800px;
+}
+.menulist{
+  margin: 10px;
+  height: 800px;
+ 
+}
+
+
+.lec-head{
+  display: inline-block;
+}
+
+.adm-btn{
+  width: 50px;
+  height: 40px;
+  border-radius: 10%;
+  float: right;
+}
+
+.lec-dropdown{
+  float: right;
+  margin-top: 30px;
+}
+
+.lec-dropdown > a{
+  text-align: center;
+}
+
+/* ========== lecture-board(강의 게시판) ========== */
+.lec-list-inner img {
+	width: 100%;
+}
+
+.lec-content {
+	padding: 15px 0;
+}
+
+.lec-content .lec-info span {
+	display: block;
+}
+
+.lec-content .lec-info {
+	float: left;
+}
+
+.lec-content .lec-price {
+	float: right;
+}
+
+.lec-like{    
+	width: 100%;
+	
+}
+.lec-like-span{    
+	float: left;
+}
+
+.lec-heart{
+	color: red;
+	float: right;
+}
+
+
+.lec-list-inner:hover {
+	opacity: 0.5;
+}
+
+.time {
+  opacity: 0.5;
+}
+
+
+
+/*---------------------------- lec-upload ---------------------------------------*/
+.writebox {
+	width: 250px;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	margin: 70px auto;
+	border-top: 1px solid #e1e1e1;
+	border-bottom: 1px solid #e1e1e1;
+	font-size: 20px;
+}
+
+
+.lec-write-wrap {
+	width: 70%;
+	margin: 0 auto;
+	float: none;
+}
+
+.w-control .w-title {
+	width: 100px;
+}
+
+.w-control input {
+	width: 200px;
+}
+
+.w-control textarea {
+	resize: none;
+}
+
+.writefoot {
+	text-align: center;
+	margin: 70px auto;
+} 
+
+#editor{
+	height: 400px;
+	width: 100%;
+}
+
+
+
+
+
+
+/* ========== lec-detail ========== */
+.detail-info {
+	margin-bottom: 120px;
+}
+.detail-info .detail-title {
+	font-size: 24px;
+}
+.detail-info .detail-price {
+	font-size: 30px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding: 10px 0;
+}
+
+.detail-star{
+	color: orange;
+	font-size: xx-large;
+}
+
+.detail-info .detail-delivery {
+	color: #888;
+}
+
+.detail-control .left {
+	float: left;
+}
+.detail-control .right {
+	float: right;
+}
+.detail-control .detail-total-price .total-left {
+	font-size: 18px;
+	line-height: 45px;
+}
+.detail-control .detail-total-price .total-right {
+	font-size: 30px;
+}
+
+.detail-control .detail-order .left,
+.detail-control .detail-order .right {
+	width: 50%;
+	height: 60px;
+	font-size: 18px;
+}
+
+/* ========== content ==========*/
+.detail-reply .detail-content-wrap {
+	margin: 0 auto;
+	float: none;
+}
+
+.detail-content-wrap #content {
+	resize: none;
+}
+
+
+/* ========== 댓글 ========== */
+.detail-reply-wrap {
+	background: #f5f5f5;
+	padding: 15px;
+	border: 1px solid #ddd;
+	position: relative;
+	width: 877.5px;
+	margin-left: -15.2px;
+}
+
+.detail-reply-wrap .detail-reply-image {
+	position: absolute;
+	left: 15px;
+	top: 15px;
+}
+
+.detail-reply-wrap .detail-reply-content {
+	padding-left: 60px;
+}
+
+.detail-reply-content textarea {
+	resize: none;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.detail-reply-input > .form-control {
+	width: 200px;
+	margin-bottom: 5px;
+}
+
+.detail-reply-input {
+	float: left;
+}
+
+.detail-reply-group button {
+	float: right;
+}
+
+.detail-reply-group small {
+	margin-left: 10px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.detail-reply-group a {
+	text-decoration: none;
+	color: #777;
+	float: right;
+}
+
+.reply-star-point{
+	background: #f5f5f5;
+	float: left;
+	width: 277.5px;
+	height: 167.5px;
+	padding-top: 15px;
+	text-align: center;
+	border: 1px solid #ddd;
+	margin: 0 auto;
+	position: relative;
+	
+}
+
+.reply-star {
+	color: orange;
+	font-size: large;
+	
+}
+
+.reply-star-graph{
+	background: #f5f5f5;
+	padding-top: 15px;
+	border: 1px solid #ddd;
+	padding-right: 0;
+	width: 600px;
+	position: relative;
+
+}
+
+#graph-point{
+	float: left;
+	margin-right: 10px;
+	
+}
+
+#graph {
+	margin-bottom: 10px;
+}
+
+.reply-star-graph > .progress > .progress-bar {
+	height: 10px;
+	float: left;
+	width: 70%;
+
+}
+
+.video {
+	margin-top: 40px;
+	scale: 0.5;
+}
+
+#detail-middle{
+	margin: 0; 
+	padding: 0;
+}
+
+.detail-order,
+.detail-text{
+	float: right;
+}
+
+.detail-text {
+	margin-top: 30px;
+	margin-bottom: 40px;
+	padding-right: 0;
+}
+
+.user-star{
+	text-align: center;
+	margin: 10px 0;
+}
+
+.user-star-check{
+	color: orange;
+	font-size: large;
+  
+}
+
+
+/*------------- lec-eva -------------*/
+.eva-normal {
+	margin-top: 2px;
+}
+
+.eva-normaal > li {
+	margin-top: 1.5px;
+}
+
+.eva-main > li {
+	margin-bottom: 2px;
+}
+
+.eva-left-part > ul {
+	margin-top: 20px;
+}
+
+.eva-middle-part{
+	margin-top: 20px;   
+}
+
+.eva-right-part{
+	margin-top: 20px;
+	float: left;
+}
+

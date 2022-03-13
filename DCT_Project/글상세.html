@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- font awesome -->
+	<script src="https://kit.fontawesome.com/ec7c1dce8a.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/main.css">
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+	</script>
+	<script src="./js/bootstrap.js"></script>
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<header data-include-path="./include/header.html"></header>
+
+		<section class="community-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>(게시판이름)</h2>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="board-content">
+			<div class="container">
+				<div class="row">
+					<div class="content-wrap col-md-12">
+						<form action="#">
+							<div class="col-md-12">
+								<input type="text" class="form-control board-content-title" name="title" value="${article.title}" readonly>
+							</div>
+							<div class="col-md-3">
+								<input type="text" class="form-control board-content-writer" name="writer" value="${article.writer}"
+									readonly>
+							</div>
+							<div class="col-md-2">
+								<input type="text" class="form-control board-content-regDate" name="regDate" value="${article.regDate}"
+									readonly>
+							</div>
+							<div class="col-md-7"></div>
+							<div class="col-md-12">
+								<textarea class="form-control board-content-content" name="content" rows="20"
+									readonly>${article.content}</textarea>
+							</div>
+							<div class="col-md-12 content-button">
+								<button class="btn btn-dark">목록</button>
+								<button class="btn btn-warning">수정</button>
+								<button class="btn btn-danger">삭제</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<hr>
+			</div>
+		</section>
+
+		<section class="content-reply">
+			<div class="container">
+				<div class="row">
+					<div class="reply-wrap col-md-12">
+						<!-- 댓글 목록 공간 -->
+						<div class="col-md-12 reply-list">
+							<div class="reply-list-prof">
+								<div class="col-md-12 reply-prof">
+									<img class="prof-img" src="./img/proff.png" alt="prof">
+									<div>
+										<div class="prof-name">이름</div>
+										<div class="reply-date">2022-02-01</div>
+									</div>	
+								</div>	
+								<div class="reply-list-content">
+									<div class="reply-group">
+										<textarea class="form-control col-md-12" name="" id="" rows="auto">댓글
+										</textarea>
+										<a href="#"><span class="glyphicon glyphicon-pencil"></span>수정</a>
+										<a href="#"><span class="glyphicon glyphicon-remove"></span>삭제</a>
+									</div>
+								</div>	
+							</div>						
+						</div>
+						<!-- 댓글 작성 공간 -->
+						<div class="reply-form">
+							<form action="#">
+								<div class="col-md-12 reply-content">
+									<textarea class="form-control" rows="4">댓글 작성 내용</textarea>
+								</div>
+								<div class="col-md-12 content-button">
+									<button class="btn btn-primary">등록</button>
+								</div>
+							</form>
+						</div>			
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer data-include-path="./include/footer.html"></footer>
+
+	</div>
+
+	<script>
+		window.addEventListener('load', function () {
+			var allElements = document.getElementsByTagName('*');
+			Array.prototype.forEach.call(allElements, function (el) {
+				var includePath = el.dataset.includePath;
+				if (includePath) {
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function () {
+						if (this.readyState == 4 && this.status == 200) {
+							el.outerHTML = this.responseText;
+						}
+					};
+					xhttp.open('GET', includePath, true);
+					xhttp.send();
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>
