@@ -1,0 +1,14 @@
+package com.spring.dct.vo;
+
+import java.sql.Timestamp;
+
+public class PointsVO {
+
+	private int pointNo;
+	private int userNo;
+	private String adminId;
+	private Timestamp pointExpirationDate;
+	private Timestamp pointPaymentDate;
+	private boolean pointStatus;
+	
+}

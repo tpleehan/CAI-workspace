@@ -1,0 +1,11 @@
+package com.spring.dct.vo;
+
+import java.sql.Timestamp;
+
+public class TransactionStatementVO {
+
+	private int TransactionStatementOrderNO;
+	private Timestamp receipeStatementDate;
+	
+	
+}

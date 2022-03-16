@@ -1,0 +1,11 @@
+package com.spring.dct.vo;
+
+public class PurchaseDetailsVO {
+
+	private int purchaseNo;
+	private int lectureNo;
+	private int purchaseAmount;
+	private int purchasePrice;
+	
+	
+}

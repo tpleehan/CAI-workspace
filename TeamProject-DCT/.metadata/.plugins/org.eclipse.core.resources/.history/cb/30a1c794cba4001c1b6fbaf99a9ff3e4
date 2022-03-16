@@ -1,0 +1,9 @@
+package com.spring.dct.vo;
+
+public class CommunitiesVO {
+
+	private int communityNo;
+	private int userNo;
+	private String communityTitle;
+	
+}

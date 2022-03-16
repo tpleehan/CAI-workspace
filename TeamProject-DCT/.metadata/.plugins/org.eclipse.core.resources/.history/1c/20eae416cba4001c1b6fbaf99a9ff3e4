@@ -1,0 +1,27 @@
+package com.spring.dct.vo;
+
+import java.sql.Timestamp;
+
+public class CommentsVO {
+
+	private int commentNO;
+	private Timestamp date;
+	
+	public int getCommentNO() {
+		return commentNO;
+	}
+	public void setCommentNO(int commentNO) {
+		this.commentNO = commentNO;
+	}
+	public Timestamp getDate() {
+		return date;
+	}
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
+	@Override
+	public String toString() {
+		return "CommentsVO [commentNO=" + commentNO + ", date=" + date + "]";
+	}
+	
+}

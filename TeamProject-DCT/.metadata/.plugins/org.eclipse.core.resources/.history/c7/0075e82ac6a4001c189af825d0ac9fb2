@@ -1,0 +1,5 @@
+package com.spring.dct.user.service;
+
+public interface IUserService {
+
+}

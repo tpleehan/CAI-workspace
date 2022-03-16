@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 4 elements to &apos;resources&apos;&#x0D;&#x0A;- Original project: &apos;resources&apos;&#x0D;&#x0A;- Destination element: &apos;resources&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     css&#x0D;&#x0A;     fonts&#x0D;&#x0A;     img&#x0D;&#x0A;     js&#x0D;&#x0A;- Update references to refactored element" description="Move folders" element1="css" element2="fonts" element3="img" element4="js" files="0" flags="589830" folders="4" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1647359787331" target="/DCT/src/main/webapp/resources" units="0" version="1.0"/>
+</session>

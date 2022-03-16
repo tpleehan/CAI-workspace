@@ -1,0 +1,431 @@
+/*======= 웹 폰트 선언 =======*/
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+* {
+	/* 기본 선언: 마진, 패딩 0, 요소 크기를 border를 기준 */
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: "Nanum Gothic", sans-serif;
+}
+
+img {
+	max-width: 100%;
+	/* 사이즈가 변해도 넓이를 유지 */
+	height: auto;
+	/* 사이즈가 변해도 비율을 유지 */
+}
+
+input,
+textarea,
+button,
+select {
+	/* 고유하게 적용되어있는 form 관련 요소들을 제거해서
+     여러 브라우저에서 동일한 디자인을 얻게 함. */
+	-webkit-appearance: none;
+	/*크롬, 사파리*/
+	-moz-appearance: none;
+	/*파이어폭스*/
+	appearance: none;
+	/*ie, edge*/
+	border: none;
+}
+
+ul,
+ol,
+dl,
+li {
+	/* 리스트 스타일은 사용할 일이 많지 않음 */
+	list-style: none;
+}
+
+.btn {
+	border-radius: 0px;
+}
+
+.clearfix::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+
+
+
+
+/* ---------------------------- header ---------------------------- */
+
+#header {
+	background: #7C8EA3;
+}
+
+.navbar {
+	padding: 10px;
+	margin-bottom: 1px;
+}
+
+.navbar-menu {
+	padding-top: 15px;
+}
+
+
+/* 네비게이션바 왼쪽 */
+.navbar-left {
+	display: flex;
+}
+.navbar-left a {
+	margin: 15px;
+	color: #000000;
+	text-decoration-line: none;
+}
+.navbar-left a:hover {
+	text-decoration: none;
+}
+.navbar-left a span {
+	font-size: 18px;
+	color: #4a4a4a;
+}
+
+/* 로고 */
+.logo {
+	float: left;
+}
+.logo img {
+	width: 100px;
+}
+.logo > a > img {
+	width: 100px;
+	height: 50px;
+}
+
+
+/* 네비게이션바 오른쪽 */
+.navbar-right {
+	display: flex;
+	height: 100%;
+	
+}
+.navbar-right a {
+	text-decoration-line: none;
+	font-size: 18px;
+	color: #4a4a4a;
+}
+
+
+/* 검색 창 */
+.search-input {
+	margin-right: 20px;
+	position: relative;
+}
+.search-input .search-input-bar {
+	width: 150px;
+	height: 30px;
+	padding: 5px;
+	border: none;
+	border-radius: 5px;
+	background: #eee;
+	overflow: auto;
+}
+.search-input .search-input-bar:focus {
+	outline: none
+}
+.search-input i {
+	position: absolute;
+	left: 125px;
+	top: 6px;
+}
+.search-input i:hover {
+	outline: none;
+} 
+
+
+/* 로그인 버튼 */
+.btn-login {
+	margin-right: 20px;
+	color: #000000;
+}
+.btn-login:hover {
+	text-decoration: none;
+}
+/* 회원가입 버튼 */
+.btn-sign-in {
+	margin-right: 20px;
+	color: #000000;
+}
+.btn-sign-in:hover {
+	text-decoration: none;
+}
+/* 마이페이지 버튼 */
+.btn-mypage {
+	margin-right: 20px;
+	color: #000000;
+}
+.btn-mypage:hover {
+	text-decoration: none;
+}
+/* 로그아웃 버튼 */
+.btn-sign-in {
+	margin-right: 20px;
+	color: #000000;
+}
+.btn-sign-in:hover {
+	text-decoration: none;
+}
+
+
+/* 로그인 모달 */
+.modal-content {
+	height: 400px;
+	width: 400px;
+	margin-left: 50%;
+	transform:translate(-50%);
+}
+@media screen and (min-width: 768px) { 
+	.modal:before {
+			display: inline-block;
+			vertical-align: middle;
+			content: " ";
+			height: 25%;
+	}
+}
+.modal-header-logo {
+	position: relative;
+	margin-top: 15px;
+}
+.modal-header-logo img {
+	position: absolute;
+	left: 50%;
+    transform:translate(-50%);
+	width: 100px;
+}
+.modal-body {
+	text-align: center;
+	margin-top: 100px;
+}
+.modal-body input {
+	width: 100%;
+	height: 7vh;
+	margin-bottom: 10px;
+	border: 1px solid #dee2e6;
+}
+.modal-sign-more {
+	text-align: center;
+	margin-right: 20px;
+}
+.modal-sign-more a {
+	margin: 10px;
+}
+.btn-modal-footer {
+	text-align: center;
+	margin-top: 40px;
+}
+.btn-modal-footer button {
+	text-align: center;
+	width: 70%;
+}
+
+
+/* ---------------------------- footer ---------------------------- */
+footer {
+	/* position: absolute; */
+	margin-top: 10px;
+	margin-bottom: 0;
+	bottom: 0;
+	width: 100%;
+	padding-left: 30px;
+	padding-top: 20px;
+	background: #7C8EA3;
+}
+footer .copyright {
+	font-size: 18px;
+	color: #4a4a4a;
+	line-height: 20px;
+	padding-bottom: 15px;
+}
+footer .copyright img {
+	margin-left: 1px;
+	width: 60px;
+}
+footer .footer-menu {
+	padding-top: 10px;
+}
+footer .footer-menu li {
+	display: inline-block;
+}
+footer .footer-menu li a {
+	color: #4a4a4a;
+	font-size: 16px;
+	padding-left: 20px;
+}
+
+footer .footer-info {
+	line-height: 23px;
+	font-size: 14px;
+}
+
+
+.copyright {
+	display: flex;
+}
+
+
+
+
+
+/* ---------------------------- main ---------------------------- */
+#wrapper {
+	position: relative;
+	min-height: 100vh;
+	padding-bottom: 2.5rem;
+}
+
+#myCarousel .carousel-inner {
+	height: 300px;
+}
+
+#myCarousel .carousel-inner img {
+	width: 100%;
+	height: 300px;
+	
+}
+
+section .recommended-lecture h2 {
+	font-weight: bold;
+	margin-left: 20px;
+	padding-top: 25px;
+}
+
+
+section .recommended-lecture-list li {
+	padding: 0px 30px;
+	display: inline-block;
+}
+section .recommended-lecture-list li span {
+	display: block;
+}
+section .recommended-lecture-list img {
+	width: 170px;
+}
+
+
+section .notice h2 {
+	font-weight: bold;
+	margin-left: 20px;
+	padding-top: 25px;
+}
+
+section .notice-info {
+	margin-left: 20px;
+}
+section .notice-title {
+	margin-left: 10px;
+}
+section .notice-title h2 {
+	font-weight: bold;
+	font-size: 25px;
+}
+section .notice-content {
+	margin-left: 10px;
+}
+section .notice-content h3 {
+	font-weight: bold;
+	font-size: 20px;
+	display: inline;
+}
+section .notice-content p {
+	display: inline;
+}
+
+
+
+
+
+/* ---------------------------- 아이디 찾기 ---------------------------- */
+#id-search {
+	display: grid;
+	place-items: center;
+	min-height: 60vh;
+	text-align: center;
+}
+.id-search-header {
+	margin-bottom: 30px;
+}
+.id-search-footer input {
+	width: 30%;
+	height: 40px;
+	border: 1px solid;
+	margin-top: 20px;
+	position: relative;
+	outline: none;
+}
+.id-search-footer button {
+	height: 40px;
+	position: absolute;
+	margin-left: -50px;
+	margin-top: 20px;
+}
+
+/* 아이디 찾기 모달 */
+#searchIdModal .search-id-modal {
+	padding-top: 25px;
+}
+#searchIdModal .description p {
+	font-size: 16px;
+	line-height: 30px;
+}
+#searchIdModal .search-id-modal-footer {
+	text-align: center;
+	margin-top: 20px;
+}
+
+
+
+
+
+/* ---------------------------- 비밀번호 찾기 ---------------------------- */
+#pw-search {
+	display: grid;
+	place-items: center;
+	min-height: 60vh;
+	text-align: center;
+}
+.pw-search-header {
+	margin-bottom: 30px;
+}
+.pw-search-footer input {
+	width: 30%;
+	height: 40px;
+	border: 1px solid;
+	margin-top: 20px;
+	position: relative;
+	outline: none;
+}
+.pw-search-footer button {
+	height: 40px;
+	position: absolute;
+	margin-left: -50px;
+	margin-top: 20px;
+}
+
+/* 비밀번호 찾기 모달 */
+#searchPwModal .search-pw-modal {
+	padding-top: 25px;
+}
+#searchPwModal .description p {
+	font-size: 16px;
+	line-height: 30px;
+}
+#searchPwModal .search-pw-modal-footer {
+	text-align: center;
+	margin-top: 20px;
+}
+
+

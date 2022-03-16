@@ -1,0 +1,14 @@
+package com.spring.dct.vo;
+
+import java.sql.Timestamp;
+
+public class PurchasesVO {
+
+	private int purchaseNo;
+	private int userNo;
+	private int lectureNo;
+	private int mentoringNo;
+	private Timestamp purchaseCreateDate;
+	private int purchaseTotalPrice;
+	
+}

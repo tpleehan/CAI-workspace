@@ -1,0 +1,9 @@
+package com.spring.dct.vo;
+
+public class LecturesCategoriesVO {
+
+	private int categoryNo;
+	private String categoryName;
+	private int subCategoryNo;
+	
+}

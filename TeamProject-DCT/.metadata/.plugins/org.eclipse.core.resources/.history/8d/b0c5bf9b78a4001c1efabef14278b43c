@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<header id="header">
+	<nav class="navbar">
+		<div class="container">
+			<div class="logo">
+				<a href="#" class="">
+					<img class="logo" src="../img/logo.png" alt="header-logo">
+				</a>
+			</div>
+			<div class="navbar-menu">
+				<div class="navbar-left">
+					<div class="">
+						<a href="#" class=""><span>강의</span></a>
+					</div>
+					<div class="">
+						<a href="#" class=""><span>멘토링</span></a>
+					</div>
+					<div class="">
+						<a href="#" class=" "><span>커뮤니티</span></a>
+					</div>
+					<div class="">
+						<a href="#" class=" "><span class="">공지사항</span></a>
+					</div>
+				</div>
+				<div class="navbar-right">
+					<div class="search-input">
+						<input type="text" class="search-input-bar" placeholder="검색">
+						<span><i class="fa-solid fa-magnifying-glass"></i></span>
+					</div>
+					<div class="btn-movement">
+						<a role="button" href="#" class="btn-login" data-toggle="modal" data-target="#loginModal">로그인</a>
+						<a role="button" href="#" class="btn-sign-in">회원가입</a>
+					</div>
+				</div>
+			</div>				
+		</div>
+	</nav>
+</header>

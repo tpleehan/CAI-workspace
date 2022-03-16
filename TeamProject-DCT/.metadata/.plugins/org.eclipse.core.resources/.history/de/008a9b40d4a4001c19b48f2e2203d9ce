@@ -1,0 +1,17 @@
+package com.spring.dct.vo;
+
+import java.sql.Timestamp;
+
+public class ClassReviewVO {
+
+	private int reviewNo;
+	private int lectureNo;
+	private String reviewTitle;
+	private String reviewContent;
+	private int reviewStarRating;
+	private Timestamp reviewCreateDate;
+	
+	
+	
+		
+}

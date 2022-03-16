@@ -1,0 +1,15 @@
+package com.spring.dct.vo;
+
+import java.sql.Timestamp;
+
+public class CommunitiesVO {
+
+	private int communityNo;
+	private int userNo;
+	private String communityTitle;
+	private String communityComent;
+	private int communityViewCount;
+	private Timestamp communityCreateDate;
+	
+	
+}

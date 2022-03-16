@@ -1,0 +1,14 @@
+package com.spring.dct.vo;
+
+import java.sql.Timestamp;
+
+public class CommentsVO {
+
+	private int commentNo;
+	private int communityNo;
+	private int userNo;
+	private String commentContents;
+	private Timestamp commentCreateDate;
+	
+	
+}

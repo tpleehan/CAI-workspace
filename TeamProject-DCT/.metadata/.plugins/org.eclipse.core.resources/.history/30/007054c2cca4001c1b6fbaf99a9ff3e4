@@ -1,0 +1,5 @@
+package com.spring.dct.vo;
+
+public class NoticeBoardsVO {
+
+}

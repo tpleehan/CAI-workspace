@@ -1,0 +1,18 @@
+package com.spring.dct.vo;
+
+import java.sql.Timestamp;
+
+public class CouponsVO {
+
+	private int couponNo;
+	private int userNo;
+	private String adminId;
+	private String couponName;
+	private String couponNumber;
+	private int couponPrice;
+	private Timestamp couponPaymentDate;
+	private Timestamp couponExpirationDate;
+	private boolean couponStatus;
+	
+	
+}

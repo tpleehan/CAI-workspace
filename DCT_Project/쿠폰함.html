@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/ec7c1dce8a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+    <script src="./js/bootstrap.js"></script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <header data-include-path="./include/header.html"></header>
+
+        <section class="coupon_sections">
+            <div class="mypage_header">
+                <div class="container">
+                    <h2><b>쿠폰함</b></h2>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="columns">
+                    <div class="aside_menu">
+                        <aside class="sidebar_left">
+                            <div class="menu_container">
+                                <p class="menu-label">학습 관리</p>
+                                <ul class="menu-list">
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>내가 본 강의</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>내가 올린 강의</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>작성한 게시글</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>멘토링</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p class="menu-label">수강 신청 관리</p>
+                                <ul class="menu-list">
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>수강바구니</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>위시리스트</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span><b>쿠폰함</b></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>구매내역</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p class="menu-label">설정</p>
+                                <ul class="menu-list">
+                                    <li>
+                                        <a class="btn_wrap " href="#">
+                                            <span>프로필</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 main_container">
+                                <div class="heading_cover">
+                                    <h3 class="heading">내 쿠폰함</h3>
+                                </div>
+                                    <div class="coupon_section">
+                                        <div class="coupon_dashboard">
+                                            <div class="coupon_quantity_cover">
+                                                <div class="coupon_quantity">
+                                                    <div class="coupon_quantity_title">
+                                                        <p>사용 가능한 쿠폰</p>
+                                                    </div>
+                                                    <div class="coupon_quantity_num">
+                                                        <span class="num">0</span> 개
+                                                    </div>
+                                                </div>
+                                                <div class="division"></div>
+                                                <div class="coupon_quantity">
+                                                    <div class="coupon_quantity_title">
+                                                        <p>만료임박 쿠폰</p>
+                                                    </div>
+                                                    <div class="coupon_quantity_num">
+                                                        <span class="num">0</span> 개
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <form class="coupon_input_wrapper e_coupon_form">
+                                            <label for="coupon_input" class="coupon_input_label">할인쿠폰코드 입력란</label>
+                                            <div class="coupon_input_cover">
+                                                <input type="text" class="coupon_input e_coupon_input" id="coupon_input" placeholder="보유하신 쿠폰 코드를 입력해 주세요." autocomplete="off" autocapitalize="off">
+                                                <button type="button" class="coupon_submit">등록</button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                        <div class="coupon_tab_cover">
+                                            <div class="coupon_tab_list">
+                                                <div class="coupon_tab_btn coupon_tab_btn" data-type="left">
+                                                    <i class="fal fa-arrow-left"></i>
+                                                </div>
+                                                <div class="coupon_tab active" data-id="0">
+                                                    사용가능 (0)
+                                                </div>
+                                                <div class="coupon_tab" data-id="1">
+                                                    만료임박 (0)
+                                                </div>
+                                                <div class="coupon_tab" data-id="2">
+                                                    사용 완료 (기간 만료) (0)
+                                                </div>
+                                                <div class="coupon_tab" data-id="3">
+                                                    전체 쿠폰 (0)
+                                                </div>
+                                            </div>
+                                            <div class="coupon_tab_content_cover" style="visibility:visivble;">
+                                                <div class="swipe_wrap" style="width: 6000px";>
+                                                    ㅇㅅㅇ
+                                                </div>
+                                            </div>
+                                        </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+                                <!--footer-->
+                                <footer data-include-path="./include/footer.html"></footer>
+
+                                <script>
+                                    window.addEventListener('load', function () {
+                                        var allElements = document.getElementsByTagName('*');
+                                        Array.prototype.forEach.call(allElements, function (el) {
+                                            var includePath = el.dataset.includePath;
+                                            if (includePath) {
+                                                var xhttp = new XMLHttpRequest();
+                                                xhttp.onreadystatechange = function () {
+                                                    if (this.readyState == 4 && this.status ==
+                                                        200) {
+                                                        el.outerHTML = this.responseText;
+                                                    }
+                                                };
+                                                xhttp.open('GET', includePath, true);
+                                                xhttp.send();
+                                            }
+                                        });
+                                    });
+                                </script>
+
+</body>
+</html>

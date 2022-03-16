@@ -1,0 +1,22 @@
+package com.spring.dct.vo;
+
+import java.sql.Timestamp;
+
+public class UsersVO {
+	
+	private int userNo;
+	private String adminId;
+	private String userId;
+	private String userPw;
+	private String userName;
+	private String userNick;
+	private String userPhone;
+	private String userEmail;
+	private int userZipcode;
+	private String userAddress;
+	private String userAddressDetails;
+	private Timestamp userCreateDate;
+	private String userEmailReceivedStatus;
+	
+	
+}

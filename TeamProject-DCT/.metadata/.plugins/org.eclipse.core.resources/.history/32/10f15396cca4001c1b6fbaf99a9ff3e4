@@ -1,0 +1,12 @@
+package com.spring.dct.vo;
+
+public class MentoringsVO {
+
+	private int mentoringNo;
+	private int userNo;
+	private String mentoringTitle;
+	private String mentoringContent;
+	private int mentoringPrice;
+	private mentoringDiscountPrice;
+	
+}

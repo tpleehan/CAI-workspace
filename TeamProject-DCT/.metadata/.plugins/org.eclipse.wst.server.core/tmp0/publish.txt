@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Wed Mar 16 16:36:54 KST 2022
+org.eclipse.jst.jee.server\:DCT=C\:\\App\\apache-tomcat-9.0.52\\wtpwebapps\\DCT
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\Han\\.m2\\repository\\org\\springframework\\spring-web\\5.3.9\\spring-web-5.3.9.jar=C\:\\App\\apache-tomcat-9.0.52\\wtpwebapps\\DCT\\WEB-INF\\lib\\spring-web-5.3.9.jar

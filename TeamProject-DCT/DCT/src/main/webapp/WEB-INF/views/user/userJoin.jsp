@@ -1,0 +1,186 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<style>
+	
+	#main {
+	    min-height: 800px;
+	    display: block;
+	}
+	:after, :before {
+	    box-sizing: inherit;
+	}
+	
+	.join-form .titlebox h4 {
+		text-align: center;
+	}
+	
+	.join-group {
+		border-radius: 8px;
+		width: 600px;
+		margin: 0 auto;
+		padding: 15px; 
+		box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15)
+	}
+	
+	.form-join {
+	    display: flex;
+	    flex-direction: column;
+	}
+	
+	:after, :before {
+	    box-sizing: inherit;
+	}
+	
+	form {
+	    display: block;
+	    margin-top: 0em;
+	}
+	
+	.input-group-addon .btn btn-primary {
+		border-color: rgba(233, 161, 233, 0.651);
+	    font-weight: 700;
+	    background-color: rgba(233, 161, 233, 0.651);
+	}
+	
+	.ac-button.is-solid.is-primary {
+	    border-color: rgba(233, 161, 233, 0.651);
+	    font-weight: 700;
+	    background-color: rgba(233, 161, 233, 0.651);
+	}
+	
+	.form__button {
+	    margin-top: 16px;
+	    margin-bottom: 12px;
+	}
+	
+	.ac-button.is-solid {
+	    border: 1px solid;
+	    color: #fff;
+	}
+	
+	.ac-button.is-lg {
+	    padding: 0 16px;
+	    height: 48px;
+	    line-height: 1.47;
+	    font-size: 15px;
+	    letter-spacing: -.3px;
+	}
+	
+	.ac-button.is-primary {
+	    border-color: rgba(233, 161, 233, 0.651);
+	    font-weight: 700;
+	    background-color: rgba(233, 161, 233, 0.651);
+	}
+	
+	.ac-button {
+	    position: relative;
+	    display: inline-flex;
+	    align-items: center;
+	    justify-content: center;
+	    border-radius: 4px;
+	    line-height: 1.47;
+	    font-weight: 500;
+	    cursor: pointer;
+	    -webkit-appearance: none;
+	    padding: 0 12px;
+	    height: 0px;
+	    line-height: 1.43;
+	    font-size: 14px;
+	    letter-spacing: -.3px;
+	    border: 1px solid;
+	    color: #fff;
+	}
+	
+	/* 회원가입 종료 */
+
+</style>
+
+<%@ include file="../include/header.jsp"%>
+
+	<div id="wrapper">
+		<main id="main">
+			<section class="signup">
+				<div class="container">
+					<div class="row">
+						<div class="join-form">
+							<div class="titlebox">
+								<h4>회원가입</h4>
+							</div>
+							<div class="join-group">
+								<form class="form-join" method="post">
+									<div class="form-group">
+										<label for="id">ID</label>
+										<div class="input-group">
+											<input type="text" id="id" class="form-control"
+												placeholder="아이디(영문 포함 4~12자 이상)">
+											<div class="input-group-addon">
+												<button class="btn btn-primary">아이디 중복 확인</button>
+											</div>
+										</div>
+										<span id="msgid">*필수 사항입니다.</span>
+										<!--아이디 중복 여부 메시지 공간-->
+									</div>
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input type="password" id="password" class="form-control"
+											placeholder="비밀번호 (영 대/소문자, 숫자 조합 8~16자)">
+										<span id="msgPw"></span>
+										<!--비밀번호 유효성 메세지 공간-->
+									</div>
+									<div class="form-group">
+										<label for="pw-confirm">Password</label>
+										<input type="password" id="pw-confirm" class="form-control"
+											placeholder="비밀번호를 확인해 주세요.">
+										<span id="msgPw-c"></span>
+										<!--비밀번호 유효성 메세지 공간-->
+									</div>
+									<div class="form-group">
+										<label for="name">Name</label>
+										<input type="password" id="name" class="form-control"
+											placeholder="이름을 입력해 주세요.">
+										<span id="msgPw-c"></span>
+										<!--비밀번호 유효성 메세지 공간-->
+									</div>
+									<div class="form-group">
+										<label for="hp">Phone</label>
+										<div class="input-group">
+											<input type="tel" id="hp" class="form-control"
+												placeholder="전화번호를 입력해 주세요.">
+											<div class="input-group-addon">
+												<button class="btn btn-primary">본인인증</button>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="addr-num">Address</label>
+										<div class="input-group">
+											<input type="text" id="addr-num" class="form-control" placeholder="우편번호"
+												readonly>
+											<div class="input-group-addon">
+												<button class="btn btn-primary">우편번호검색</button>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="기본주소">
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="상세주소">
+									</div>
+	
+									<div class="form-group">
+										<button class="ac-button is-lg is-solid is-primary e-sign-up-button form__button ">가입하기</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+
+<%@ include file="../include/footer.jsp"%>
+

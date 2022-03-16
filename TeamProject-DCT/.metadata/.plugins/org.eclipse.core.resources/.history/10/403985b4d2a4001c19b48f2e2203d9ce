@@ -1,0 +1,23 @@
+package com.spring.dct.vo;
+
+import java.sql.Timestamp;
+
+public class OnlineLecturesVO {
+
+	private int LectureNo;
+	private int userNo;
+	private int categoryNo;
+	private String adminId;
+	private String lectureTitle;
+	private String lectureContent;
+	private int lecturePrice;
+	private int lectureDiscountPrice;
+	private Timestamp lectureCeateDate;
+	private int lectureLike;
+	private String lectureVideo;
+	
+	
+	
+	
+	
+}
