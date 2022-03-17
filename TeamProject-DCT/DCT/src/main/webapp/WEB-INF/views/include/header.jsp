@@ -17,6 +17,37 @@
     
    	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="<c:url value='/js/bootstrap.js' />"></script>
+    
+    <style>
+		/* 맨위로가기 버튼 */
+		a.top-control {
+		    position: fixed;
+		    right: 15px;
+		    bottom: 15px;
+		    border-radius: 5px;
+		    color: #ffffff;
+		    text-align: center;
+		    width: 45px;
+		    height: 45px;
+		    font-size: 40px;
+		    background-color:#323232; opacity:0.5; filter:alpha(opacity=50);
+		    z-index: 999;
+		    display: none;
+		}
+		
+		a.top-control:hover{
+			background-color:#000
+		}
+		
+		.btn-chatting-link {
+			width: 200px;
+			font-size: 100px;
+			margin: 0 auto;
+			display: block;
+		}
+		
+	</style>	
+    
 </head>
 
 <body>
@@ -32,13 +63,13 @@
 			<div class="navbar-menu">
 				<div class="navbar-left">
 					<div class="">
-						<a href="#" class=""><span>강의</span></a>
+						<a href="<c:url value='/lectureList' />" class=""><span>강의</span></a>
 					</div>
 					<div class="">
-						<a href="#" class=""><span>멘토링</span></a>
+						<a href="<c:url value='/mentoringList' />" class=""><span>멘토링</span></a>
 					</div>
 					<div class="">
-						<a href="#" class=""><span>커뮤니티</span></a>
+						<a href="<c:url value='/freeBoardList' />" class=""><span>커뮤니티</span></a>
 					</div>
 					<div class="">
 						<a href="#" class=""><span class="">공지사항</span></a>
@@ -62,6 +93,10 @@
 		</div>
 	</nav>
 </header>
+
+<a href="#" class="top-control"><i class="fa-solid fa-angle-up"></i></a>
+
+<button class="btn-chatting-link" onclick="window.open('chatting', 'chatting', 'width=550,height=650');">채팅</button>
 
 <!-- Modal -->
 <div id="loginModal" class="modal fade">
@@ -91,4 +126,23 @@
 </div>
 
 </body>
+
+<script>
+	$(document).ready(function() {
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 50) {
+				$('.top-control').fadeIn();
+			} else {
+				$('.top-control').fadeOut();
+			}
+		});
+		$('.top-control').click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+			}, 200);
+			return false;
+		});
+	});
+</script>
+
 </html>

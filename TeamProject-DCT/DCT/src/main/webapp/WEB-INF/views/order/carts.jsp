@@ -237,7 +237,7 @@
 				</div>
 				
 				<c:choose>
-					<c:when test="${order != null}">
+					<c:when test="${order == null}">
 						<div id="empty_cart">
 							<div class="this_cart_empty">
 								<p>

@@ -28,5 +28,4 @@ public class UserController {
 		System.out.println("userPwSearch 페이지 진입");
 	}
 
-
 }
