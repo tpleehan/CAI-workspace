@@ -1,5 +1,7 @@
 /*======= 웹 폰트 선언 =======*/
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap')
+	;
 
 * {
 	/* 기본 선언: 마진, 패딩 0, 요소 크기를 border를 기준 */
@@ -13,9 +15,7 @@ body, html {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-family: 'Nanum Pen Script', cursive;
-	font-size: 20px;
-	background-color: #ffffff;
+	font-family: "Nanum Gothic", sans-serif;
 }
 
 
@@ -55,7 +55,7 @@ ul, ol, dl, li {
 
 /* ---------------------------- header ---------------------------- */
 #header {
-	background: #ADE7F7;
+	background: #7C8EA3;
 }
 
 .navbar {
@@ -64,7 +64,7 @@ ul, ol, dl, li {
 }
 
 .navbar-menu {
-	padding-top: 5px;
+	padding-top: 15px;
 }
 
 /* 네비게이션바 왼쪽 */
@@ -74,7 +74,7 @@ ul, ol, dl, li {
 
 .navbar-left a {
 	margin: 15px;
-	color: ##000000;
+	color: #000000;
 	text-decoration-line: none;
 }
 
@@ -83,8 +83,8 @@ ul, ol, dl, li {
 }
 
 .navbar-left a span {
-	font-size: 30px;
-	color: #000000;
+	font-size: 18px;
+	color: #4a4a4a;
 }
 
 /* 로고 */
@@ -103,13 +103,17 @@ ul, ol, dl, li {
 
 /* 네비게이션바 오른쪽 */
 .navbar-right {
+<<<<<<< HEAD
 	display: flex;
+=======
+	display: flex;	
+>>>>>>> 29e8f06077ab2db5fea3fb234140b818cd22e1eb
 }
 
 .navbar-right a {
 	text-decoration-line: none;
-	font-size: 30px;
-	color: #000000;
+	font-size: 18px;
+	color: #4a4a4a;
 }
 
 /* 검색 창 */
@@ -227,9 +231,13 @@ ul, ol, dl, li {
 	color: #000000;
 	margin: 10px;
 }
+<<<<<<< HEAD
+
+=======
 .modal-sign-more a:hover {
 	text-decoration: none;
 }
+>>>>>>> 29e8f06077ab2db5fea3fb234140b818cd22e1eb
 .btn-modal-footer {
 	text-align: center;
 	margin-top: 40px;
@@ -242,17 +250,26 @@ ul, ol, dl, li {
 
 /* ---------------------------- footer ---------------------------- */
 footer {
-	/* position: absolute; */
+	position: absolute;
 	margin-top: 10px;
+	bottom: 0px;
 	width: 100%;
-	bottom: 0;
+	padding-left: 30px;
 	padding-top: 20px;
-	background: #ADE7F7;
+<<<<<<< HEAD
+	background: linear-gradient(to left, red, transparent) /* 
+		linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+		linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+		linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+		 */
+=======
+	background: #7C8EA3;
+>>>>>>> 29e8f06077ab2db5fea3fb234140b818cd22e1eb
 }
 
 footer .copyright {
-	font-size: 24px;
-	color: #000000;
+	font-size: 18px;
+	color: #4a4a4a;
 	line-height: 20px;
 	padding-bottom: 15px;
 }
@@ -271,15 +288,14 @@ footer .footer-menu li {
 }
 
 footer .footer-menu li a {
-	color: #000000;
-	font-size: 24px;
+	color: #4a4a4a;
+	font-size: 16px;
 	padding-left: 20px;
 }
 
 footer .footer-info {
 	line-height: 23px;
-	font-size: 24px;
-	color: #000000;
+	font-size: 14px;
 }
 
 .copyright {
@@ -290,6 +306,7 @@ footer .footer-info {
 #wrapper {
 	position: relative;
 	min-height: 100%;
+	padding-bottom: 2.5rem;
 	width:100%;
 }
 
@@ -308,11 +325,8 @@ section .recommended-lecture h2 {
 	padding-top: 25px;
 }
 
-section .recommended-lecture-list {
-	text-align: center;
-}
 section .recommended-lecture-list li {
-	padding: 0px 28px;
+	padding: 0px 30px;
 	display: inline-block;
 }
 

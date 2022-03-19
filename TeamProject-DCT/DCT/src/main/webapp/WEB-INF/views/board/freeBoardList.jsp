@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<%@ include file="../include/header.jsp"%>
 
 <style>
 
@@ -68,7 +69,6 @@ section.community-body nav.community-body-nav ul li span {
 </style>
 
 <div id="wrapper">
-<%@ include file="../include/header.jsp"%>
 
 	<section class="community-header">
 		<div class="container">
@@ -192,7 +192,7 @@ section.community-body nav.community-body-nav ul li span {
 		</div>
 	</section>
 
-<%@ include file="../include/footer.jsp"%>
-</div>
+	<%@ include file="../include/footer.jsp"%>
 
+</div>
 

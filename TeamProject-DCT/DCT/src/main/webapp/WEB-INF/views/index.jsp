@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-
 <div id="wrapper">
 	<%@ include file="include/header.jsp" %>
 	<section>
@@ -52,6 +50,7 @@
 
 	<!-- 추천강의 배치 -->
 	<section>
+
 		<div class="container">
 			<div class="row">
 				<div class="recommended-lecture">
@@ -65,43 +64,43 @@
 						<a href="#" class="lecture-link">
 							<img src="./img/java.png" alt="java">
 							<span>강의 제목: 자바 참 쉽다!</span>
-							<span>강사(닉네임): 중앙학원</span>
-							<span>가격: ￦55,000원</span>
-							<span>할인가격: 무료</span>
+							<p>강사(닉네임): 중앙학원</p>
+							<p>가격: ￦55,000원</p>
+							<p>할인가격: 무료</p>
 						</a>
 					</li>
 					<li>
 						<a href="#" class="lecture-link">
 							<img src="./img/python.png" alt="java">
 							<span>강의 제목: 파이썬 어려워</span>
-							<span>강사(닉네임): 홍길동</span>
-							<span>가격: ￦35,000원</span>
-							<span>할인가격: ￦1,000원</span>
+							<p>강사(닉네임): 홍길동</p>
+							<p>가격: ￦35,000원</p>
+							<p>할인가격: ￦1,000원</p>
 						</a>
 					</li>
 					<li>
 						<a href="#" class="lecture-link">
 							<img src="./img/css.png" alt="java">
 							<span>강의 제목: CSS 배워볼까!</span>
-							<span>강사(닉네임): 김철수</span>
-							<span>가격: ￦55,000원</span>
+							<p>강사(닉네임): 김철수</p>
+							<p>가격: ￦55,000원</p>
 						</a>
 					</li>
 					<li>
 						<a href="#" class="lecture-link">
 							<img src="./img/spring.png" alt="java">
 							<span>강의 제목: 스프링 배우기</span>
-							<span>강사(닉네임): 김뽀삐</span>
-							<span>가격: ￦75,000원</span>
-							<span>할인가격: 무료</span>
+							<p>강사(닉네임): 김뽀삐</p>
+							<p>가격: ￦75,000원</p>
+							<p>할인가격: 무료</p>
 						</a>
 					</li>
 					<li>
 						<a href="#" class="lecture-link">
 							<img src="./img/html.png" alt="java">
 							<span>강의 제목: 웹 개발</span>
-							<span>강사(닉네임): 김아무개</span>
-							<span>가격: ￦15,000원</span>
+							<p>강사(닉네임): 김아무개</p>
+							<p>가격: ￦15,000원</p>
 						</a>
 					</li>
 

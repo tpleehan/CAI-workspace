@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.dct.user.mapper.IUserMapper">
+
+	<resultMap type="com.spring.dct.vo.UsersVO" id="userInfo">
+		<id property="userId" column="USER_ID" />
+		<result property="userName" column="USER_NAME"/>
+		<result property="userPhone" column="USER_PHONE"/>
+		<result property="userEmail" column="USER_EMAIL"/>
+		<result property="userZipcode" column="USER_ZIPCODE"/>
+		<result property="userAddress" column="USER_ADDRESS"/>
+		<result property="userAddressDetails" column="USER_ADDRESS_DETAILS"/>
+	</resultMap>
+
+	<!-- 아이디 중복 확인 -->
+	<!-- int idCheck(String id); -->
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(*) FROM USERS
+		WHERE userId = #{id}
+	</select>
+	
+	<!-- 회원 가입 -->
+	<!-- void join(UserVO vo); -->
+	<insert id="join">
+		INSERT INTO USERS
+		(userId, userPw, userName, userPhone, userEmail, userZipcode, userAddress, userAddressDetails)
+		VALUES
+		(#{userId}, #{userPw}, #{userName}, #{userPhone}, #{userEmail}, #{userZipcode}, #{userAddress}, #{userAddressDetails})
+	</insert>
+	
+	<!-- 로그인 -->
+	<!-- UserVO login(@Param("userId") String userId, @Param("userPw") String userPw); -->
+	<select id="login" resultType="com.spring.dct.vo.UsersVO"> 
+		SELECT * FROM USERS
+		WHERE userId = #{userId} 
+		AND userPw = #{userPw}
+	</select>
+	
+	
+	<!-- 회원 정보 수정 -->
+	<!-- void updateUser(UsersVO vo); -->
+	<update id="updateUser">
+		UPDATE USERS
+		SET 
+			userPw = #{userPw},
+			userPhone = #{userPhone},
+			userEmail = #{userEmail},
+			userAddress = #{userAddress},
+			userAddressDetails = #{userAddressDetails},
+			userZipcode = #{userZipcode}
+		WHERE 
+			userId = #{userId}
+	</update>
+	
+	<!-- 회원 정보 삭제 -->
+	<!-- void deleteUser(@Param("userId") String id, @Param("userPw") String userPw); -->
+	<delete id="deleteUser">
+		DELETE FROM USERS
+		WHERE userId = #{userId}
+		AND userPw = #{userPw}
+	</delete>
+
+</mapper>
