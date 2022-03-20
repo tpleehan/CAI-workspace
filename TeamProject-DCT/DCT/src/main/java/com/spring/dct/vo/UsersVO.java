@@ -18,6 +18,8 @@ public class UsersVO {
 	private Timestamp userCreateDate;
 	private String userEmailReceivedStatus;
 	
+	
+	
 	public int getUserNo() {
 		return userNo;
 	}

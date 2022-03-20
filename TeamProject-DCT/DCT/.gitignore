@@ -1,7 +1,8 @@
 # 폴더 제외 #
+
+target/
 /build/
 /bin/
-target/*
       
 # 특정 파일 제외 #
 Hikari.properties
@@ -18,6 +19,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+.classpath
 
 # External tool builders
 .externalToolBuilders/

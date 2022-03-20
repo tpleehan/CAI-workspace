@@ -1,81 +1,107 @@
 package com.spring.dct.controller;
 
+import java.util.Date;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.spring.dct.admin.service.IAdminService;
+import com.spring.dct.vo.AdminsVO;
 
 @Controller
 @RequestMapping("admin")
 public class AdminController {
+	
+	@Autowired
+	private IAdminService service;
 
 	@GetMapping("/admin_404")
-	public void adminError() {
-		System.out.println("admin_404 페이지 진입");
-	}
+	public void adminError() {}
 
 	@GetMapping("/admin_blank")
-	public void adminBlank() {
-		System.out.println("admin_blank 페이지 진입");
-	}
+	public void adminBlank() {}
 
 	@GetMapping("/admin_buttons")
-	public void adminButtons() {
-		System.out.println("admin_buttons 페이지 진입");
-	}
+	public void adminButtons() {}
 
 	@GetMapping("/admin_cards")
-	public void adminCards() {
-		System.out.println("admin_cards 페이지 진입");
-	}
+	public void adminCards() {}
 
 	@GetMapping("/admin_charts")
-	public void adminCharts() {
-		System.out.println("admin_charts 페이지 진입");
-	}
+	public void adminCharts() {}
 
 	@GetMapping("/admin_forgot-password")
-	public void adminForgotPassword() {
-		System.out.println("admin_forgot-password 페이지 진입");
-	}
+	public void adminForgotPassword() {}
 
 	@GetMapping("/admin_index")
-	public void adminIndex() {
-		System.out.println("admin_index 페이지 진입");
-	}
+	public void adminIndex() {}
 
 	@GetMapping("/admin_login")
-	public void adminLogin() {
-		System.out.println("admin_login 페이지 진입");
+	public void adminLogin() {}
+	
+	@PostMapping("/adminLogin")
+	public String adminLogin(@RequestBody AdminsVO vo, HttpSession session, HttpServletResponse response) {
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
+		AdminsVO dbData = service.getAdminInfo(vo.getAdminId());
+		
+		if (dbData != null) {
+			if (encoder.matches(vo.getAdminPw(), dbData.getAdminPw())) {
+				session.setAttribute("adminLogin", dbData);
+	
+				long limitTime = 60 * 60 * 24 * 90;
+				
+				if (vo.isAdminAutoLogin()) {
+					Cookie loginCookie = new Cookie("loginCookie", session.getId());
+					loginCookie.setPath("/");
+					loginCookie.setMaxAge((int) limitTime);
+					
+					// 응답 객체에 쿠키 전달
+					response.addCookie(loginCookie);
+					
+					long expiredDate = System.currentTimeMillis() + (limitTime * 1000);
+					Date limitDate = new Date(expiredDate);
+					
+					service.autoLogin(session.getId(), limitDate, vo.getAdminId());
+				}
+				
+				return "loginSuccess";
+			} else {
+				return "pwFail";
+			}
+			
+		} else {
+			return "idFail";
+		}
 	}
 
 	@GetMapping("/admin_register")
-	public void adminRegister() {
-		System.out.println("admin_register 페이지 진입");
-	}
+	public void adminRegister() {}
 
 	@GetMapping("/admin_tables")
-	public void adminTables() {
-		System.out.println("admin_tables 페이지 진입");
-	}
+	public void adminTables() {}
 
 	@GetMapping("/admin_utilities-animation")
-	public void adminUtilitiesAnimation() {
-		System.out.println("admin_utilities-animation 페이지 진입");
-	}
+	public void adminUtilitiesAnimation() {}
 
 	@GetMapping("/admin_utilities-border")
-	public void adminUtilitiesBorder() {
-		System.out.println("admin_utilities-border 페이지 진입");
-	}
+	public void adminUtilitiesBorder() {}
 
 	@GetMapping("/admin_utilities-color")
-	public void adminUtilitiesColor() {
-		System.out.println("admin_utilities-color 페이지 진입");
-	}
+	public void adminUtilitiesColor() {}
 
 	@GetMapping("/admin_utilities-other")
-	public void adminUtilitiesOther() {
-		System.out.println("admin_utilities-other 페이지 진입");
-	}
+	public void adminUtilitiesOther() {}
 
 }

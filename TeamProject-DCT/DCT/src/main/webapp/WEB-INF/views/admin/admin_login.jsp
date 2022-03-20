@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Dream Come True 관리자 - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value='/vendor/fontawesome-free/css/all.min.css' />" rel="stylesheet" type="text/css">
@@ -58,42 +58,35 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">환영합니다!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form action="<c:url value='/admin/adminLogin' />" id="adminLoginForm" class="user" method="post">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                            <input type="text" class="form-control form-control-user" name="adminId"
+                                                id="adminId" aria-describedby="emailHelp"
+                                                placeholder="아이디를 입력해주세요.">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" name="adminPw"
+                                                id="adminPw" placeholder="비밀번호를 입력해주세요.">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <input type="checkbox" class="custom-control-input" id="autoLoginCheck">
+                                                <label class="custom-control-label" for="customCheck">로그인 상태 유지</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
-                                        <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        <button type="button" id="adminLoginBtn" class="btn btn-primary btn-user btn-block">로그인</button>
+                                        <a href="javascript:loginWithKakao();" class="btn-kakao-login btn-user btn-block">
+                                            <img class="kakao-login" src="<c:url value='/img/kakao_login_large_wide.png' />" alt="kakao-login">
                                         </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="<c:url value='/admin/admin_forgot-password' />">비밀번호 찾기</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="<c:url value='/admin/admin_register' />">계정 생성</a>
                                     </div>
                                 </div>
                             </div>
@@ -116,6 +109,98 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<c:url value='/js/sb-admin-2.min.js' />"></script>
+
+	<!-- 카카오 API sdk -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+	<script>
+		//df373eef4355df05d43485c0c1b4e35f
+		window.Kakao.init("df373eef4355df05d43485c0c1b4e35f");
+		
+		function loginWithKakao() {
+			window.Kakao.Auth.login({
+				scope: 'profile_nickname, account_email, gender',
+				success: function(authObj) {
+					console.log(authObj);
+					window.Kakao.API.request({
+						url:'/v2/user/me',
+						success: function(response) {
+							var accessToken = Kakao.Auth.getAccessToken();
+							Kakao.Auth.setAccessToken(accessToken);
+							console.log('response : ' + response);
+							console.log('accessToken : ' + accessToken);
+							alert('로그인 성공');
+							location.href='/admin/admin_index';
+						}
+					});
+				}
+			});
+			
+		}
+		
+		$(function() {
+			$('#adminLoginBtn').click(function() {
+				if($('#adminId').val() === '') {
+					alert('아이디를 입력하세요.');
+					$('#adminId').focus();
+					return;
+				} else if($('#adminPw').val() === '') {
+					alert('비밀번호를 입력하세요.');
+					$('#adminPw').focus();
+					return;
+				} else {
+					$('#adminLoginForm').submit();
+				}
+			});
+		});
+	
+		$('#adminLoginBtn').click(function() {
+		
+			const id = $('#adminId').val();
+			const pw = $('#adminPw').val();
+			const autoLogin = $('#autoLoginCheck').is(':checked');
+			
+			console.log('id: ' + id);
+			console.log('pw: ' + pw);
+			
+			// 체크의 여부를 확인하여 자동로그인 구현 기능 여부 확인
+			const adminInfo = {
+				"adminId" : id,
+				"adminPw" : pw,
+				"adminAutoLogin" : autoLogin
+			};
+			
+			$.ajax({
+				type : 'POST',
+				url : '/admin/adminLogin',
+				contentType : 'application/json',
+				dataType : 'text',
+				data : JSON.stringify(adminInfo),
+				success : function(data) {
+					if(data === 'idFail') {
+						alert('아이디 또는 비밀번호가 존재하지 않습니다.');
+						$('#adminId').val('');
+						$('#adminId').focus();
+					} else if(data === 'pwFail') {
+						alert('아이디 또는 비밀번호가 존재하지 않습니다.');
+						$('#adminPw').val('');
+						$('#adminPw').focus();
+					} else {
+						alert('로그인 성공');
+						location.href = '/admin/admin_index';
+					}
+				},
+				error : function() {
+					console.log('통신 실패');
+				}
+				
+			}); // end ajax (로그인 비동기 처리)
+			
+		}); // 로그인 버튼 클릭 이벤트 처리
+		
+		
+	</script>
+
 
 </body>
 

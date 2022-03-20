@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.dct.admin.mapper.IAdminMapper">
+
+	<resultMap type="com.spring.dct.vo.AdminsVO" id="admin">
+		<id property="adminId" column="ADMIN_ID" />
+		<result property="adminPw" column="ADMIN_PW"/>
+		<result property="adminName" column="ADMIN_NAME"/>
+	</resultMap>
+	
+	<!-- 관리자 회원 가입 -->
+	<!-- void adminJoin(AdminsVO vo); -->
+	<insert id="adminJoin">
+		INSERT INTO ADMINS
+		(ADMIN_ID, ADMIN_PW, ADMIN_NAME)
+		VALUES
+		(#{adminId}, #{adminPw}, #{adminName})
+	</insert>
+	
+	<!-- 관리자 로그인 -->
+	<!-- AdminsVO adminLogin(@Param("adminId") String adminId, @Param("adminPw") String adminPw); -->
+	<select id="adminLogin" resultType="com.spring.dct.vo.AdminsVO"> 
+		SELECT * FROM ADMINS
+		WHERE ADMIN_ID = #{adminId} 
+		AND ADMIN_PW = #{adminPw}
+	</select>
+	
+	<!-- 관리자 정보 얻어오기 -->
+	<!-- AdminsVO getAdminInfo(String adminId); -->
+	<select id="getInfo" resultMap="admin">
+		SELECT 
+			ADMIN_ID,
+			ADMIN_PW,
+			ADMIN_NAME
+		FROM ADMINS
+		WHERE ADMIN_ID = #{adminId}
+	</select>	
+	
+	<!-- 관리자 정보 수정 -->
+	<!-- void updateAdmin(AdminsVO vo); -->
+	<update id="updateAdmin">
+		UPDATE ADMINS
+		SET 
+			ADMIN_ID = #{adminId},
+			ADMIN_PW = #{adminPw},
+			ADMIN_NAME = #{adminName}
+		WHERE 
+			ADMIN_ID = #{adminId}
+	</update>
+	
+	<!-- 관리자 정보 삭제 -->
+	<!-- void deleteAdmin(@Param("adminId") String adminId, @Param("adminPw") String adminPw); -->
+	<delete id="deleteAdmin">
+		DELETE FROM ADMINS
+		WHERE ADMIN_ID = #{adminId}
+		AND ADMIN_PW = #{adminPw}
+	</delete>
+
+	<!-- 자동 로그인을 체크한 경우 쿠키값(세션 아이디)과 유효시간을 갱신 -->
+	<update id="keepLogin">
+		UPDATE ADMINS
+		SET SESSION_ID = #{sessionId},
+			LIMIT_TIME = #{limitTime}
+		WHERE ADMIN_ID = #{adminId}
+	</update>
+
+
+</mapper>

@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Forgot Password</title>
+    <title>Dream Come True 관리자 - Forgot Password</title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value='/vendor/fontawesome-free/css/all.min.css' />" rel="stylesheet" type="text/css">
@@ -58,9 +58,10 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
-                                        <p class="mb-4">We get it, stuff happens. Just enter your email address below
-                                            and we'll send you a link to reset your password!</p>
+                                        <h1 class="h4 text-gray-900 mb-2">비밀번호를 잊어버리셨나요?</h1>
+                                        <p class="mb-4">
+                                        	아래에 이메일 주소를 입력하면 비밀번호 재설정 링크를 보내드립니다!
+										</p>
                                     </div>
                                     <form class="user">
                                         <div class="form-group">
@@ -68,16 +69,17 @@
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
-                                        <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                        <a href="<c:url value='/admin/admin_login' />" class="btn btn-primary btn-user btn-block">
                                             Reset Password
                                         </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="<c:url value='/admin/admin_register' />">계정 생성</a>
                                     </div>
+
                                     <div class="text-center">
-                                        <a class="small" href="login.html">Already have an account? Login!</a>
+                                        <a class="small" href="<c:url value='/admin/admin_login' />">이미 계정이 있나요? 로그인!</a>
                                     </div>
                                 </div>
                             </div>

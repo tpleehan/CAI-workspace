@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@ include file="../include/header.jsp"%>
+
 
 <style>
 
@@ -71,7 +71,7 @@ section.mentoring-bottom .pagination-list {
 </style>
 
 <div id="wrapper">
-
+<%@ include file="../include/header.jsp"%>
 	<section class="community-header">
 		<div class="container">
 			<div class="row">
@@ -317,9 +317,6 @@ section.mentoring-bottom .pagination-list {
 		</div>
 	</section>
 
-	<%@ include file="../include/footer.jsp"%>
 
+<%@ include file="../include/footer.jsp"%>
 </div>
-
-
-
