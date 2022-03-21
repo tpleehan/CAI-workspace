@@ -114,6 +114,15 @@
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 	<script>
+	
+		const msg = '${msg}';
+		
+		if(msg === 'adminJoinSuccess') {
+			alert('회원 가입 정상 처리 되었습니다.');
+		} else if(msg === 'adminLoginFail') {
+			alert('로그인 실패. 아이디와 비밀번호를 확인해주세요.');
+		}
+	
 		//df373eef4355df05d43485c0c1b4e35f
 		window.Kakao.init("df373eef4355df05d43485c0c1b4e35f");
 		
@@ -153,50 +162,6 @@
 				}
 			});
 		});
-	
-		$('#adminLoginBtn').click(function() {
-		
-			const id = $('#adminId').val();
-			const pw = $('#adminPw').val();
-			const autoLogin = $('#autoLoginCheck').is(':checked');
-			
-			console.log('id: ' + id);
-			console.log('pw: ' + pw);
-			
-			// 체크의 여부를 확인하여 자동로그인 구현 기능 여부 확인
-			const adminInfo = {
-				"adminId" : id,
-				"adminPw" : pw,
-				"adminAutoLogin" : autoLogin
-			};
-			
-			$.ajax({
-				type : 'POST',
-				url : '/admin/adminLogin',
-				contentType : 'application/json',
-				dataType : 'text',
-				data : JSON.stringify(adminInfo),
-				success : function(data) {
-					if(data === 'idFail') {
-						alert('아이디 또는 비밀번호가 존재하지 않습니다.');
-						$('#adminId').val('');
-						$('#adminId').focus();
-					} else if(data === 'pwFail') {
-						alert('아이디 또는 비밀번호가 존재하지 않습니다.');
-						$('#adminPw').val('');
-						$('#adminPw').focus();
-					} else {
-						alert('로그인 성공');
-						location.href = '/admin/admin_index';
-					}
-				},
-				error : function() {
-					console.log('통신 실패');
-				}
-				
-			}); // end ajax (로그인 비동기 처리)
-			
-		}); // 로그인 버튼 클릭 이벤트 처리
 		
 		
 	</script>

@@ -65,7 +65,7 @@
 			<div class="navbar-menu">
 				<div class="navbar-left">
 					<div class="">
-						<a href="#" class=""><span>강의</span></a>
+						<a href="<c:url value='/lecture/lecturePage' />" class=""><span>강의</span></a>
 					</div>
 					<div class="">
 						<a href="#" class=""><span>멘토링</span></a>
@@ -86,7 +86,7 @@
 							</c:when>
 							<c:otherwise>
 								<a role="button" href="<c:url value='/user/userMypage' />" class="btn-mypage">마이페이지</a>
-								<a role="button" href="<c:url value='/'/>" class=>로그아웃</a>	
+								<a role="button" href="<c:url value='/user/logout'/>" class=>로그아웃</a>	
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -103,24 +103,26 @@
 <!-- Modal -->
 <div id="loginModal" class="modal fade">
 	<div class="modal-dialog">
-		<form method="post">
+		<form action="<c:url value='/user/loginCheck' />" method="post" id="loginForm">
 			<!-- Modal Content -->
 			<div class="modal-content">
 				<div class="modal-header-logo">
 					<img class="logo" src="<c:url value='/img/logo.png' />" alt="modal-header-logo">
 				</div>
 				<div class="modal-body">
-					<input type="text" placeholder="아이디 또는 이메일을 입력해주세요.">
-					<br>
-					<input type="password" placeholder="비밀번호를 입력해주세요.">
+					<input type="text" name="userId" id="signInId" placeholder="아이디를 입력해 주세요.">
+					
+					<input type="password" name="userPw" id="signInPw" placeholder="비밀번호를 입력해 주세요.">
+					<input type="checkbox" name="auto-login" checked="checked" id="auto-login"  style="border: 1px solid #000; width: 15px; height: 15px; text-align:left"> 자동로그인
 				</div>
 				<div class="modal-sign-more">
 					<a href="#">아이디/비밀번호 찾기</a>
 					<a href="<c:url value='/user/userJoin' />">회원가입</a>
 				</div>
 				<div class="btn-modal-footer">
-					<button type="submit" class="btn btn-success" data-dismiss="modal">로그인</button>
+					<button type="button" id="loginBtn" class="btn btn-success" data-dismiss="modal" >로그인</button>
 				</div>
+				<span id="idCheck"></span><span id="pwCheck"></span>					
 			</div>
 		</form>
 	</div>
@@ -129,21 +131,147 @@
 </body>
 
 <script>
-	$(document).ready(function() {
-		$(window).scroll(function() {
-			if ($(this).scrollTop() > 50) {
-				$('.top-control').fadeIn();
+	//Start Jquery
+	$(function() {
+		 
+		let chk1 = false, chk2= false;
+	
+		$(document).ready(function() {
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 50) {
+					$('.top-control').fadeIn();
+				} else {
+					$('.top-control').fadeOut();
+				}
+			});
+			$('.top-control').click(function() {
+				$('html, body').animate({
+					scrollTop : 0
+				}, 200);
+				return false;
+			});
+		});
+		
+		// 로그인 ID 입력값 검증(공백, 정규표현식)
+		$('#signInId').keyup(function() {
+			
+	     	const getIdCheck = RegExp(/^[a-zA-Z0-9]{4,14}$/);
+	     	
+			
+			if($(this).val() === '') {
+				$('#idCheck').css('background-color', 'pink');
+				$('#idCheck').html('<b style="font-size: 14px; color: red;">[아이디를 입력해주세요.]</b>');
+				chk1 = false;
+			} else if(!getIdCheck.test($(this).val())) {
+				$('#idCheck').css('background-color', 'pink');
+				$('#idCheck').html('<b style="font-size: 14px; color: red;">[영문자, 숫자 포함 4-14자 입니다.]</b>');
+				chk1 = false;
 			} else {
-				$('.top-control').fadeOut();
+				$('#idCheck').html('<b style="font-size: 14px; color: green;">[아이디 입력 완료]</b>');
+				chk1 = true;
 			}
-		});
-		$('.top-control').click(function() {
-			$('html, body').animate({
-				scrollTop : 0
-			}, 200);
-			return false;
-		});
-	});
+		}); // 로그인 ID 검증
+		
+		// 로그인 비밀번호 입력값 검증 (공백, 정규표현식)
+		$('#signInPw').keyup(function() {
+			
+			const getPwCheck = RegExp(/^[a-zA-Z0-9]{4,14}$/);
+			
+			if($(this).val() === '') {
+				$('#pwCheck').css('background-color', 'pink');
+				$('#pwCheck').html('<b style="font-size: 14px; color: red;">[비밀번호를 입력해주세요.]</b>');
+				chk2 = false;
+			} else if(!getPwCheck.test($(this).val())) {
+				$('#pwCheck').css('background-color', 'pink');
+				$('#pwCheck').html('<b style="font-size: 14px; color: red;">[영문자, 숫자 포함 4-14자 입니다.]</b>');
+				chk2 = false;
+				
+			} else {
+				$('#pwCheck').html('<b style="font-size: 14px; color: green;">[비밀번호 입력 완료]</b>');
+				chk2 = true;
+			}
+		}); // 로그인 비밀번호 검증
+		
+		$('#loginBtn').click(function() {
+			
+			if(chk1 && chk2) {
+				
+				const id = $('#signInId').val();
+				const pw = $('#signInPw').val();
+				
+				const autoLogin = $('#auto-login').is(':checked');
+				
+				console.log('id: ' + id);
+				console.log('pw: ' + pw);
+				
+				const userInfo = {
+					"userId" : id,
+					"userPw" : pw,
+					"autoLogin" : autoLogin
+				};
+				
+				$.ajax({
+					type : "POST",
+					url : "/user/loginCheck",
+					contentType : "application/json",
+					dataType : "text",
+					data : JSON.stringify(userInfo),
+					success : function(data) {
+						if(data === 'idFail') {
+							// console.log('아이디가 없습니다.');
+							$('#signInId').css('background-color', 'pink');
+							$('#signInId').html('<b style="font-size: 14px; color: red;">[아이디가 존재하지 않습니다.]</b>');
+							$('#signInIw').val('');
+							$('#signInId').focus(); // 커서를 이동시키고, 스크롤도 해당 위치로 이동시키는 함수
+							chk1 = false, chk2 = false;
+							alert('아이디가 없습니다');
+						} else if(data === 'pwFail') {
+							// console.log('비밀번호가 틀렸습니다.');
+							$('#signInPw').css('background-color', 'pink');
+							$('#signInPw').html('<b style="font-size: 14px; color: red;">[비밀번호가 틀렸습니다.]</b>');
+							$('#signInPw').val('');
+							$('#signInPw').focus();
+							chk2 = false;
+						} else {
+							// console.log('로그인 성공');
+							alert('로그인 성공');
+							location.href = '/';
+						}
+					},
+					error : function() {
+						console.log('통신 실패!');
+						
+					} 
+	      		 
+				}); //end ajax (로그인 비동기 처리)
+	      		 
+	       } else {
+	    	   alert('입력 정보를 다시 확인하세요!');
+	       }
+	
+		}); //로그인 버튼 이벤트 끝
+		
+		/* 위로가기 버튼 */ 
+		$(document).ready(function() {
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 50) {
+					$('.top-control').fadeIn();
+				} else {
+					$('.top-control').fadeOut();
+				}
+			});
+			$('.top-control').click(function() {
+				$('html, body').animate({
+					scrollTop : 0
+				}, 200);
+				return false;
+			});
+		}); // 위로가기 버튼 이벤트 끝
+		
+	}); //end JQuery       
+
+	
+	
 </script>
 
 </html>
