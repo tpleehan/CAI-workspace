@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.dct.lecture.mapper.ILectureMapper;
+import com.spring.dct.util.PageVO;
 import com.spring.dct.vo.OnlineLectureUplaodVO;
 import com.spring.dct.vo.OnlineLecturesVO;
-import com.spring.dct.vo.PageVO;
 
 @Service
 public class LectureService implements ILectureService {

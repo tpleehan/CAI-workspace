@@ -4,13 +4,43 @@
 
 <%@ include file="../include/header.jsp"%>
 
+<style>
+
+/* ---------------------- 글쓰기 ---------------------- */
+/* 타이틀 */
+section.community-header {
+	color: aliceblue;
+	font-size: 30px;
+	background-color: rgb(61, 58, 58);
+	padding: 1em 0;
+}
+/* ---------- */
+.write-body .t-control .t-title {
+	padding: 14px 8px;
+}
+
+.community-write .write-bottom {
+	text-align: center;
+}
+
+.community-write .write-body textarea {
+	resize: none;
+}
+
+.community-write .write-button {
+	text-align: right;
+	margin-bottom: 30px;
+}
+
+</style>
+
 <div id="wrapper">
 
 	<section class="community-header">
 		<div class="container">
 			<div class="row">
 				<div class=" col-md-12">
-					<h2>질문과 답변</h2>
+					<h2>질문 &amp; 답변</h2>
 				</div>
 			</div>
 		</div>
@@ -55,4 +85,3 @@
 	<%@ include file="../include/footer.jsp"%>
 
 </div>
-

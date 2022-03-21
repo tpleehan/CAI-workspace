@@ -2,9 +2,9 @@ package com.spring.dct.lecture.service;
 
 import java.util.List;
 
+import com.spring.dct.util.PageVO;
 import com.spring.dct.vo.OnlineLectureUplaodVO;
 import com.spring.dct.vo.OnlineLecturesVO;
-import com.spring.dct.vo.PageVO;
 
 public interface ILectureService {
 

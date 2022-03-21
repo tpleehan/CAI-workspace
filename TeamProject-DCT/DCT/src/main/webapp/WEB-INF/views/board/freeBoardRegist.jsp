@@ -51,28 +51,26 @@ section.community-header {
 			<div class="row">
 				<div class="col-md-12">
 					<div class="write-body">
-						<form action="#">
+						<form action="<c:url value='/board/registForm' />" name="registForm" method="post">
 							<table class="table">
 								<tbody class="t-control">
 									<tr>
 										<td class="t-title">글쓴이</td>
-										<td><input type="text" class="form-control" readonly></td>
+										<td><input type="text" class="form-control" name="userNo"></td>
 									</tr>
 									<tr>
 										<td class="t-title">제목</td>
-										<td><input type="text" class="form-control"
+										<td><input type="text" class="form-control" name="communityTitle"
 											placeholder="제목을 입력해주세요."></td>
 									</tr>
 									<tr>
 										<td class="t-title">내용</td>
-										<td><textarea class="form-control" rows="20"></textarea></td>
+										<td><textarea class="form-control" rows="20" name="communityContent"></textarea></td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="write-button">
-								<button class="btn">
-									<a href="#">목록</a>
-								</button>
+								<button type="button" class="btn" onclick="location.href='<c:url value="/board/freeBoardList" />'">목록</button>
 								<button type="submit" class="btn btn-primary">등록</button>
 							</div>
 						</form>

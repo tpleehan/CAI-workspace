@@ -1,4 +1,4 @@
-package com.spring.dct.vo;
+package com.spring.dct.util;
 
 public class PageVO {
 

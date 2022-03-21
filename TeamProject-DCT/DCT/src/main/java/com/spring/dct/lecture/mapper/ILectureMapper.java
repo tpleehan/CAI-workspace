@@ -3,7 +3,7 @@ package com.spring.dct.lecture.mapper;
 import java.util.List;
 
 import com.spring.dct.vo.OnlineLecturesVO;
-import com.spring.dct.vo.PageVO;
+import com.spring.dct.util.PageVO;
 import com.spring.dct.vo.OnlineLectureUplaodVO;
 
 public interface ILectureMapper {

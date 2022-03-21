@@ -31,7 +31,7 @@
 	<mybatis-spring:scan base-package="com.spring.dct.user.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.dct.admin.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.dct.lecture.mapper"/>
-
+	<mybatis-spring:scan base-package="com.spring.dct.freeboard.mapper"/>
 	
 	<!-- mybatis xml파일을 빈으로 등록하기 위한 스캔 설정 (base-package="인터페이스 경로 작성") -->
 	<!-- 

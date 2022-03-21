@@ -24,9 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.dct.lecture.service.ILectureService;
+import com.spring.dct.util.PageCreator;
+import com.spring.dct.util.PageVO;
 import com.spring.dct.vo.OnlineLectureUplaodVO;
-import com.spring.dct.vo.PageCreator;
-import com.spring.dct.vo.PageVO;
 
 @Controller
 @RequestMapping("/lecture")

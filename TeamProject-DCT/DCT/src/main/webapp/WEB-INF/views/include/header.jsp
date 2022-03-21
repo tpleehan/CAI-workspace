@@ -68,10 +68,10 @@
 						<a href="<c:url value='/lecture/lecturePage' />" class=""><span>강의</span></a>
 					</div>
 					<div class="">
-						<a href="#" class=""><span>멘토링</span></a>
+						<a href="<c:url value='/lecture/mentoringList' />" class=""><span>멘토링</span></a>
 					</div>
 					<div class="">
-						<a href="#" class=""><span>커뮤니티</span></a>
+						<a href="<c:url value='/board/freeBoardList' />" class=""><span>커뮤니티</span></a>
 					</div>
 					<div class="">
 						<a href="#" class=""><span class="">공지사항</span></a>
@@ -86,7 +86,7 @@
 							</c:when>
 							<c:otherwise>
 								<a role="button" href="<c:url value='/user/userMypage' />" class="btn-mypage">마이페이지</a>
-								<a role="button" href="<c:url value='/user/logout'/>" class=>로그아웃</a>	
+								<a role="button" href="<c:url value='/user/logout'/>" class="btn-logout">로그아웃</a>	
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -111,12 +111,12 @@
 				</div>
 				<div class="modal-body">
 					<input type="text" name="userId" id="signInId" placeholder="아이디를 입력해 주세요.">
-					
 					<input type="password" name="userPw" id="signInPw" placeholder="비밀번호를 입력해 주세요.">
 					<input type="checkbox" name="auto-login" checked="checked" id="auto-login"  style="border: 1px solid #000; width: 15px; height: 15px; text-align:left"> 자동로그인
 				</div>
 				<div class="modal-sign-more">
-					<a href="#">아이디/비밀번호 찾기</a>
+					<a href="<c:url value='/user/userIdSearch' />">아이디 찾기</a>
+					<a href="<c:url value='/user/userPwSearch' />">비밀번호 찾기</a>
 					<a href="<c:url value='/user/userJoin' />">회원가입</a>
 				</div>
 				<div class="btn-modal-footer">

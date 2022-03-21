@@ -4,13 +4,90 @@
 
 <%@ include file="../include/header.jsp"%>
 
+<style>
+
+/* ---------------------- 글상세 ---------------------- */
+/* 타이틀 */
+section.community-header {
+	color: aliceblue;
+	font-size: 30px;
+	background-color: rgb(61, 58, 58);
+	padding: 1em 0;
+}
+/* ---------- */
+.board-content .board-content-body .t-title {
+	padding: 14px 8px;
+}
+
+.board-content .board-content-body .t-control textarea {
+	resize: none;
+}
+
+.board-content .content-button {
+	text-align: right;
+}
+
+.content-reply .content-button {
+	text-align: right;
+}
+
+section.board-content div form .button {
+	text-align: right;
+}
+
+section.content-reply .reply-list .reply-prof {
+	height: 40px;
+	padding: 0;
+	margin-bottom: 15px;
+}
+
+section.content-reply .reply-list .reply-prof>div {
+	height: 40px;
+	display: inline-block;
+}
+
+section.content-reply .reply-list .reply-prof img {
+	width: 40px;
+}
+
+section.content-reply .reply-list .reply-prof .prof-name {
+	font-size: 16px;
+}
+
+section.content-reply .reply-list .reply-prof .reply-date {
+	font-size: 16px;
+	margin-top: 8px;
+}
+
+section.content-reply .reply-list .reply-list-content textarea {
+	margin: 0;
+	overflow: visible;
+	resize: none;
+}
+
+section.content-reply .reply-list .reply-list-content>div>a:nth-child(2),
+	a:nth-child(3) {
+	float: right;
+}
+
+section.content-reply .reply-form .reply-content textarea {
+	margin: 20px 0 10px 0;
+	resize: none;
+}
+
+section.content-reply .reply-form .content-button {
+	margin-bottom: 200px;
+}
+
+</style>
+
 <div id="wrapper">
 
 	<section class="community-header">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>질문과 답변</h2>
+					<h2>질문 &amp; 답변</h2>
 				</div>
 			</div>
 		</div>

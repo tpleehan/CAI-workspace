@@ -4,13 +4,76 @@
 
 <%@ include file="../include/header.jsp"%>
 
+<style>
+
+/* ---------------------- 자유게시판 ---------------------- */
+/* 타이틀 */
+section.community-header {
+	color: aliceblue;
+	font-size: 30px;
+	background-color: rgb(61, 58, 58);
+	padding: 1em 0;
+}
+/* ---------- */
+/* 메뉴 */
+section.community-body nav.community-body-nav ul h6 {
+	color: purple;
+	font-size: 16px;
+	margin: 40px 0;
+}
+
+section.community-body nav.community-body-nav ul li {
+	margin: 20px 0;
+}
+
+section.community-body nav.community-body-nav ul li span {
+	color: plum;
+	font-size: 20px;
+}
+/* ---------- */
+.community-body-content {
+	padding: 0;
+}
+
+.community-body .search-text {
+	margin-top: 40px;
+}
+
+.community-body .search-text .form-group {
+	margin: 0;
+}
+
+.community-body .community-body-write .write {
+	padding: 0;
+	text-align: right;
+}
+
+.community-body .community-body-content-list .table {
+	margin-top: 120px;
+}
+
+.community-body .community-body-content-list .board-head th {
+	text-align: center;
+}
+
+.community-body .community-body-content-list .board-body .board-likeDate
+	{
+	text-align: center;
+}
+
+.community-body .community-body-content .pagination-list {
+	text-align: center;
+}
+
+</style>
+
 <div id="wrapper">
 
 	<section class="community-header">
 		<div class="container">
 			<div class="row">
 				<div class=" col-md-12">
-					<h2>질문과 답변</h2>
+					<h2>질문 &amp; 답변</h2>
 				</div>
 			</div>
 		</div>
@@ -27,8 +90,8 @@
 					</ul>
 					<ul class="">
 						<h6 class="">커뮤니티</h6>
-						<li class=""><a href="#"><span>질문 &amp; 답변</span></a></li>
-						<li class=""><a href="#"><span>자유게시판</span></a></li>
+						<li class=""><a href="<c:url value='/qnaBoardList' />" class=""><span>질문 &amp; 답변</span></a></li>
+						<li class=""><a href="<c:url value='/freeBoardList' />" class=""><span>자유게시판</span></a></li>
 					</ul>
 					<ul class="">
 						<h6 class="">후기</h6>
