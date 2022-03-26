@@ -60,7 +60,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">환영합니다!</h1>
                                     </div>
-                                    <form action="<c:url value='/admin/adminLogin' />" id="adminLoginForm" class="user" method="post">
+                                    <form action="<c:url value='/admin/adminLoginCheck' />" id="adminLoginForm" class="user" method="post">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" name="adminId"
                                                 id="adminId" aria-describedby="emailHelp"
@@ -72,8 +72,8 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="autoLoginCheck">
-                                                <label class="custom-control-label" for="customCheck">로그인 상태 유지</label>
+                                                <input type="checkbox" class="custom-control-input" name="adminAutoLogin" id="autoLoginCheck">
+                                                <label class="custom-control-label" for="autoLoginCheck">로그인 상태 유지</label>
                                             </div>
                                         </div>
                                         <button type="button" id="adminLoginBtn" class="btn btn-primary btn-user btn-block">로그인</button>
@@ -121,6 +121,8 @@
 			alert('회원 가입 정상 처리 되었습니다.');
 		} else if(msg === 'adminLoginFail') {
 			alert('로그인 실패. 아이디와 비밀번호를 확인해주세요.');
+		}  else if(msg === 'adminLogout') {
+			alert('로그아웃 되었습니다.');
 		}
 	
 		//df373eef4355df05d43485c0c1b4e35f
@@ -148,19 +150,91 @@
 		}
 		
 		$(function() {
-			$('#adminLoginBtn').click(function() {
-				if($('#adminId').val() === '') {
+			
+			let adminChk1 = false, adminChk2 = false;
+			
+			// 관리자 로그인 id 입력값
+			$('#adminId').keyup(function() {
+				
+				if($(this).val() === '') {
 					alert('아이디를 입력하세요.');
 					$('#adminId').focus();
-					return;
-				} else if($('#adminPw').val() === '') {
+					adminChk1 = false;
+				} else {
+					adminChk1 = true;
+				}
+				
+			}); // 관리자 로그인 id 검증
+			
+			// 관리자 로그인 비밀번호 입력값
+			$('#adminPw').keyup(function() {
+				
+				if($(this).val() === '') {
 					alert('비밀번호를 입력하세요.');
 					$('#adminPw').focus();
-					return;
+					adminChk2 = false;
 				} else {
-					$('#adminLoginForm').submit();
+					adminChk2 = true;
 				}
-			});
+			}); // 관리자 로그인 비밀번호 검증
+			
+			
+			// 로그인 버튼 클릭
+			$('#adminLoginBtn').click(function() {
+				
+				if(adminChk1 && adminChk2) {
+					const adminId = $('#adminId').val();
+					const adminPw = $('#adminPw').val();
+					const adminAutoLogin = $('#autoLoginCheck').is(':checked');
+					
+		            console.log('id: ' + adminId);
+		            console.log('pw: ' + adminPw);
+		            
+		            const adminInfo = {
+		                "adminId" : adminId,
+		                "adminPw" : adminPw,
+		                "adminAutoLogin" : adminAutoLogin
+		            }
+		            
+		            
+		            $.ajax({
+		                type : "POST",
+		                url : "/admin/adminLoginCheck",
+		                contentType : "application/json",
+		                dataType : "text",
+		                data : JSON.stringify(adminInfo),
+		                success : function(data) {
+		                    if(data === 'adminIdFail') {
+		                    	alert('아이디 또는 비밀번호가 틀렸습니다.')
+		                        $('#adminId').val('');
+		                        $('#adminId').focus(); 
+		                        chk1 = false, chk2 = false;
+		                    } else if(data === 'adminPwFail') {
+		                    	alert('아이디 또는 비밀번호가 틀렸습니다.')
+		                        $('#adminPw').val('');
+		                        $('#adminPw').focus(); 
+		                        chk2 = false;
+		                    } else {
+		                        alert('로그인 성공');
+		                        location.href = '/admin/admin_index';
+		                    }
+		                },
+		                
+		                error : function() {
+		                    console.log('통신 실패!');
+		                    
+		                } 
+		                
+		            }); //end ajax (로그인 비동기 처리)
+		            
+				} else {
+					alert('입력 정보를 다시 확인해주세요.');
+				}
+				
+			}); // 로그인 버튼 이벤트 끝
+			
+			
+			
 		});
 		
 		

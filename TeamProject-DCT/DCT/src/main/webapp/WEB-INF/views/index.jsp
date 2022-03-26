@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <div id="wrapper">
 	<%@ include file="include/header.jsp" %>
@@ -59,50 +60,16 @@
 
 			<div class="row">
 				<ul class="recommended-lecture-list">
-					<li>
-						<a href="#" class="lecture-link">
-							<img src="./img/java.png" alt="java">
-							<span>강의 제목: 자바 참 쉽다!</span>
-							<span>강사(닉네임): 중앙학원</span>
-							<span>가격: ￦55,000원</span>
-							<span>할인가격: 무료</span>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="lecture-link">
-							<img src="./img/python.png" alt="java">
-							<span>강의 제목: 파이썬 어려워</span>
-							<span>강사(닉네임): 홍길동</span>
-							<span>가격: ￦35,000원</span>
-							<span>할인가격: ￦1,000원</span>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="lecture-link">
-							<img src="./img/css.png" alt="java">
-							<span>강의 제목: CSS 배워볼까!</span>
-							<span>강사(닉네임): 김철수</span>
-							<span>가격: ￦55,000원</span>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="lecture-link">
-							<img src="./img/spring.png" alt="java">
-							<span>강의 제목: 스프링 배우기</span>
-							<span>강사(닉네임): 김뽀삐</span>
-							<span>가격: ￦75,000원</span>
-							<span>할인가격: 무료</span>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="lecture-link">
-							<img src="./img/html.png" alt="java">
-							<span>강의 제목: 웹 개발</span>
-							<span>강사(닉네임): 김아무개</span>
-							<span>가격: ￦15,000원</span>
-						</a>
-					</li>
-
+					<c:forEach var="vo" begin="1" items="${lectureList}" end="8">
+						<li>
+							<a href="<c:url value='/lecture/lectureDetail?lectureNo=${vo.lectureNo}&pageNum=1&keyword=${pc.paging.keyword }&condition=${pc.paging.condition }' />">
+								<img src="<c:url value='/lecture/lectureDisplay?thumbnailFileLoca=${vo.thumbnailFileLoca}&thumbnailFilename=${vo.thumbnailFilename}' />">
+								<span>강의 제목: ${vo.lectureTitle}</span>
+								<span>강사(닉네임): ${vo.userNo}</span>
+								<span>가격: ￦<fmt:formatNumber value="${vo.lecturePrice}" pattern="#,###" /></span>
+							</a>
+						</li>
+					</c:forEach>
 				</ul>
 			</div>
 

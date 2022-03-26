@@ -67,18 +67,18 @@
 	<select id="getList" resultMap="uploadMap">
 		SELECT * FROM
 		(
-		SELECT ROWNUM AS rn, tbl.* FROM
-		(
-		SELECT * FROM onlinelecture_upload
-
-		<include refid="search" />
-		ORDER BY lecture_no DESC
-		) tbl
+			SELECT ROWNUM AS rn, tbl.* FROM
+				(
+				SELECT * FROM onlinelecture_upload
+		
+				<include refid="search" />
+				ORDER BY lecture_no DESC
+				) tbl
 		)
-	<![CDATA[	
-	WHERE rn > (#{pageNum}-1) * #{countPerPage}
-	AND rn <= #{pageNum} * #{countPerPage}
-	]]>
+		<![CDATA[	
+		WHERE rn > (#{pageNum}-1) * #{countPerPage}
+		AND rn <= #{pageNum} * #{countPerPage}
+		]]>
 	</select>
 
 	<!-- 게시물 수 조회 기능 -->
@@ -88,12 +88,10 @@
 		<include refid="search" />
 	</select>
 
-
 	<!-- 게시물 내용 조회 -->
 	<select id="getContent" resultMap="uploadMap">
 		SELECT * FROM onlinelecture_upload
 		WHERE lecture_no = #{lectureNO}
 	</select>
-
 
 </mapper>

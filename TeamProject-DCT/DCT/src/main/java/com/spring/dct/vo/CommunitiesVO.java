@@ -7,7 +7,7 @@ public class CommunitiesVO {
 	private int communityNo;
 	private int userNo;
 	private String communityTitle;
-	private String communityComent;
+	private String communityContent;
 	private int communityViewCount;
 	private Timestamp communityCreateDate;
 
@@ -35,12 +35,12 @@ public class CommunitiesVO {
 		this.communityTitle = communityTitle;
 	}
 
-	public String getCommunityComent() {
-		return communityComent;
+	public String getCommunityContent() {
+		return communityContent;
 	}
 
-	public void setCommunityComent(String communityComent) {
-		this.communityComent = communityComent;
+	public void setCommunityContent(String communityContent) {
+		this.communityContent = communityContent;
 	}
 
 	public int getCommunityViewCount() {
@@ -62,7 +62,7 @@ public class CommunitiesVO {
 	@Override
 	public String toString() {
 		return "CommunitiesVO [communityNo=" + communityNo + ", userNo=" + userNo + ", communityTitle=" + communityTitle
-				+ ", communityComent=" + communityComent + ", communityViewCount=" + communityViewCount
+				+ ", communityContent=" + communityContent + ", communityViewCount=" + communityViewCount
 				+ ", communityCreateDate=" + communityCreateDate + "]";
 	}
 

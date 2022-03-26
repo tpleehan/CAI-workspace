@@ -11,6 +11,9 @@ public interface IAdminService {
 	// 관리자 회원 가입
 	void adminJoin(AdminsVO vo);
 	
+	// 관리자 아이디 중복 확인
+	int adminIdCheck(String adminId);
+	
 	// 관리자 로그인
 	AdminsVO adminLogin(@Param("adminId") String adminId, @Param("adminPw") String adminPw);
 	

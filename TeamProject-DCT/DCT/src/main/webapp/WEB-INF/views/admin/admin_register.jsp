@@ -53,50 +53,42 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">관리자 회원가입</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" action="<c:url value='/admin/adminJoin' />" method="post" id="adminJoinForm">
+                                <div class="form-group row">
+                                	<div class="col-sm-8 mb-3 mb-sm-0">
+	                                    <input type="text" class="form-control form-control-user" name="adminId" id="adminId"
+	                                        placeholder="아이디를 입력해주세요.">
+                                	</div>
+                         			<div class="col-sm-4">
+	                                    <button type="button" class="btn btn-dark btn-user" id="adminIdCheckBtn">아이디 중복 확인</button>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="adminPw" name="adminPw" placeholder="비밀번호">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="adminPwConfirm" placeholder="비밀번호 확인">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <input type="text" class="form-control form-control-user" id="adminName" name="adminName"
+                                        placeholder="관리자의 성함을 입력해주세요.">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                <a href="<c:url value='/admin/admin_login' />" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+                                <button type="button" class="btn btn-primary btn-user btn-block" id="admin-signup-btn">
+                                    회원가입 하기
+                                </button>
                                 <hr>
-                                <a href="<c:url value='/admin/admin_index' />" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="<c:url value='/admin/admin_index' />" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
                             </form>
-                            <hr>
                             <div class="text-center">
-                                <a class="small" href="<c:url value='/admin/admin_forgot-password' />">Forgot Password?</a>
+                                <a class="small" href="<c:url value='/admin/admin_forgot-password' />">비밀번호 찾기</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="<c:url value='/admin/admin_login' />">Already have an account? Login!</a>
+                                <a class="small" href="<c:url value='/admin/admin_login' />">이미 계정을 가지고 있나요?</a>
                             </div>
                         </div>
                     </div>
@@ -115,6 +107,75 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<c:url value='/js/sb-admin-2.min.js' />"></script>
+    
+    <script>
+    	$(function() {
+    		// 관리자 아이디 중복 체크
+    		$('#adminIdCheckBtn').click(function() {
+    			if($('#adminId').val() === '') {
+    				alert('아이디는 필수값 입니다.')
+    				$('#adminId').focus();
+    				return;
+    			}
+
+    			const adminId = $('#adminId').val();
+    			 
+    			$.ajax({
+    				type : 'post',
+    				url: '<c:url value="/admin/adminIdCheck" />',
+    				data : adminId,
+    				contentType : 'application/json',
+    				success : function(data) {
+    					if(data === 'ok') {
+    						$('#adminId').attr('readonly', true);
+    						alert('사용 가능한 아이디 입니다.');
+    					} else {
+    						alert('아이디가 존재합니다.');
+    						$('#adminId').focus();
+    					}
+    					
+    				},
+    				error : function() {
+    					alert('통신 실패');
+    				}
+    			
+    			}); // ajax admin id 중복 이벤트 끝 
+    			 
+    		}); // end adminIdCheckBtn 
+    		
+    		
+    		// 회원가입 form 데이터 검증(입력값 없이 회원 가입 버튼 누른 경우)
+    		$('#admin-signup-btn').click(function() {
+    			if(!$('#adminId').attr('readonly')) {
+    				alert('아이디 중복체크는 필수입니다.');
+    				$('#adminId').focus();
+    				return;
+    			} else if($('#adminPw').val() === '' || $('#adminPw').val() !== $('#adminPwConfirm').val()) {
+    				alert('비밀번호를 확인하세요.');
+    				$('#adminPw').focus();
+    				return;
+    			} else if($('#adminName').val() === '') {
+    				alert('이름은 필수입니다.');
+    				$('#adminName').focus();
+    				return;
+    			} else {
+    				$('#adminJoinForm').submit(); // 회원가입 폼 데이터 제출
+    			}
+    		}); // 관리자 회원가입 폼 데이터 검증처리 이벤트 끝
+
+    		
+    		/* 비밀번호 확인검사 */
+    		$('#adminPwConfirm').keyup(function() {
+    			if($('#adminPwConfirm').val() === $('#adminPw').val()) {
+    				$('#adminPwConfirm').css('background-color', 'DeepSkyBlue');
+    			} else {
+    				$('#adminPwConfirm').css('background-color', 'red');
+    			}
+    		});
+    		
+		}); // end Jquery
+    
+    </script>
 
 </body>
 

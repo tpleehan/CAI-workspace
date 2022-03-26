@@ -8,6 +8,8 @@
 		<id property="adminId" column="ADMIN_ID" />
 		<result property="adminPw" column="ADMIN_PW"/>
 		<result property="adminName" column="ADMIN_NAME"/>
+		<result property="sessionId" column="SESSION_ID"/>
+		<result property="limitTime" column="LIMIT_TIME"/>
 	</resultMap>
 	
 	<!-- 관리자 회원 가입 -->
@@ -19,6 +21,13 @@
 		(#{adminId}, #{adminPw}, #{adminName})
 	</insert>
 	
+	<!-- 관리자 아이디 중복 확인 -->
+	<!-- int adminIdCheck(String adminId); -->
+	<select id="adminIdCheck" resultType="int">
+		SELECT COUNT(*) FROM ADMINS
+		WHERE ADMIN_ID = #{adminId}
+	</select>
+	
 	<!-- 관리자 로그인 -->
 	<!-- AdminsVO adminLogin(@Param("adminId") String adminId, @Param("adminPw") String adminPw); -->
 	<select id="adminLogin" resultType="com.spring.dct.vo.AdminsVO"> 
@@ -29,12 +38,8 @@
 	
 	<!-- 관리자 정보 얻어오기 -->
 	<!-- AdminsVO getAdminInfo(String adminId); -->
-	<select id="getInfo" resultMap="admin">
-		SELECT 
-			ADMIN_ID,
-			ADMIN_PW,
-			ADMIN_NAME
-		FROM ADMINS
+	<select id="getAdminInfo" resultMap="admin">
+		SELECT * FROM ADMINS
 		WHERE ADMIN_ID = #{adminId}
 	</select>	
 	
@@ -59,12 +64,20 @@
 	</delete>
 
 	<!-- 자동 로그인을 체크한 경우 쿠키값(세션 아이디)과 유효시간을 갱신 -->
-	<update id="keepLogin">
+	<!-- void autoLogin(String session, Date limitTime, String adminId); -->
+	<update id="autoLogin">
 		UPDATE ADMINS
 		SET SESSION_ID = #{sessionId},
 			LIMIT_TIME = #{limitTime}
 		WHERE ADMIN_ID = #{adminId}
 	</update>
 
+
+	<!-- 자동 로그인을 신청한 회원이 사이트 재방문 시 로컬에 저장된 쿠키값(세션ID)과 일치하는 회원의 모든 정보를 조회 -->
+	<!-- AdminsVO getAdminWithSessionId(String seesionId); -->
+	<select id="getAdminWithSessionId" resultMap="admin">
+		SELECT * FROM ADMINS
+		WHERE session_id = #{sessionId}
+	</select>
 
 </mapper>

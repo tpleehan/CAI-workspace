@@ -128,7 +128,7 @@
                                 <p class="menu-label">설정</p>
                                 <ul class="menu-list">
                                     <li>
-                                        <a class="btn_wrap " href="#">
+                                        <a class="btn_wrap " href="/user/userModify">
                                             <span>프로필</span>
                                         </a>
                                     </li>

@@ -32,12 +32,13 @@
 	<mybatis-spring:scan base-package="com.spring.dct.admin.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.dct.lecture.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.dct.freeboard.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.dct.visit.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.dct.cart.mapper"/>
 	
 	<!-- mybatis xml파일을 빈으로 등록하기 위한 스캔 설정 (base-package="인터페이스 경로 작성") -->
 	<!-- 
 	<mybatis-spring:scan base-package="com.spring.dct.mentorings.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.dct.comments.mapper"/>
-	<mybatis-spring:scan base-package="com.spring.dct.carts.mapper"/>	
 	<mybatis-spring:scan base-package="com.spring.dct.qnaboard.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.dct.purchases.mapper"/>	
 	<mybatis-spring:scan base-package="com.spring.dct.coupons.mapper"/>	

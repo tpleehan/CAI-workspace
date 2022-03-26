@@ -41,6 +41,8 @@
 	<!-- 인터셉터 빈 등록 방식 -->
 	<beans:bean id="autoLogin"
 		class="com.spring.dct.user.commons.interceptor.AutoLoginInterceptor" />
+	<beans:bean id="adminAutoLogin"
+		class="com.spring.dct.admin.commons.interceptor.AdminAutoLoginInterceptor" />
 
 	<interceptors>
 		<!-- <mapping path="/board/**"/> 이렇게 하면 모든 board에 interceptor 적용 -->
@@ -51,6 +53,10 @@
 		<interceptor>
 			<mapping path="/" />
 			<beans:ref bean="autoLogin" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/" />
+			<beans:ref bean="adminAutoLogin" />
 		</interceptor>
 
 	</interceptors>

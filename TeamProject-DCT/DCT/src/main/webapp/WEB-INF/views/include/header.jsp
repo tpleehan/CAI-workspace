@@ -157,7 +157,6 @@
 			
 	     	const getIdCheck = RegExp(/^[a-zA-Z0-9]{4,14}$/);
 	     	
-			
 			if($(this).val() === '') {
 				$('#idCheck').css('background-color', 'pink');
 				$('#idCheck').html('<b style="font-size: 14px; color: red;">[아이디를 입력해주세요.]</b>');
@@ -193,63 +192,63 @@
 		}); // 로그인 비밀번호 검증
 		
 		$('#loginBtn').click(function() {
-			
-			if(chk1 && chk2) {
-				
-				const id = $('#signInId').val();
-				const pw = $('#signInPw').val();
-				
-				const autoLogin = $('#auto-login').is(':checked');
-				
-				console.log('id: ' + id);
-				console.log('pw: ' + pw);
-				
-				const userInfo = {
-					"userId" : id,
-					"userPw" : pw,
-					"autoLogin" : autoLogin
-				};
-				
-				$.ajax({
-					type : "POST",
-					url : "/user/loginCheck",
-					contentType : "application/json",
-					dataType : "text",
-					data : JSON.stringify(userInfo),
-					success : function(data) {
-						if(data === 'idFail') {
-							// console.log('아이디가 없습니다.');
-							$('#signInId').css('background-color', 'pink');
-							$('#signInId').html('<b style="font-size: 14px; color: red;">[아이디가 존재하지 않습니다.]</b>');
-							$('#signInIw').val('');
-							$('#signInId').focus(); // 커서를 이동시키고, 스크롤도 해당 위치로 이동시키는 함수
-							chk1 = false, chk2 = false;
-							alert('아이디가 없습니다');
-						} else if(data === 'pwFail') {
-							// console.log('비밀번호가 틀렸습니다.');
-							$('#signInPw').css('background-color', 'pink');
-							$('#signInPw').html('<b style="font-size: 14px; color: red;">[비밀번호가 틀렸습니다.]</b>');
-							$('#signInPw').val('');
-							$('#signInPw').focus();
-							chk2 = false;
-						} else {
-							// console.log('로그인 성공');
-							alert('로그인 성공');
-							location.href = '/';
-						}
-					},
-					error : function() {
-						console.log('통신 실패!');
-						
-					} 
-	      		 
-				}); //end ajax (로그인 비동기 처리)
-	      		 
-	       } else {
-	    	   alert('입력 정보를 다시 확인하세요!');
-	       }
-	
-		}); //로그인 버튼 이벤트 끝
+	        
+	        if(chk1 && chk2) {
+	            
+	            const id = $('#signInId').val();
+	            const pw = $('#signInPw').val();
+	            
+	            const autoLogin = $('#auto-login').is(':checked');
+	            
+	            console.log('id: ' + id);
+	            console.log('pw: ' + pw);
+	            
+	            const userInfo = {
+	                "userId" : id,
+	                "userPw" : pw,
+	                "autoLogin" : autoLogin
+	            };
+	            
+	            $.ajax({
+	                type : "POST",
+	                url : "/user/loginCheck",
+	                contentType : "application/json",
+	                dataType : "text",
+	                data : JSON.stringify(userInfo),
+	                success : function(data) {
+	                    if(data === 'idFail') {
+	                        // console.log('아이디가 없습니다.');
+	                        $('#signInId').css('background-color', 'pink');
+	                        $('#signInId').html('<b style="font-size: 14px; color: red;">[아이디가 존재하지 않습니다.]</b>');
+	                        $('#signInId').val('');
+	                        $('#signInId').focus(); // 커서를 이동시키고, 스크롤도 해당 위치로 이동시키는 함수
+	                        chk1 = false, chk2 = false;
+	                        alert('아이디가 없습니다');
+	                    } else if(data === 'pwFail') {
+	                        // console.log('비밀번호가 틀렸습니다.');
+	                        $('#signInPw').css('background-color', 'pink');
+	                        $('#signInPw').html('<b style="font-size: 14px; color: red;">[비밀번호가 틀렸습니다.]</b>');
+	                        $('#signInPw').val('');
+	                        $('#signInPw').focus();
+	                        chk2 = false;
+	                    } else {
+	                        // console.log('로그인 성공');
+	                        alert('로그인 성공');
+	                        location.href = '/';
+	                    }
+	                },
+	                error : function() {
+	                    console.log('통신 실패!');
+	                    
+	                } 
+	                
+	            }); //end ajax (로그인 비동기 처리)
+	                
+	        } else {
+	            alert('입력 정보를 다시 확인하세요!');
+	        }
+
+	    }); //로그인 버튼 이벤트 끝
 		
 		/* 위로가기 버튼 */ 
 		$(document).ready(function() {

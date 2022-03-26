@@ -109,7 +109,7 @@
                                     <p class="menu-label">설정</p>
                                     <ul class="menu-list">
                                         <li>
-                                            <a class="btn_wrap " href="#">
+                                            <a class="btn_wrap " href="/user/userModify">
                                                 <span>프로필</span>
                                             </a>
                                         </li>
@@ -135,49 +135,42 @@
                                             <p>아이디</p>
                                         </li>
                                         <ul class="user_selection">
-                                            <input id="user-id" type="text" name="id" value="${userInfo.userId}" minlength="2" readonly>
+                                            <input id="user-id" type="text" name="userId" value="${userInfo.userId}" minlength="2" readonly>
                                         </ul>
                                         <li>
                                             <p>이메일</p>
                                         </li>
                                         <ul class="user_selection">
                                             <input id="user-email" type="text" name="userEmail" minlength="2" value="${userInfo.userEmail}">
-                                            <button><span>변경</span></button>
                                         </ul>
                                         <li>
                                             <p>휴대전화</p>
                                         </li>
                                         <ul class="user_selection">
-                                            <input id="user-phone" type="text" name="userPhone" minlength="2">
-                                            <button><span>변경</span></button>
+                                            <input id="user-phone" type="text" name="userPhone" minlength="2" value="${userInfo.userPhone}">
                                         </ul>
                                         <li>
-                                            <p>비밀번호</p>
+                                            <p>변경할 비밀번호</p>
                                         </li>
                                         <ul class="user_selection">
-                                            <input type="password" id="user-Pw" type="text" name="userPw" minlength="2">
-                                            <button><span>변경</span></button>
+                                            <input type="password" id="userPw" type="text" name="userPw" minlength="2">
                                         </ul>
                                         <li>
-                                            <p>비밀번호 확인</p>
+                                            <p>변경할 비밀번호 확인</p>
                                         </li>
                                         <ul class="user_selection">
                                             <input type="password" id="userPwChk" type="text" name="userPwChk" minlength="2">
-                                            <button><span>변경</span></button>
                                         </ul>
                                     </ul>
-                                </form>
-                            </div>
-                            <div class="big_class">
                                 <h3>기본 배송 정보</h3>
                                 <div class="line"></div>
-                                <form class="modify_info1">
                                     <ul class="user_info">
                                         <ul class="user_selection">
-                                            <input id="userZipcode" type="text" name="userZipcode" value="${userInfo.userZipcode}" readonly>
+                                            <input type="text" id="userZipcode" name="userZipcode" value="${userInfo.userZipcode}" readonly>
                                             <button type="button" id="addrBtn"><span>검색</span></button><br><br>
-                                            <input id="userAddress" type="text" name="userAddress" value="${userInfo.userAddress}" placeholder="검색 버튼으로 주소를 검색해 주세요"><br><br>
-                                            <input id="userAddressDetails" type="text" name="userAddressDetails" value="${userInfo.userAddressDetails}" placeholder="상세 버튼어쩌구해 주세요">
+                                            <input type="text" id="userAddress" name="userAddress" value="${userInfo.userAddress}" placeholder="검색 버튼으로 주소를 검색해 주세요" readonly><br><br>
+                                            <input type="text" id="userAddressDetails" name="userAddressDetails" value="${userInfo.userAddressDetails}" placeholder="상세 주소를 입력해 주세요.">
+                                    	</ul>
                                     </ul>
                                 </form>
                             </div>
@@ -206,7 +199,7 @@
 <script>
 	const msg = '${msg}';
 	if(msg === 'updateSuccess') {
-		alert('수정이 정상 처리 되었습니다.');
+		alert('수정 정상 처리 되었습니다.');
 	}
 	$(function() {
 		// 비밀번호가 올바른 정규표현식대로 작성이 되었는지 검증
@@ -230,17 +223,17 @@
 				return;
 				
 			// 나머지 입력창 빈칸 여부 확인
-			} else if($('input[name=userEmail]').val() === '') {		
+			} else if($('#userEmail').val() === '') {		
 				alert('이메일을 정확히 입력해 주세요.');
-				$('input[name=userEmail]').focus();
+				$('#userEmail').focus();
 				return;
-			} else if($('input[name=userPhone]').val() === '') {		
+			} else if($('#userPhone').val() === '') {		
 				alert('전화번호를 정확히 입력해 주세요.');
-				$('input[name=userPhone]').focus();
+				$('#userPhone').focus();
 				return;
-			} else if($('input[name=userAddressDetails]').val() === '') {		
+			} else if($('#userAddressDetails').val() === '') {		
 				alert('상세주소를 정확히 입력해 주세요.');
-				$('input[name=userAddressDetails]').focus();
+				$('#userAddressDetails').focus();
 				return;
 				
 			} else {

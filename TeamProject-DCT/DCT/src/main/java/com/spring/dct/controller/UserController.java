@@ -87,37 +87,25 @@ public class UserController {
 			System.out.println("dbData : " + dbData);
 
 			if (encoder.matches(vo.getUserPw(), dbData.getUserPw())) {
-				// 로그인 성공 회원을 대상으로 세션 정보 생성
 				session.setAttribute("login", dbData);
-				System.out.println(session.getId());
 
 				long limitTime = 60 * 60 * 24 * 90;
 
 				// 자동 로그인 체크 시 처리해야 할 내용
 				if (vo.isAutoLogin()) {
-					// 자동 로그인을 희망하는 경우
-					// 쿠키를 이용하여 자동 로그인 정보를 저장
 					System.out.println("자동 로그인 쿠키 생성 중");
-					// 세션 아이디를 가지고 와서 쿠키에 저장(고유한 값이 필요하기 때문)
 					Cookie loginCookie = new Cookie("loginCookie", session.getId());
-					loginCookie.setPath("/"); // 쿠키가 동작할 수 있는 유효한 url
+					loginCookie.setPath("/"); 
 					loginCookie.setMaxAge((int) limitTime);
-
-					// 응답 객체에 쿠키 전달
+					
 					response.addCookie(loginCookie);
-
-					// 자동 로그인 유지 시간을 날짜 객체로 변환 (DB에 삽입하기 위해, 밀리초)
+					
 					long expiredDate = System.currentTimeMillis() + (limitTime * 1000);
-					// Date 객체의 생성자에 매개값으로 밀리초의 정수를 전달하면 날짜 형태로 변경해 준다.
 					Date limitDate = new Date(expiredDate);
-
+					
 					System.out.println("자동 로그인 만료 시간: " + limitDate);
-
+					
 					service.keepLogin(session.getId(), limitDate, vo.getUserId());
-					System.out.println(session.getId());
-
-					System.out.println(vo.getUserId());
-
 				}
 
 				return "loginSuccess";
@@ -132,46 +120,78 @@ public class UserController {
 
 		}
 
-	} // loginCheck
+	}
 
 	@GetMapping("/userMypage")
 	public void userMypage() {
 		System.out.println("userMypage 페이지 진입");
 	}
 
-	/*
-	 * 내 정보 수정 처리
-	 * 
-	 * @GetMapping("/userModify") public void userMyPage(HttpSession session, Model
-	 * model) {
-	 * 
-	 * // 세션 데이터에서 id를 가지고 와서 sql문을 작성 가능 String id = ((UserVO)
-	 * session.getAttribute("login")).getUserId();
-	 * 
-	 * UserVO userInfo = service.getInfo(id);
-	 * 
-	 * model.addAttribute("userInfo", userInfo); }
-	 */
-
 	@GetMapping("/userModify")
-	public void userModify() {
+	public void userModify(HttpSession session, Model model) {
 		System.out.println("userModify 페이지 진입");
+		
+		String id = ((UsersVO) session.getAttribute("login")).getUserId();
+		UsersVO userInfo = service.getInfo(id);
+		model.addAttribute("userInfo", userInfo);
+		
 	}
 
 	// 마이페이지 수정 처리
 	@PostMapping("/userUpdate")
 	public String userUpdate(UsersVO vo, RedirectAttributes ra) {
-		System.out.println("내 정보 수정 처리");
+		System.out.println("내 정보 수정처리");
 		System.out.println("param: " + vo);
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
+		System.out.println("암호화 하기 전 비밀번호: " + vo.getUserPw());
+		
+		String securePw = encoder.encode(vo.getUserPw());
+		System.out.println("암호화 하기 전 비밀번호: " + securePw);
+		vo.setUserPw(securePw);
+		
 		service.updateUser(vo);
 		ra.addFlashAttribute("msg", "updateSuccess");
-
+		
 		return "redirect:/user/userModify";
 	}
 
 	@GetMapping("/userDelete")
-	public void userDelete() {
+	public void userDelete(HttpSession session, Model model) {
 		System.out.println("userDelete 페이지 진입");
+		
+		String id = ((UsersVO) session.getAttribute("login")).getUserId();
+		UsersVO userInfo = service.getInfo(id);
+		model.addAttribute("userInfo", userInfo);
+	}
+	
+	/* 유저 삭제 */
+	@PostMapping("/deleteCheck")
+	@ResponseBody
+	public String deleteCheck(@RequestBody UsersVO vo, HttpSession session, RedirectAttributes ra) {
+		System.out.println("유저 삭제 처리");
+		System.out.println("param: " + vo);
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
+		UsersVO user = (UsersVO) session.getAttribute("login");
+		System.out.println("user : " + user);
+		
+		String sessionPw = user.getUserPw();
+		System.out.println("sessionPw : " + sessionPw);
+		
+		if (encoder.matches(vo.getUserPw(), sessionPw)) {
+			service.deleteUser(vo);
+			session.invalidate();
+			ra.addFlashAttribute("msg", "deleteSuccess");
+			
+		} else {
+			ra.addFlashAttribute("msg", "deleteFail");
+		}
+		
+		return "redirect:/";
+		
 	}
 
 	@GetMapping("/userMypageStudy")
@@ -195,25 +215,25 @@ public class UserController {
 	}
 
 	@GetMapping("/logout")
-	public ModelAndView logout(HttpSession session, RedirectAttributes ra, HttpServletRequest request,
-			HttpServletResponse response) {
+	public ModelAndView logout(HttpSession session, RedirectAttributes ra, 
+								HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("/user/logout: GET");
-
+		
 		UsersVO user = (UsersVO) session.getAttribute("login");
-
+		
 		session.removeAttribute("login");
-
+		
 		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
-
+		
 		if (loginCookie != null) {
 			loginCookie.setMaxAge(0);
 			loginCookie.setPath("/");
 			response.addCookie(loginCookie);
 			service.keepLogin("none", new Date(), user.getUserId());
 		}
-
+		
 		ra.addFlashAttribute("msg", "logout");
-
+		
 		return new ModelAndView("redirect:/");
 	}
 

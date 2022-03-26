@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@ include file="../include/header.jsp"%>
-
 <style>
 
 	/* ---------------------- 글상세 ---------------------- */
@@ -81,7 +79,7 @@
 </style>
 
 <div id="wrapper">
-
+	<%@ include file="../include/header.jsp"%>
 	<section class="community-header">
 		<div class="container">
 			<div class="row">
@@ -122,7 +120,7 @@
 							<input type="hidden" name="communityNo" value="${article.communityNo}">
 							<input type="hidden" name="pageNum" value="${p.pageNum}"> 
 							<input type="hidden" name="countPerPage" value="${p.countPerPage}">
-
+							
 							<input id="list-btn" class="btn" type="button" value="목록">&nbsp;&nbsp;
 
 							<c:if test="${login.name == article.userNo}">

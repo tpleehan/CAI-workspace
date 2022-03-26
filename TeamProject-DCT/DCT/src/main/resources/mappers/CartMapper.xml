@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.dct.cart.mapper.ICartMapper">
+
+	<resultMap type="com.spring.dct.vo.CartsVO" id="cart">
+		<id property="cartNo" column="CART_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="cartAmount" column="CART_AMOUNT" />
+		<result property="lectureNo" column="LECTURE_NO"/>
+	</resultMap>
+	
+	<!-- 장바구니 추가 -->
+	<!-- void addCart(CartsVO vo); -->
+	<insert id="addCart">
+		INSERT INTO CARTS 
+			(CART_NO, USER_NO, CART_AMOUNT, LECTURE_NO)
+		VALUES
+			(CART_NO_SEQ.NEXTVAL, #{userNo}, 1, #{lectureNo}) 
+	</insert>
+	
+	<!-- 장바구니 수량 변경 -->
+	<update id="updateCartItemAmount">
+		UPDATE
+			CARTS
+		SET
+			CART_AMOUNT = #{cartAmount}
+		WHERE
+			CART_NO = #{cartNo}
+	</update>
+	
+	<!-- 장바구니에 담긴 강의 찾기 (사용자 + 강의) -->
+	<select id="getCartItem">
+		select
+			CART_NO AS cartNo,
+			LECTURE_NO AS lectureNo,
+			USER_NO AS userNo,
+			CART_AMOUNT AS cartAmount
+		from
+			CARTS
+		where
+			LECTURE_NO = #{lectureNo}
+		AND
+			USER_NO = #{userNo}
+	</select>
+	
+	<!-- 장바구니 목록 얻어오기 -->
+	<!-- List<CartsVO> listCart(int userNo); -->
+	<select id="listCart" resultMap="cart">
+		SELECT
+		    c.CART_NO AS cartNo, 
+		    c.USER_NO AS userNo,
+		    p.LECTURE_NO As lectureNo,
+		    u.USER_NAME AS userName,
+		    u.USER_PHONE AS userPhone,
+		    u.USER_EMAIL AS userEmail,
+		    p.LECTURE_TITLE AS lectureTitle, 
+		    c.CART_AMOUNT,
+		    p.LECTURE_PRICE AS lecturePrice,
+		    (lecture_price * cart_amount) money
+		FROM
+		    USERS u, ONLINELECTURE_UPLOAD p, CARTS c
+		WHERE u.USER_NO = c.USER_NO
+		    AND p.LECTURE_NO = c.LECTURE_NO
+		    AND c.USER_NO = #{userNo}
+		ORDER BY
+		    c.CART_NO;
+	</select>
+		
+	<!--  장바구니에 담긴 상품 찾기 (사용자) -->
+	<select id="getCartItemsByUserNo" resultMap="cart">
+		SELECT
+			c.CART_NO					as cartNo,
+			c.LECTURE_NO				as lectureNo,
+			c.USER_NO					as userNo,
+			c.CART_AMOUNT				as cartAmount,
+			o.LECTURE_TITLE				as lectureTitle,
+			o.LECTURE_PRICE				as lecturePrice,
+			o.LECTURE_DISCOUNT_PRICE	as lectureDiscountPrice,
+			o.LECTURE_CREATE_DATE		as lectureCreateDate,
+			o.THUMBNAIL_FILELOCA		as thumbnailFileloca
+		FROM
+			CARTS c, ONLINELECTURE_UPLOAD o
+		WHERE
+			c.LECTURE_NO = o.LECTURE_NO
+		AND 
+			c.USER_NO = #{userNo}
+	</select>
+		
+	<!--  장바구니에 담긴 상품 찾기 (장바구니 번호) -->
+	<select id="getCartItemtsByCartNo">
+		SELECT
+			c.CART_NO					as cartNo,
+			c.LECTURE_NO				as lectureNo,
+			c.USER_NO					as userNo,
+			c.CART_AMOUNT				as cartAmount,
+			o.LECTURE_TITLE				as lectureTitle,
+			o.LECTURE_PRICE				as lecturePrice,
+			o.LECTURE_DISCOUNT_PRICE	as lectureDiscountPrice,
+			o.LECTURE_CREATE_DATE		as lectureCreateDate,
+			o.THUMBNAIL_FILELOCA		as thumbnailFileloca
+		FROM
+			CARTS c, ONLINELECTURE_UPLOAD o
+		WHERE
+			c.LECTURE_NO = o.LECTURE_NO
+		AND 
+			c.CART_NO = #{cartNo}
+	</select>
+	
+	<!-- 장바구니 수정 -->
+	<!-- void updateCart(CartsVO vo); -->
+	<update id="modifyCart">
+        UPDATE CARTS    
+        SET CART_AMOUNT = #{cartAmount} 
+        WHERE USER_NO= #{userNo} 
+        AND LECTURE_NO = #{lectureNo}
+	</update>
+	
+	<!-- 장바구니 삭제 -->
+	<!-- void deleteCart(CartsVO vo); -->
+	<delete id="deleteCart">
+        DELETE FROM CARTS 
+        WHERE
+        	CART_NO = #{cartNo}
+        AND	
+        	USER_NO = #{userNo}
+	</delete>
+	
+	<delete id="deleteAllCart">
+        DELETE FROM CARTS
+        WHERE USER_NO = #{userNo}
+	</delete>
+	
+	<!-- 장바구니 전체 금액 -->
+    <select id="getTotalAmount" resultType="int">
+        SELECT NVL(SUM(lecture_price * cart_amount), 0) money
+        FROM carts c, onlinelecture_upload p
+        WHERE c.cart_no = p.lecture_no AND c.user_no = #{userNo}
+    </select>
+
+	<!-- 장바구니 동일한 상품 중복 확인 -->
+	<!-- int cartCheck(int lectureNo, int userNo); -->
+    <select id="cartCheck" resultType="int">
+        SELECT COUNT(*)
+        FROM carts
+        WHERE user_no= #{userNo} 
+        AND cart_no = #{cartNo}
+    </select>
+	
+</mapper>

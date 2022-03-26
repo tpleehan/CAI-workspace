@@ -20,6 +20,11 @@ public class AdminService implements IAdminService {
 	public void adminJoin(AdminsVO vo) {
 		mapper.adminJoin(vo);
 	}
+	
+	@Override
+	public int adminIdCheck(String adminId) {
+		return mapper.adminIdCheck(adminId);
+	}
 
 	@Override
 	public AdminsVO adminLogin(String adminId, String adminPw) {
@@ -45,7 +50,7 @@ public class AdminService implements IAdminService {
 	public void autoLogin(String session, Date limitTime, String adminId) {
 		Map<String, Object> datas = new HashMap<>();
 		datas.put("sessionId", session);
-		datas.put("limitDate", limitTime);
+		datas.put("limitTime", limitTime);
 		datas.put("adminId", adminId);
 		
 		mapper.autoLogin(datas);

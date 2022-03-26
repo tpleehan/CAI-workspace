@@ -14,7 +14,7 @@ public interface IUserService {
 	// 로그인
 	UsersVO login(String id, String pw);
 	
-	// 자동 로그인 쿠기값 DB 저장 처리
+	// 자동 로그인 쿠키값 DB 저장 처리
 	void keepLogin(String session, Date limitTime, String id);
 	
 	// 회원 정보 얻어오기
@@ -24,5 +24,5 @@ public interface IUserService {
 	void updateUser(UsersVO vo);
 	
 	// 회원 정보 삭제
-	void deleteUser(String id, String pw);
+	void deleteUser(UsersVO vo);
 }

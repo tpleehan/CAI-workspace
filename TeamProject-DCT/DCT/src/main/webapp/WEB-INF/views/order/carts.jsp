@@ -237,7 +237,7 @@
 				</div>
 				
 				<c:choose>
-					<c:when test="${order == null}">
+					<c:when test="${carts == null}">
 						<div id="empty_cart">
 							<div class="this_cart_empty">
 								<p>
@@ -252,8 +252,7 @@
 								</span>
 								<br>
 								<span class="buttons">
-									<a href="#" class="btn btn-success">강의 리스트 보기</a>
-									<a href="#" class="btn btn-primary">내 위시리스트 보기</a>
+									<a href="<c:url value='/lecture/lecturePage' />" class="btn btn-success">강의 리스트 보기</a>
 								</span>
 							</div>
 						</div>
@@ -285,9 +284,6 @@
 																<span>₩121,000</span>
 															</div>
 															<div class="product-menu-button">
-																<button class="btn-wishlist">
-																	<span>위시리스트 이동</span>
-																</button>
 																<button class="btn-remove">
 																	<span>바구니에서 삭제</span>
 																</button>
@@ -311,9 +307,6 @@
 																<span>₩121,000</span>
 															</div>
 															<div class="product-menu-button">
-																<button class="btn-wishlist">
-																	<span>위시리스트 이동</span>
-																</button>
 																<button class="btn-remove">
 																	<span>바구니에서 삭제</span>
 																</button>
@@ -337,9 +330,6 @@
 																<span>₩121,000</span>
 															</div>
 															<div class="product-menu-button">
-																<button class="btn-wishlist">
-																	<span>위시리스트 이동</span>
-																</button>
 																<button class="btn-remove">
 																	<span>바구니에서 삭제</span>
 																</button>

@@ -176,123 +176,118 @@
 
 <script>
 
-	const msg = '${msg}';
-	if(msg === 'joinSuccess'){
-		alert('회원가입을 축하드립니다!');
+
+// 아이디 중복 체크
+$('#idCheckBtn').click(function() {
+	if($('#userId').val() === '') {
+		alert('아이디는 필수값 입니다.')
+		$('#userId').focus();
+		return;
 	}
-	
-	// 아이디 중복 체크
-	$('#idCheckBtn').click(function() {
-		if($('#userId').val() === '') {
-			alert('아이디는 필수값 입니다.')
-			$('#userId').focus();
-			return;
-		}
-	
-		const userId = $('#userId').val();
-		 
-		$.ajax({
-			type : 'post',
-			url: '<c:url value="/user/idCheck" />',
-			data : userId,
-			contentType : 'application/json',
-			success : function(data) {
-				if(data === 'ok') {
-					$('#userId').attr('readonly', true);
-					$('#msgId').html('사용 가능한 아이디 입니다.');
-				} else {
-					$('#msgId').html('중복된 아이디 입니다.');
-					$('#userId').style.borderColor = "red";
-					$('#userId').focus();
-				}
-				
-			},
-			error : function() {
-				alert('통신 실패');
+
+	const userId = $('#userId').val();
+	 
+	$.ajax({
+		type : 'post',
+		url: '<c:url value="/user/idCheck" />',
+		data : userId,
+		contentType : 'application/json',
+		success : function(data) {
+			if(data === 'ok') {
+				$('#userId').attr('readonly', true);
+				$('#msgId').html('사용 가능한 아이디 입니다.');
+			} else {
+				$('#msgId').html('중복된 아이디 입니다.');
+				$('#userId').focus();
 			}
-		
-		}); // ajax id 중복 
-		 
-	}); // end idCheckBtn 
-	
-	
-	// 폼 데이터 검증(회원 가입 버튼을 눌렀을 경우)
-	$('#signup-btn').click(function() {
-		if(!$('#userId').attr('readonly')) {
-			alert('아이디 중복체크는 필수입니다.');
-			$('#userId').focus();
-			return;
-		} else if($('#userPw').val() === '' || $('#userPw').val() !== $('#pwConfirm').val()) {
-			alert('비밀번호를 확인하세요.');
-			$('#userPw').focus();
-			return;
-		} else if($('#name').val() === '') {
-			alert('이름은 필수입니다.');
-			$('#name').focus();
-			return;
-		} else {
-			$('#joinForm').submit(); // 폼 데이터 제출
+			
+		},
+		error : function() {
+			alert('통신 실패');
 		}
-		
-	}); // 폼 데이터 검증처리
 	
-	
-	function searchAddress() {
-	    new daum.Postcode({
-	        oncomplete: function(data) {
-	            var addr = ''; // 주소 변수
-	            var extraAddr = ''; // 참고항목 변수
-	            if (data.userSelectedType === 'R') {
-	                addr = data.roadAddress;
-	            } else { 
-	                addr = data.jibunAddress;
-	            }
-	            document.getElementById('userZipcode').value = data.zonecode;
-	            document.getElementById("userAddress").value = addr;
-	            document.getElementById("userAddressDetails").focus();
-	        }
-	    }).open();
+	}); // ajax id 중복 
+	 
+}); // end idCheckBtn 
+
+
+// 폼 데이터 검증(회원 가입 버튼을 눌렀을 경우)
+$('#signup-btn').click(function() {
+	if(!$('#userId').attr('readonly')) {
+		alert('아이디 중복체크는 필수입니다.');
+		$('#userId').focus();
+		return;
+	} else if($('#userPw').val() === '' || $('#userPw').val() !== $('#pwConfirm').val()) {
+		alert('비밀번호를 확인하세요.');
+		$('#userPw').focus();
+		return;
+	} else if($('#name').val() === '') {
+		alert('이름은 필수입니다.');
+		$('#name').focus();
+		return;
+	} else {
+		$('#joinForm').submit(); // 폼 데이터 제출
 	}
 	
-	/* 아이디 형식 검사 스크립트 */
-	var id = document.getElementById("userId");
-	id.onkeyup = function() {
-	    /* 자바스크립트의 정규표현식 입니다 */
-	    /* test메서드를 통해 비교하며, 매칭되면 true, 아니면 false 반환 */
-	    var regex = /^[A-Za-z0-9+]{4,12}$/; 
-	    if(regex.test(document.getElementById("userId").value )) {
-	        document.getElementById("userId").style.borderColor = "green";
-	        document.getElementById("msgId").innerHTML = "아이디 중복체크는 필수 입니다";
-	    
-	    } else {
-	        document.getElementById("userId").style.borderColor = "red";
-	        document.getElementById("msgId").innerHTML = "4글자 이상, 12글자 이하로 작성하세요.";
-	    }
-	}
-	/* 비밀번호 형식 검사 스크립트 */
-	var pw = document.getElementById("userPw");
-	pw.onkeyup = function(){
-	    var regex = /^[A-Za-z0-9+]{8,16}$/;
-	     if(regex.test(document.getElementById("userPw").value )) {
-	        document.getElementById("userPw").style.borderColor = "green";
-	        document.getElementById("msgPw").innerHTML = "사용가능합니다";
-	    } else {
-	        document.getElementById("userPw").style.borderColor = "red";
-	        document.getElementById("msgPw").innerHTML = "비밀번호는 8자 이상이어야 합니다.";
-	    }
-	}
-	/* 비밀번호 확인검사 */
-	var pwConfirm = document.getElementById("pwConfirm");
-	pwConfirm.onkeyup = function() {
-	    var regex = /^[A-Za-z0-9+]{8,16}$/;
-	    if(document.getElementById("pwConfirm").value == document.getElementById("userPw").value ) {
-	        document.getElementById("pwConfirm").style.borderColor = "green";
-	        document.getElementById("msgPw-check").innerHTML = "비밀번호가 일치합니다";
-	    } else {
-	        document.getElementById("pwConfirm").style.borderColor = "red";
-	        document.getElementById("msgPw-check").innerHTML = "비밀번호 확인란을 확인하세요";
-	    }
-	}
+}); // 폼 데이터 검증처리
+
+
+function searchAddress() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+            if (data.userSelectedType === 'R') {
+                addr = data.roadAddress;
+            } else { 
+                addr = data.jibunAddress;
+            }
+            document.getElementById('userZipcode').value = data.zonecode;
+            document.getElementById("userAddress").value = addr;
+            document.getElementById("userAddressDetails").focus();
+        }
+    }).open();
+}
+
+/* 아이디 형식 검사 스크립트 */
+var id = document.getElementById("userId");
+id.onkeyup = function() {
+    /* 자바스크립트의 정규표현식 입니다 */
+    /* test메서드를 통해 비교하며, 매칭되면 true, 아니면 false 반환 */
+    var regex = /^[A-Za-z0-9+]{4,12}$/; 
+    if(regex.test(document.getElementById("userId").value )) {
+        document.getElementById("userId").style.borderColor = "green";
+        document.getElementById("msgId").innerHTML = "아이디 중복체크는 필수 입니다";
+    
+    } else {
+        document.getElementById("userId").style.borderColor = "red";
+        document.getElementById("msgId").innerHTML = "4글자 이상, 12글자 이하로 작성하세요.";
+    }
+}
+/* 비밀번호 형식 검사 스크립트 */
+var pw = document.getElementById("userPw");
+pw.onkeyup = function(){
+    var regex = /^[A-Za-z0-9+]{8,16}$/;
+     if(regex.test(document.getElementById("userPw").value )) {
+        document.getElementById("userPw").style.borderColor = "green";
+        document.getElementById("msgPw").innerHTML = "사용가능합니다";
+    } else {
+        document.getElementById("userPw").style.borderColor = "red";
+        document.getElementById("msgPw").innerHTML = "비밀번호는 8자 이상이어야 합니다.";
+    }
+}
+/* 비밀번호 확인검사 */
+var pwConfirm = document.getElementById("pwConfirm");
+pwConfirm.onkeyup = function() {
+    var regex = /^[A-Za-z0-9+]{8,16}$/;
+    if(document.getElementById("pwConfirm").value == document.getElementById("userPw").value ) {
+        document.getElementById("pwConfirm").style.borderColor = "green";
+        document.getElementById("msgPw-check").innerHTML = "비밀번호가 일치합니다";
+    } else {
+        document.getElementById("pwConfirm").style.borderColor = "red";
+        document.getElementById("msgPw-check").innerHTML = "비밀번호 확인란을 확인하세요";
+    }
+}
 
 
 </script>

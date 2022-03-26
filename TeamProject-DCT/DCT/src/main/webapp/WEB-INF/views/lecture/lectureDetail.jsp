@@ -207,38 +207,47 @@
                         <h2>상세보기<small>(강의예제)</small></h2>
                         <hr>
                     </div>
-
-                    <div class="col-md-6 col-xs-12">
-                        <img src="<c:url value='/lecture/lectureDisplay?thumbnailFileLoca=${lectureArticle.thumbnailFileLoca}&thumbnailFilename=${lectureArticle.thumbnailFilename}' />" alt="Detail">
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                        <div class="detail-info">
-                            <p class="detail-title">${lectureArticle.lectureTitle }</p>
-                            <p class="detail-price"><strong>${lectureArticle.lecturePrice} </strong></p>
-                            <span class="glyphicon glyphicon-star detail-star"></span>
-                            <span class="glyphicon glyphicon-star detail-star"></span>
-                            <span class="glyphicon glyphicon-star detail-star"></span>
-                            <span class="glyphicon glyphicon-star detail-star"></span>
-                            <span class="glyphicon glyphicon-star detail-star"></span>
-                            <p class="detail-delivery">
-                                무료배송<br>
-                                상품별배송 | 택배배송 | 당일출고, 12시 이전 결제 건까지 해당 (주말, 공휴일 제외)
-                            </p>
-                        </div>
-
-                        <div class="detail-control">
-                            <div class="detail-total-price clearfix">
-                                <p class="left total-left">총 상품금액</p>
-                                <p class="right total-right"><strong>0원</strong></p>
-                            </div>
-                            <div class="detail-order clearfix">
-                                <button class="left btn btn-default detail-btn">장바구니</button>
-                                <button class="right btn btn-primary detail-btn">구매하기</button>
-                            </div>
-                        </div>
-                    </div>
+					<form action="<c:url value='/order/addCart' />" method="post" id="addCartForm">
+	                    <div class="col-md-6 col-xs-12">
+	                        <img src="<c:url value='/lecture/lectureDisplay?thumbnailFileLoca=${lectureArticle.thumbnailFileLoca}&thumbnailFilename=${lectureArticle.thumbnailFilename}' />" alt="Detail">
+	                    </div>
+	                    <div class="col-md-6 col-xs-12">
+	                        <div class="detail-info">
+	                            <p class="detail-title">${lectureArticle.lectureTitle }</p>
+	                            <p class="detail-price"><strong>${lectureArticle.lecturePrice} </strong></p>
+	                            <span class="glyphicon glyphicon-star detail-star"></span>
+	                            <span class="glyphicon glyphicon-star detail-star"></span>
+	                            <span class="glyphicon glyphicon-star detail-star"></span>
+	                            <span class="glyphicon glyphicon-star detail-star"></span>
+	                            <span class="glyphicon glyphicon-star detail-star"></span>
+	                            <p class="detail-delivery">
+	                                무료배송<br>
+	                                상품별배송 | 택배배송 | 당일출고, 12시 이전 결제 건까지 해당 (주말, 공휴일 제외)
+	                            </p>
+	                        </div>
+	
+	                        <div class="detail-control">
+	                            <div class="detail-total-price clearfix">
+	                                <p class="left total-left">총 상품금액</p>
+	                                <p class="right total-right"><strong>${lectureArticle.lecturePrice - lectureArticle.lectureDiscountPrice}원</strong></p>
+	                            </div>
+	                            <div class="detail-order clearfix">
+	                               	<input type="hidden" name="lectureNo" value="${lectureArticle.lectureNo}">
+	                               	<input type="hidden" name="userNo" value="${login.userNo}">
+	                               	<input type="hidden" name="categoryNo" value="${lectureArticle.categoryNo}">
+	                               	<input type="hidden" name="lectureTitle" value="${lectureArticle.lectureTitle}">
+	                               	<input type="hidden" name="lecturePrice" value="${lectureArticle.lecturePrice}">
+	                               	<input type="hidden" name="lectureDiscountPrice" value="${lectureArticle.lectureDiscountPrice}">
+	                                <button type="button" id="btn-cart" class="left btn btn-default detail-btn">장바구니</button>
+	                                <button type="button" id="btn-purchase" class="right btn btn-primary detail-btn">구매하기</button>
+	                            </div>
+	                        </div>
+	                    </div>
+					</form>
                 </div>
             </div>
+            
+            
         </section>
 
         <hr>
@@ -383,6 +392,33 @@
 
  </div> <!-- wrapper close -->
 
-
-	
 <%@ include file="../include/footer.jsp" %>
+
+<script>
+	$(function() {
+		
+		$('#btn-cart').click(function() {
+			
+			const login = '${login}';
+			
+			if(!login) {
+				alert('로그인 후 이용하세요.');
+				location.assign('/');
+			} else {
+				const check = confirm('강의를 담았습니다. 장바구니 페이지로 이동할까요?');
+				if(check) {
+					location.assign('/order/carts');
+				}
+			}
+			
+			
+		}); // 장바구니 버튼 이벤트
+		
+		$('#btn-purchase').click(function() {
+			
+			$('#addCartForm').submit();
+		}); // 구매하기 버튼 이벤트
+		
+	}); // jQuery 끝
+
+</script>

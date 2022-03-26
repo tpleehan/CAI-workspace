@@ -57,7 +57,7 @@ public class LectureController {
 			String thumbnailFileLoca = sdf.format(date);
 
 			// 저장할 썸네일파일 경로
-			String thumbnailUploadpath = "C:\\Users\\yong\\Desktop\\upload\\" + thumbnailFileLoca;
+			String thumbnailUploadpath = "C:\\upload\\thumbnail\\" + thumbnailFileLoca;
 
 			File thumbnailfolder = new File(thumbnailUploadpath);
 			if (!thumbnailfolder.exists()) {
@@ -84,7 +84,7 @@ public class LectureController {
 
 			String videoFileLoca = sdf.format(date);
 
-			String videoUploadpath = "C:\\Users\\yong\\Desktop\\upload\\" + videoFileLoca;
+			String videoUploadpath = "C:\\upload\\video\\" + videoFileLoca;
 
 			File videofolder = new File(videoUploadpath);
 			if (!videofolder.exists()) {
@@ -161,7 +161,7 @@ public class LectureController {
 		System.out.println("thumbnailFileLoca: " + thumbnailFileLoca);
 
 		// 가져올 파일의 경로를 설정
-		File file = new File("C:\\Users\\yong\\Desktop\\upload\\" + thumbnailFileLoca + "\\" + thumbnailFilename);
+		File file = new File("C:\\upload\\thumbnail\\" + thumbnailFileLoca + "\\" + thumbnailFilename);
 		System.out.println(file);
 
 		ResponseEntity<byte[]> result = null;
@@ -207,7 +207,7 @@ public class LectureController {
 		System.out.println("thumbnailFileLoca: " + videoFileLoca);
 
 		// 가져올 파일의 경로를 설정
-		File file = new File("C:\\Users\\yong\\Desktop\\upload\\" + videoFileLoca + "\\" + videoFilename);
+		File file = new File("C:\\upload\\video\\" + videoFileLoca + "\\" + videoFilename);
 		System.out.println(file);
 
 		ResponseEntity<byte[]> result = null;
