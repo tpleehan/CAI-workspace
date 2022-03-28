@@ -47,6 +47,12 @@ public class UserService implements IUserService {
 	public UsersVO getInfo(String id) {
 		return mapper.getInfo(id);
 	}
+	
+	@Override
+	public UsersVO getUploadList(String id) {
+		
+		return mapper.getUploadList(id);
+	}
 
 	@Override
 	public void updateUser(UsersVO vo) {

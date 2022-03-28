@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ include file="../include/header.jsp" %>
+	
 
 
 <style>
@@ -78,8 +79,18 @@
                             <table class="table">
                                 <tbody class="w-control">
                                     <tr>
-                                        <td class="w-title" >UserNo</td>
-                                        <td><input type="text" class="form-control" name="userNo"></td>
+                                      <c:choose> 
+	                                    <c:when test="${login.userNick != null}">
+											<td class="w-title" >글쓴이</td>
+											<td><input type="text" class="form-control" name="lectureWriter" value="${login.userNick}" readonly></td>
+										</c:when>
+										<c:otherwise>
+											<td class="w-title" >글쓴이</td>
+											<td><input type="text" class="form-control" name="lectureWriter" value="${login.userName}" readonly></td>
+										</c:otherwise>
+									 </c:choose>
+                                        
+                                        
                                     </tr>
                                     <tr>
                                         <td class="w-title" >TITLE</td>
@@ -87,7 +98,7 @@
                                     </tr>
                                     <tr>
                                         <td class="w-title">price</td>
-                                        <td><input type="text" class="form-control" name="lecturePrice"></td>
+                                        <td><input type="number" class="form-control" name="lecturePrice"></td>
                                     </tr>
                                     <tr>
                                         <td class="w-title">category</td>
@@ -118,7 +129,11 @@
                                         <td class="w-title">CONTENT</td>
                                         <td>
                                             <!-- 2. TEXT 편집 툴을 사용할 textarea -->
+                                        <div id="editor" ></div>    
+                                        <input type="hidden" id="content" name="lectureContent">
+                                        <!--
                                         <textarea id="editor" placeholder="Spring에서 영상 업로드 및 구현 .xml 필요" name="lectureContent"></textarea>
+                                          -->
                                         </td>
                                     </tr>
                                    
@@ -147,15 +162,29 @@
 
 <script>
 
+	//const Editor = toastui.Editor;
+
+	const editor = new toastui.Editor({
+	  el: document.querySelector('#editor'),
+	  width: '100%',
+	  height: '40.327rem',
+	  initialEditType: 'markdown',
+	  previewStyle: 'vertical'
+	});
+	
+  	
+	
+	
  	const $registBtn = document.getElementById('registBtn');
  	
  	$registBtn.onclick = function() {
+ 		
+ 		var content = editor.getHTML();
+		$('#content').val(content);
+		console.log(content)
+ 		
  		//form태그는 document.폼 네임으로 바로 접근이 가능.
- 		if(document.registForm.userNo.value === '') {
- 			alert('작성자는 필수 항목입니다.');
- 			document.registForm.userNo.focus();
- 			return; //강제 종료
- 		} else if(document.registForm.lectureTitle.value === ''){
+ 		if(document.registForm.lectureTitle.value === ''){
  			alert('제목은 필수 항목입니다.');
  			document.registForm.lectureTitle.focus();
  			return; //강제 종료
@@ -175,7 +204,8 @@
  			document.registForm.submit();
  		}
  		
- 	}
+ 	};
+ 			
  
  	
  	
@@ -188,7 +218,5 @@
  	
  
 </script>
-
-
 
 	

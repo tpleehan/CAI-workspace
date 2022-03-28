@@ -31,5 +31,8 @@ public interface IUserMapper {
 
 	// 세션 아이디를 통한 회원 정보 조회 기능
 	UsersVO getUserWithSessionId(String seesionId);
+	
+	//유저가 올린 강의 불러오기
+	UsersVO getUploadList(String id);
 
 }

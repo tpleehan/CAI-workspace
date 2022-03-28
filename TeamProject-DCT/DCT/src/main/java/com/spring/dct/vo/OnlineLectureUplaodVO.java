@@ -8,6 +8,7 @@ public class OnlineLectureUplaodVO {
 	private int userNo;
 	private int categoryNo;
 	private String adminId;
+	private String lectureWriter;
 	private String lectureTitle;
 	private String lectureContent;
 	private int lecturePrice;
@@ -53,6 +54,14 @@ public class OnlineLectureUplaodVO {
 
 	public void setAdminId(String adminId) {
 		this.adminId = adminId;
+	}
+
+	public String getLectureWriter() {
+		return lectureWriter;
+	}
+
+	public void setLectureWriter(String lectureWriter) {
+		this.lectureWriter = lectureWriter;
 	}
 
 	public String getLectureTitle() {
@@ -170,21 +179,21 @@ public class OnlineLectureUplaodVO {
 	@Override
 	public String toString() {
 		return "OnlineLectureUplaodVO [lectureNo=" + lectureNo + ", userNo=" + userNo + ", categoryNo=" + categoryNo
-				+ ", adminId=" + adminId + ", lectureTitle=" + lectureTitle + ", lectureContent=" + lectureContent
-				+ ", lecturePrice=" + lecturePrice + ", lectureDiscountPrice=" + lectureDiscountPrice + ", lectureLike="
-				+ lectureLike + ", thumbnailUploadpath=" + thumbnailUploadpath + ", thumbnailFileLoca="
-				+ thumbnailFileLoca + ", thumbnailFilename=" + thumbnailFilename + ", thumbnailFilerealname="
-				+ thumbnailFilerealname + ", videoUploadpath=" + videoUploadpath + ", videoFileLoca=" + videoFileLoca
-				+ ", videoFilename=" + videoFilename + ", videoFilerealname=" + videoFilerealname
-				+ ", lectureCreateDate=" + lectureCreateDate + "]";
+				+ ", adminId=" + adminId + ", lectureWriter=" + lectureWriter + ", lectureTitle=" + lectureTitle
+				+ ", lectureContent=" + lectureContent + ", lecturePrice=" + lecturePrice + ", lectureDiscountPrice="
+				+ lectureDiscountPrice + ", lectureLike=" + lectureLike + ", thumbnailUploadpath=" + thumbnailUploadpath
+				+ ", thumbnailFileLoca=" + thumbnailFileLoca + ", thumbnailFilename=" + thumbnailFilename
+				+ ", thumbnailFilerealname=" + thumbnailFilerealname + ", videoUploadpath=" + videoUploadpath
+				+ ", videoFileLoca=" + videoFileLoca + ", videoFilename=" + videoFilename + ", videoFilerealname="
+				+ videoFilerealname + ", lectureCreateDate=" + lectureCreateDate + "]";
 	}
 
 	public OnlineLectureUplaodVO() {
 		super();
 	}
 
-	public OnlineLectureUplaodVO(int lectureNo, int userNo, int categoryNo, String adminId, String lectureTitle,
-			String lectureContent, int lecturePrice, int lectureDiscountPrice, int lectureLike,
+	public OnlineLectureUplaodVO(int lectureNo, int userNo, int categoryNo, String adminId, String lectureWriter,
+			String lectureTitle, String lectureContent, int lecturePrice, int lectureDiscountPrice, int lectureLike,
 			String thumbnailUploadpath, String thumbnailFileLoca, String thumbnailFilename,
 			String thumbnailFilerealname, String videoUploadpath, String videoFileLoca, String videoFilename,
 			String videoFilerealname, Timestamp lectureCreateDate) {
@@ -193,6 +202,7 @@ public class OnlineLectureUplaodVO {
 		this.userNo = userNo;
 		this.categoryNo = categoryNo;
 		this.adminId = adminId;
+		this.lectureWriter = lectureWriter;
 		this.lectureTitle = lectureTitle;
 		this.lectureContent = lectureContent;
 		this.lecturePrice = lecturePrice;

@@ -12,8 +12,9 @@
 		<result property="userNo" column="user_no" />
 		<result property="communityTitle" column="community_title" />
 		<result property="communityContent" column="community_content" />
-		<result property="communityViewCount" column="conmmunity_view_count" />
 		<result property="communityCreateDate" column="community_create_date" />
+		<result property="userNick" column="user_nick" />
+		<result property="userName" column="user_name" />
 	</resultMap>
 
 	<sql id="search">
@@ -24,7 +25,7 @@
 			WHERE community_content LIKE '%'||#{keyword}||'%'
 		</if>
 		<if test="condition == 'writer'">
-			WHERE user_no LIKE '%'||#{keyword}||'%'
+			WHERE user_name LIKE '%'||#{keyword}||'%'
 		</if>
 		<if test="condition == 'titleContent'">
 			WHERE community_title LIKE '%'||#{keyword}||'%'
@@ -34,8 +35,8 @@
 	</sql>
 
 	<insert id="regist">
-		INSERT INTO communities(community_no, community_title, user_no, community_content)
-		VALUES(community_no_SEQ.NEXTVAL, #{communityTitle}, #{userNo}, #{communityContent})
+		INSERT INTO communities(community_no, community_title, user_no, community_content, user_nick, user_name)
+		VALUES(community_no_SEQ.NEXTVAL, #{communityTitle}, #{userNo}, #{communityContent}, #{userNick, jdbcType = VARCHAR}, #{userName})
 	</insert>
 
 	<select id="getList" 

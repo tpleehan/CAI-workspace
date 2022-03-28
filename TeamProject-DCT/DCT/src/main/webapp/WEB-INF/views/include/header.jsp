@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />">
     <link rel="stylesheet" href="<c:url value='/css/main.css' />">
     
+    <!-- ck 에디터 관련 -->
+	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"/>
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    
    	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="<c:url value='/js/bootstrap.js' />"></script>
     
@@ -64,29 +69,22 @@
 			</div>
 			<div class="navbar-menu">
 				<div class="navbar-left">
-					<div class="">
-						<a href="<c:url value='/lecture/lecturePage' />" class=""><span>강의</span></a>
-					</div>
-					<div class="">
-						<a href="<c:url value='/lecture/mentoringList' />" class=""><span>멘토링</span></a>
-					</div>
-					<div class="">
-						<a href="<c:url value='/board/freeBoardList' />" class=""><span>커뮤니티</span></a>
-					</div>
-					<div class="">
-						<a href="#" class=""><span class="">공지사항</span></a>
-					</div>
+						<li><a role="button" href="<c:url value='/lecture/lecturePage' />" class="btn-lecture"><span>강의</span></a></li>
+						<li><a role="button" href="<c:url value='/lecture/mentoringList' />" class="btn-mentoring"><span>멘토링</span></a></li>
+						<li><a role="button" href="<c:url value='/board/freeBoardList' />" class="btn-community"><span>커뮤니티</span></a></li>
+						<li><a role="button" href="#" class="btn-notice"><span>공지사항</span></a></li>
+						<div class="effect"></div>
 				</div>
 				<div class="navbar-right">
 					<div class="btn-movement">
 						<c:choose>
 							<c:when test="${login == null}">
-								<a role="button" href="#" class="btn-login" data-toggle="modal" data-target="#loginModal">로그인</a>
-								<a role="button" href="<c:url value='/user/userJoin' />" class="btn-sign-in">회원가입</a>
+								<li><a role="button" href="#" class="btn-login" data-toggle="modal" data-target="#loginModal">로그인</a></li>
+								<li><a role="button" href="<c:url value='/user/userJoin' />" class="btn-sign-in">회원가입</a></li>
 							</c:when>
 							<c:otherwise>
-								<a role="button" href="<c:url value='/user/userMypage' />" class="btn-mypage">마이페이지</a>
-								<a role="button" href="<c:url value='/user/logout'/>" class="btn-logout">로그아웃</a>	
+								<li><a role="button" href="<c:url value='/user/userMypage' />" class="btn-mypage">마이페이지</a></li>
+								<li><a role="button" href="<c:url value='/user/logout'/>" class="btn-logout">로그아웃</a></li>	
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -112,7 +110,9 @@
 				<div class="modal-body">
 					<input type="text" name="userId" id="signInId" placeholder="아이디를 입력해 주세요.">
 					<input type="password" name="userPw" id="signInPw" placeholder="비밀번호를 입력해 주세요.">
-					<input type="checkbox" name="auto-login" checked="checked" id="auto-login"  style="border: 1px solid #000; width: 15px; height: 15px; text-align:left"> 자동로그인
+				</div>
+				<div class="modal-body-check">
+					<input type="checkbox" name="auto-login" class="input-auto" checked="checked" id="auto-login"><p>자동로그인</p>
 				</div>
 				<div class="modal-sign-more">
 					<a href="<c:url value='/user/userIdSearch' />">아이디 찾기</a>
@@ -122,7 +122,10 @@
 				<div class="btn-modal-footer">
 					<button type="button" id="loginBtn" class="btn btn-success" data-dismiss="modal" >로그인</button>
 				</div>
-				<span id="idCheck"></span><span id="pwCheck"></span>					
+				<div class="span-check">
+					<span id="idCheck"></span>
+					<span id="pwCheck"></span>
+				</div>					
 			</div>
 		</form>
 	</div>

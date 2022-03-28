@@ -1,6 +1,7 @@
 package com.spring.dct.cart.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class CartService implements ICartService {
 	}
 
 	@Override
-	public List<CartsVO> getCartItemsByUserNo(int userNo) {
+	public List<Map<String, Object>> getCartItemsByUserNo(int userNo) {
 		return mapper.getCartItemsByUserNo(userNo);
 	}
 

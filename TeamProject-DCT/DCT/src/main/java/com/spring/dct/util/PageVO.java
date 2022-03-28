@@ -5,9 +5,10 @@ public class PageVO {
 	private int pageNum;
 	private int countPerPage;
 
+	private int categoryNum;
 	private String keyword;
 	private String condition;
-
+	
 	public PageVO() {
 		this.pageNum = 1;
 		this.countPerPage = 8;
@@ -43,6 +44,14 @@ public class PageVO {
 
 	public void setCondition(String condition) {
 		this.condition = condition;
+	}
+
+	public int getCategoryNum() {
+		return categoryNum;
+	}
+
+	public void setCategoryNum(int categoryNum) {
+		this.categoryNum = categoryNum;
 	}
 
 }

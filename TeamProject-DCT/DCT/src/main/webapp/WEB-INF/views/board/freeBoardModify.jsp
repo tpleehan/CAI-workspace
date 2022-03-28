@@ -48,12 +48,13 @@ section.community-header {
 					<div class="modify-body">
 						<form action="<c:url value='/board/freeBoardUpdate' />"
 							name="updateForm" method="post">
+							<input type="hidden" name="communityNo" value="${article.communityNo}">
 							<table class="table">
 								<tbody class="t-control">
 									<tr>
 										<td class="t-title">글쓴이</td>
 										<td><input type="text" class="form-control"
-											value="${article.userNo}" readonly></td>
+											value="${article.userName}" readonly></td>
 									</tr>
 									<tr>
 										<td class="t-title">제목</td>

@@ -51,7 +51,7 @@ public class BoardController {
 
 	// 글 등록 처리
 	@PostMapping("/registForm")
-	public String registForm(CommunitiesVO vo, RedirectAttributes ra) {
+	public String registForm(CommunitiesVO vo,  RedirectAttributes ra) {
 		service.regist(vo);
 
 		ra.addFlashAttribute("msg", "정상 등록 처리 되었습니다.");
@@ -83,6 +83,8 @@ public class BoardController {
 	// 글 삭제 처리
 	@PostMapping("/freeBoardDelete")
 	public String freeBoardDelete(CommunitiesVO vo, RedirectAttributes ra) {
+		System.out.println("freeboard vo: " + vo);
+		System.out.println("freeboard vo: " + vo.getCommunityNo());
 		service.delete(vo.getCommunityNo());
 
 		ra.addFlashAttribute("msg", "게시글이 정상 삭제 되었습니다.");

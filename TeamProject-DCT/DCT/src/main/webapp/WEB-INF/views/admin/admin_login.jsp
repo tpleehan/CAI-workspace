@@ -68,12 +68,12 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" name="adminPw"
-                                                id="adminPw" placeholder="비밀번호를 입력해주세요.">
+                                                id="adminPw" autocomplete="off" placeholder="비밀번호를 입력해주세요.">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" name="adminAutoLogin" id="autoLoginCheck">
-                                                <label class="custom-control-label" for="autoLoginCheck">로그인 상태 유지</label>
+                                                <input type="checkbox" class="custom-control-input" id="autoLoginCheck">
+                                                <label class="custom-control-label" for="customCheck">로그인 상태 유지</label>
                                             </div>
                                         </div>
                                         <button type="button" id="adminLoginBtn" class="btn btn-primary btn-user btn-block">로그인</button>

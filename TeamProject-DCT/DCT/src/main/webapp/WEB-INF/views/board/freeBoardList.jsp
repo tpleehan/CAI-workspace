@@ -147,9 +147,8 @@ section.community-body nav.community-body-nav ul li span {
 						<table class="table table-hover">
 							<thead class="board-head">
 								<tr class="active">
-									<th class="col-md-6">제목</th>
+									<th class="col-md-8">제목</th>
 									<th class="col-md-2">글쓴이</th>
-									<th class="col-md-2">조회수</th>
 									<th class="col-md-2">날짜</th>
 								</tr>
 							</thead>
@@ -161,8 +160,7 @@ section.community-body nav.community-body-nav ul li span {
 	                                    	${vo.communityTitle}
 	                                    	</a>
 	                                    </td>
-	                                    <td>${vo.userNo}</td>
-	                                    <td>${vo.communityViewCount}</td>
+	                                    <td>${vo.userName}</td>
 	                                    <td><fmt:formatDate value="${vo.communityCreateDate}" 
 	                                    		pattern="yyyy-MM-dd HH:mm:ss" /> </td>
 	                                </tr>

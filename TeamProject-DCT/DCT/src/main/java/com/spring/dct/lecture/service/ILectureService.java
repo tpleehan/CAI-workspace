@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.spring.dct.util.PageVO;
 import com.spring.dct.vo.OnlineLectureUplaodVO;
-import com.spring.dct.vo.OnlineLecturesVO;
 
 public interface ILectureService {
 
@@ -21,7 +20,7 @@ public interface ILectureService {
 	OnlineLectureUplaodVO getContent(int lectureNo);
 
 	// 수정
-	void update(OnlineLecturesVO vo);
+	void update(OnlineLectureUplaodVO vo);
 
 	// 삭제
 	void delete(int LectureNo);

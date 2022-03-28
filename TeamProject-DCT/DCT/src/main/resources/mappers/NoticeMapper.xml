@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper
+	namespace="com.spring.dct.notice.mapper.INoticeMapper">
+
+	<resultMap type="com.spring.dct.vo.NoticeBoardsVO"
+		id="NoticeMap">
+		<id property="noticeNo" column="notice_no" />
+		<result property="adminId" column="admin_id" />
+		<result property="noticeTitle" column="notice_title" />
+		<result property="noticeContent" column="notice_content" />
+		<result property="noticeCreateDate" column="notice_create_date" />
+	</resultMap>
+
+	<sql id="search">
+		<if test="condition == 'title'">
+			WHERE notice_title LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'content'">
+			WHERE notice_content LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'writer'">
+			WHERE user_no LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'titleContent'">
+			WHERE notice_title LIKE '%'||#{keyword}||'%'
+			OR
+			notice_content LIKE '%'||#{keyword}||'%'
+		</if>
+	</sql>
+
+	<insert id="regist">
+		INSERT INTO communities(community_no, community_title, user_no, community_content)
+		VALUES(community_no_SEQ.NEXTVAL, #{communityTitle}, #{userNo}, #{communityContent})
+	</insert>
+
+	<select id="getList" 
+		resultMap="NoticeMap">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM
+				(
+				SELECT * FROM notice_boards
+				<include refid="search" />
+				ORDER BY notice_no DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{pageNum} - 1) * #{countPerPage}
+		AND rn <= #{pageNum} * #{countPerPage}
+		]]>
+	</select>
+
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM notice_boards
+		<include refid="search" />
+	</select>
+
+	<select id="getContent"
+		resultMap="NoticeMap">
+		SELECT * FROM notice_boards
+		WHERE notice_no = #{noticeNo}
+	</select>
+
+	<update id="update">
+		UPDATE communities
+		SET community_title =
+		#{communityTitle}, community_content = #{communityContent}
+		WHERE community_no = #{communityNo}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM communities
+		WHERE community_no = #{communityNo}
+	</delete>
+
+</mapper>

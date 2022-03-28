@@ -1,6 +1,7 @@
 package com.spring.dct.cart.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.spring.dct.vo.CartsVO;
 
@@ -19,7 +20,7 @@ public interface ICartMapper {
 	List<CartsVO> listCart(int userNo);
 	
 	// 장바구니에 담긴 상품 찾기 (사용자)
-	List<CartsVO> getCartItemsByUserNo(int userNo);
+	List<Map<String, Object>> getCartItemsByUserNo(int userNo);
 	
 	// 장바구니에 담긴 상품 찾기 (장바구니 번호)
 	List<CartsVO> getCartItemtsByCartNo(int cartNo);

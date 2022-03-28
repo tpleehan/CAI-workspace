@@ -60,7 +60,7 @@
 
 			<div class="row">
 				<ul class="recommended-lecture-list">
-					<c:forEach var="vo" begin="1" items="${lectureList}" end="8">
+					<c:forEach var="vo" begin="1" items="${lectureList}" end="4">
 						<li>
 							<a href="<c:url value='/lecture/lectureDetail?lectureNo=${vo.lectureNo}&pageNum=1&keyword=${pc.paging.keyword }&condition=${pc.paging.condition }' />">
 								<img src="<c:url value='/lecture/lectureDisplay?thumbnailFileLoca=${vo.thumbnailFileLoca}&thumbnailFilename=${vo.thumbnailFilename}' />">
@@ -74,27 +74,28 @@
 			</div>
 
 			<div class="row">
-				<div class="notice">
-					<h2>공지사항</h2>
-				</div>
-				<div class="notice-info">
-					<div class="notice-title">
-						<h2>공지 제목: 공지사항 제목1</h2>
+				<div class="notice-div">
+					<div class="notice">
+						<h4>공지사항</h4>
 					</div>
-					<div class="notice-content">
-						<h3>공지 내용:</h3>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac tincidunt justo. Aenean aliquet metus sed sem
-							bibendum, quis ornare mi feugiat. Nulla lobortis metus sit amet arcu dapibus, a condimentum velit ullamcorper.
-							Mauris et commodo dui. Aenean sodales elementum erat quis egestas. Duis sed lorem lacus. Duis varius consequat
-							rutrum. Nulla facilisi.
-							Donec finibus eu lectus ut ornare. Aenean vel ullamcorper lectus, et faucibus libero. Nullam mollis eros in magna
-							sodales vulputate. Duis in tincidunt magna, sit amet cursus sem. Fusce condimentum aliquam ipsum non bibendum.
-							Nullam eu ante turpis. Nam tincidunt volutpat dictum. Sed sed felis id nisl semper ultrices ut et sapien. Nunc
-							egestas, leo quis fermentum blandit, elit nisi fringilla arcu, in tincidunt turpis justo sed velit. Praesent
-							tempus risus quis gravida venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						</p>
-					</div>
+					<ul class="notice-list">
+						<li class="notice-item">
+							<a href="#" class="notice-link">
+								<div class="notice-info">
+									<div class="notice-name">공지사항 제목 길게 길게 공지사항 제목 길게 길게 공지사항 제목 길게 길게 공지사항 제목 길게 길게 공지사항 제목 길게 길게 </div>
+									<div class="notice-date">2022.03.25</div>
+								</div>
+							</a>
+						</li>
+						<li class="notice-item">
+							<a href="#" class="notice-link">
+								<div class="notice-info">
+									<div class="notice-name">공지사항 제목 길게 길게 공지사항 제목 길게 길게 공지사항 제목 길게 길게 공지사항 제목 길게 길게 공지사항 제목 길게 길게 </div>
+									<div class="notice-date">2022.03.25</div>
+								</div>
+							</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>

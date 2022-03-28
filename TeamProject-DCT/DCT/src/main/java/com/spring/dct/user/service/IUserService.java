@@ -20,6 +20,9 @@ public interface IUserService {
 	// 회원 정보 얻어오기
 	UsersVO getInfo(String id);
 	
+	// 회원이 업로드한 강의 가져오기
+	UsersVO getUploadList(String id);
+	
 	// 회원 정보 수정
 	void updateUser(UsersVO vo);
 	

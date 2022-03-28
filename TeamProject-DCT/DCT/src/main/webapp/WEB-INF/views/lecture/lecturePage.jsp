@@ -80,6 +80,7 @@
 
 .lec-content .lec-info span {
 	display: block;
+	color: black;
 }
 
 .lec-content .lec-info {
@@ -88,6 +89,7 @@
 
 .lec-content .lec-price {
 	float: right;
+	color: black;
 }
 
 .lec-like {
@@ -114,6 +116,7 @@
 .pagination {
 	margin: 0; /*페이지 네이션의 기본 마진 0*/
 }
+
 </style>
 
 
@@ -128,25 +131,34 @@
 	<div class="container clearfix" id="lec-wrap">
 
 		<hr>
+		
+		
 		<div class="lecture">
 			<div class="list-group menulist col-md-2">
-				<a href="#" class="list-group-item active">전체 강의</a> <a href="#"
-					class="list-group-item">프로그램밍</a> <a href="#"
-					class="list-group-item">요리</a> <a href="#" class="list-group-item">여행</a>
-				<a href="#" class="list-group-item">DIY</a>
+				<a href="<c:url value='/lecture/lecturePage' />" class="list-group-item active" style="background:black; font-size: 15px; border: none;">전체 강의</a> 
+				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 1 }' />" class="list-group-item" name="catergoryNum" style="font-size: 15px; border: none;"> 프로그램밍</a> 
+				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 2 }' />" class="list-group-item" style="font-size: 15px; border: none;">요리</a> 
+				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 3 }' />" class="list-group-item" style="font-size: 15px; border: none;">여행</a>
+				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 4 }' />" class="list-group-item" style="font-size: 15px; border: none;">DIY</a>
 			</div>
-
+		
 
 
 
 			<div class="lecture_list col-md-10">
 
+			<form action="<c:url value='/lecture/lecturePage' />">
 				<div class="lec-search-wrap clearfix">
 					<button type="submit" class="btn btn-info search2-btn">검색</button>
-					<input type="text" class="form-control search2-input"
-						placeholder="강의명을 입력해주세요...">
-
+					<input type="text" class="form-control search2-input" placeholder="강의명을 입력해주세요..." name="keyword">
+					<select class="form-control search2-select" name="condition">
+							<option value="title" ${pc.paging.condition == 'title' ? 'selected' : '' }>제목</option>
+							<option value="writer" ${pc.paging.condition == 'writer' ? 'selected' : '' }>작성자</option>
+							<option value="writerTitle" ${pc.paging.condition == 'writerTitle' ? 'selected' : '' }>제목+작성자</option>
+					</select>
+							
 				</div>
+			</form>
 
 
 				<hr>
@@ -160,8 +172,10 @@
 						<div class="container" id="lec-sec">
 
 							<ul class="row" id="lec-ul">
+								
 								<h2 class="lec-head">전체 강의</h2>
-
+								
+								
 
 								<div class="dropdown lec-dropdown">
 									<button class="btn btn-default dropdown-toggle" type="button"
@@ -182,9 +196,10 @@
 							</ul>
 
 							<ul class="row" id="adm-ul">
-								<a href="<c:url value='/lecture/lectureWrite' /> "><button
-										type="button" class="adm-btn btn-primary">글쓰기</button></a>
-								<button type="button" class="adm-btn btn-danger">삭제</button>
+								<a href="<c:url value='/lecture/lectureWrite' /> ">
+								<button type="button" class="adm-btn btn-primary" style="background:#424242; border:1px solid #fff; font-size: 14px;">글쓰기</button>
+								</a>
+								<button type="button" class="adm-btn btn-danger" style="background:#c9c9c9; border:1px solid #fff; font-size: 14px;">삭제</button>
 
 							</ul>
 
@@ -193,14 +208,14 @@
 
 							<ul class="row">
 								<c:forEach var="vo" items="${lectureList}">
-									<li class="col-md-3 col-sm-6 col-xs-12"><input
-										type="checkbox" class="lec-check"> 
+									<li class="col-md-3 col-sm-6 col-xs-12">
+									<input type="checkbox" class="lec-check"> 
 										<a href="<c:url value='/lecture/lectureDetail?lectureNo=${vo.lectureNo}&pageNum=${pc.paging.pageNum }&keyword=${pc.paging.keyword }&condition=${pc.paging.condition }' />">
 											<div class="lec-list-inner">
 												<img src="<c:url value='/lecture/lectureDisplay?thumbnailFileLoca=${vo.thumbnailFileLoca}&thumbnailFilename=${vo.thumbnailFilename}' />">
 												<div class="lec-content clearfix">
 													<div class="lec-info">
-														<span>${vo.lectureTitle}</span> <span>${vo.userNo}</span> <span>별점칸</span>
+														<span>${vo.lectureTitle}</span> <span>${vo.lectureWriter}</span> <span>별점칸</span>
 														<br> <span class="time">${vo.lectureCreateDate }</span>
 													</div>
 													<div class="lec-price">
@@ -222,8 +237,7 @@
 							<!--ul close-->
 
 
-							<form action="<c:url  value='/lecture/lecturePage' />"
-								name="pageForm">
+							<form action="<c:url  value='/lecture/lecturePage' />" name="pageForm">
 								<!-- 페이지네이션 -->
 								<div class="text-center clearfix">
 									<hr>
@@ -297,11 +311,16 @@ if(msg != ''){
 	alert(msg);
 }
 
+const msg2 = '${updateSuccess}';
+if(msg2 != ''){
+	alert(msg2);
+}
+
+
 
 //사용자가 페이지 관련 버튼을 클릭했을 때, 기존에는 각각의 a태그의 href에
 //각각 다른 url을 작성해서 요청을 보내줬다면, 이번에는 클릭한 그 버튼에 맞는 페이지 정보를 
 //자바 스크립트를 이용하여 끌고 와서 url 요청을 보내줍니다.
-
 
 const pagination = document.getElementById('pagination');
 pagination.onclick = function(e) {
@@ -318,14 +337,7 @@ pagination.onclick = function(e) {
 	document.pageForm.pageNum.value = value;
 	document.pageForm.submit();
 }
-
-
  
-
-
-
-
-
 
 </script>
 

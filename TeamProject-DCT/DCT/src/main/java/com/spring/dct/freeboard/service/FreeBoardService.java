@@ -42,8 +42,8 @@ public class FreeBoardService implements IFreeBoardService {
 	}
 
 	@Override
-	public void delete(int bno) {
-		mapper.delete(bno);
+	public void delete(int communityNo) {
+		mapper.delete(communityNo);
 	}
 
 }

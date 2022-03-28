@@ -115,6 +115,32 @@
         margin-top: 10px;
         margin-left: 30px;
     }
+    
+    /*aside*/
+
+.mypage_header .container h2{
+	font-size: 21px;
+	margin-left: 5px;
+}
+
+.aside_menu p{
+    font-size: 18px;
+}
+
+.aside_menu .menu-list .btn_wrap {
+	font-size: 15px;
+	color: #757575;
+}
+
+.aside_menu .menu-list a:hover, .aside_menu .menu-list a:focus {
+ color: #000;
+ background: #f2f2f2;
+ text-decoration: none;
+}
+
+.menu-label {
+	margin: 1px;
+}
     </style>
 
 <%@ include file="../include/header.jsp"%>
@@ -124,70 +150,67 @@
         <section>
             <div class="mypage_header">
                 <div class="container">
-                    <h2>마이페이지</h2>
+                    <h2>MY PAGE</h2>
                 </div>
             </div>
 
             <div class="container">
                 <div class="columns">
-                    <div class="aside_menu">
-                        <aside class="sidebar_left">
-                            <div class="menu_container">
-                                <p class="menu-label">학습 관리</p>
-                                <ul class="menu-list">
-                                    <li>
-                                        <a class="btn_wrap " href="#">
-                                            <span><b>내가 본 강의</b></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="btn_wrap " href="#">
-                                            <span>내가 올린 강의</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="btn_wrap " href="#">
-                                            <span>작성한 게시글</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="btn_wrap " href="#">
-                                            <span>멘토링</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <p class="menu-label">수강 신청 관리</p>
-                                <ul class="menu-list">
-                                    <li>
-                                        <a class="btn_wrap " href="#">
-                                            <span>수강바구니</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="btn_wrap " href="#">
-                                            <span>쿠폰함</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="btn_wrap " href="#">
-                                            <span>구매내역</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <p class="menu-label">설정</p>
-                                <ul class="menu-list">
-                                    <li>
-                                        <a class="btn_wrap " href="/user/userModify">
-                                            <span>프로필</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </aside>
+                    <div class="col-md-2">
+                        <div class="aside_menu">
+                            <aside class="sidebar_left">
+                                <div class="menu_container">
+                                    <p class="menu-label">학습 관리</p>
+                                    <ul class="menu-list">
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>내가 본 강의</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>내가 올린 강의</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>작성한 게시글</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>멘토링</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <p class="menu-label">수강 신청 관리</p>
+                                    <ul class="menu-list">
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>수강바구니</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn_wrap " href="#">
+                                                <span>구매내역</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <p class="menu-label">설정</p>
+                                    <ul class="menu-list">
+                                        <li>
+                                            <a class="btn_wrap " href="/user/userModify">
+                                                <span>프로필</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </aside>
+                        </div>
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-9">
+                            <div class="col-md-10">
                                 <div class="my-lectures">
                                     <div>
                                         <ul class="my-lectures-part">

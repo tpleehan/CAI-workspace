@@ -8,8 +8,9 @@ public class CommunitiesVO {
 	private int userNo;
 	private String communityTitle;
 	private String communityContent;
-	private int communityViewCount;
 	private Timestamp communityCreateDate;
+	private String userName;
+	private String userNick;
 
 	public int getCommunityNo() {
 		return communityNo;
@@ -43,14 +44,6 @@ public class CommunitiesVO {
 		this.communityContent = communityContent;
 	}
 
-	public int getCommunityViewCount() {
-		return communityViewCount;
-	}
-
-	public void setCommunityViewCount(int communityViewCount) {
-		this.communityViewCount = communityViewCount;
-	}
-
 	public Timestamp getCommunityCreateDate() {
 		return communityCreateDate;
 	}
@@ -59,11 +52,27 @@ public class CommunitiesVO {
 		this.communityCreateDate = communityCreateDate;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserNick() {
+		return userNick;
+	}
+
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
+
 	@Override
 	public String toString() {
 		return "CommunitiesVO [communityNo=" + communityNo + ", userNo=" + userNo + ", communityTitle=" + communityTitle
-				+ ", communityContent=" + communityContent + ", communityViewCount=" + communityViewCount
-				+ ", communityCreateDate=" + communityCreateDate + "]";
+				+ ", communityContent=" + communityContent + ", communityCreateDate=" + communityCreateDate
+				+ ", userName=" + userName + ", userNick=" + userNick + "]";
 	}
 
 }

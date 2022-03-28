@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.spring.dct.mentoring.mapper.IMentoringMapper">
+
+	<resultMap type="com.spring.dct.vo.MentoringsVO"
+		id="mentoringMap">
+		<id property="mentoringNo" column="mentoring_no" />
+		<result property="userNo" column="user_no" />
+		<result property="mentoringTitle" column="mentoring_title" />
+		<result property="mentoringContent" column="mentoring_content" />
+		<result property="mentoringPrice" column="mentoring_price" />
+		<result property="mentoringDiscountPrice" column="mentoring_discount_price" />
+		<result property="userName" column="user_name" />
+		<result property="mentoringCreateDate" column="mentoring_create_date" />
+		<result property="categoryNo" column="category_no" />
+		<result property="mentoringLike" column="lecture_like" />	
+
+	</resultMap>
+
+	<sql id="search">
+		<if test="condition == 'title'">
+			WHERE mentoring_title LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'writer'">
+			WHERE user_name LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'writerTitle'">
+			WHERE mentoring_title LIKE '%'||#{keyword}||'%'
+			OR user_name LIKE '%'||#{keyword}||'%'
+		</if>
+	</sql>
+	<sql id="category">
+		<if test="categoryNum == 1">
+			WHERE category_no LIKE '%'||#{categoryNum}||'%'
+		</if>
+		<if test="categoryNum == 2">
+			WHERE category_no LIKE '%'||#{categoryNum}||'%'
+		</if>
+		<if test="categoryNum == 3">
+			WHERE category_no LIKE '%'||#{categoryNum}||'%'
+		</if>
+		<if test="categoryNum == 4">
+			WHERE category_no LIKE '%'||#{categoryNum}||'%'
+		</if>
+	</sql>
+
+	<!-- 게시물 등록 -->
+	<!-- values 안에 VO 변수, 괄호 안이 table 컬럼 -->
+	<!-- mybatis에서 값을 보내줄때도 null이 들어가면 안됨. 그래서 null이 들어갈거라고 알려줘야 함 #{adminId, 
+		jdbcType = VARCHAR} -->
+	<insert id="regist">
+		INSERT INTO mentorings
+		(mentoring_no, user_no, category_no, mentoring_title, mentoring_content, mentoring_price,
+		mentoring_discount_price, mentoring_like, user_name, mentoring_create_date)
+		VALUES
+		(mentoring_no_seq.NEXTVAL, #{userNo}, #{categoryNo}, #{mentoringTitle}, #{mentoringContent},
+		#{mentoringPrice},
+		#{mentoringDiscountPrice}, #{mentoringLike}, #{userName}, sysdate)
+
+	</insert>
+
+	<select id="getList" resultMap="mentoringMap">
+		SELECT * FROM
+		(
+		SELECT ROWNUM AS rn, tbl.* FROM
+		(
+		SELECT * FROM mentorings
+
+		<include refid="search" />
+		<include refid="category" />
+		ORDER BY mentoring_no DESC
+		) tbl
+		)
+	<![CDATA[	
+	WHERE rn > (#{pageNum}-1) * #{countPerPage}
+	AND rn <= #{pageNum} * #{countPerPage}
+	]]>
+	</select>
+
+
+	<!-- 업로드 강의 수 조회 기능 -->
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM mentorings
+		<include refid="search" />
+		<include refid="category" />
+	</select>
+
+
+	<!-- 업로드 강의 내용 조회 -->
+	<select id="getContent" resultMap="mentoringMap">
+		SELECT * FROM mentorings
+		WHERE mentoring_no = #{mentoringNo}
+
+	</select>
+
+
+	<!-- 업로ㄱ드 강의 수정 -->
+	<update id="update">
+		UPDATE mentorings
+		SET user_no= #{userNo}, mentoring_title= #{mentoringTitle},
+		mentoring_price= #{mentoringPrice}, mentoring_content=
+		#{mentoringContent}, mentoring_create_date= sysdate
+		WHERE mentoring_no= #{mentoringNo}
+	</update>
+
+</mapper>

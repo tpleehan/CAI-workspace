@@ -115,10 +115,10 @@
 									<span id="msgId">*필수 사항입니다.</span>
 									<!--아이디 중복 여부 메시지 공간-->
 								</div>
-								 <div class="form-group">
+								<div class="form-group">
                                 <label for="email">이메일</label>
                                     <input type="text" id="userEmail" name="userEmail" class="form-control" placeholder="유효한 이메일을 입력해 주세요.">
-                           		 </div>
+                           		</div>
 								<div class="form-group">
 									<label for="password">Password</label> <input type="password"
 										id="userPw" class="form-control" name="userPw"

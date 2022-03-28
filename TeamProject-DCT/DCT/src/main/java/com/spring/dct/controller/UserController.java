@@ -156,7 +156,53 @@ public class UserController {
 		
 		return "redirect:/user/userModify";
 	}
-
+	
+	
+	//내가 올린 강의페이지로
+	@GetMapping("/userMypageRecentLecture")
+	public String userMypageRecentLecture(HttpSession session, Model model) {
+		System.out.println("userMypageRecentLecture 페이지 진입");
+		System.out.println("/user/userMyUploadlist: POST" );
+		
+		
+		String id = ((UsersVO)session.getAttribute("login")).getUserId();
+		System.out.println(id);
+		
+		UsersVO userInfo = service.getUploadList(id);
+		
+		System.out.println(userInfo);
+		
+		model.addAttribute("myUploadlist", userInfo);
+		
+		
+		
+		return "user/userMypageRecentLecture";
+	}
+	
+	/*
+	//내가 올린 강의들 조회
+	@PostMapping("/userMyUploadlist")
+	public String userMyuploadlist(HttpSession session, Model model) {
+		System.out.println("/user/userMyUploadlist: POST" );
+		
+		String id = ((UsersVO)session.getAttribute("login")).getUserId();
+		System.out.println(id);
+		
+		UsersVO userInfo = service.getInfo(id);
+		
+		System.out.println(userInfo);
+		
+		model.addAttribute("myUploadlist", userInfo);
+		
+		
+		
+		return "redirect:/user/userMypageRecentLecture";
+	}
+	
+	*/
+	
+	
+	
 	@GetMapping("/userDelete")
 	public void userDelete(HttpSession session, Model model) {
 		System.out.println("userDelete 페이지 진입");
@@ -209,10 +255,7 @@ public class UserController {
 		System.out.println("userMypageQna 페이지 진입");
 	}
 
-	@GetMapping("/userMypageRecentLecture")
-	public void userMypageRecentLecture() {
-		System.out.println("userMypageRecentLecture 페이지 진입");
-	}
+	
 
 	@GetMapping("/logout")
 	public ModelAndView logout(HttpSession session, RedirectAttributes ra, 

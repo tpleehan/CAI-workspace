@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.spring.dct.lecture.mapper.ILectureMapper;
 import com.spring.dct.util.PageVO;
 import com.spring.dct.vo.OnlineLectureUplaodVO;
-import com.spring.dct.vo.OnlineLecturesVO;
 
 @Service
 public class LectureService implements ILectureService {
@@ -41,14 +40,14 @@ public class LectureService implements ILectureService {
 	}
 
 	@Override
-	public void update(OnlineLecturesVO vo) {
-		// TODO Auto-generated method stub
-
+	public void update(OnlineLectureUplaodVO vo) {
+		mapper.update(vo);
 	}
+
 
 	@Override
 	public void delete(int LectureNo) {
-		// TODO Auto-generated method stub
+		mapper.delete(LectureNo);
 
 	}
 

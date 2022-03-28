@@ -1,6 +1,7 @@
 package com.spring.dct.vo;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class UsersVO {
 
@@ -20,7 +21,9 @@ public class UsersVO {
 	private boolean autoLogin;
 	private String sessionId;
 	private Timestamp limitTime;
-
+	
+	private List<OnlineLectureUplaodVO> userUploadList;
+	
 	public int getUserNo() {
 		return userNo;
 	}
@@ -149,6 +152,14 @@ public class UsersVO {
 		this.limitTime = limitTime;
 	}
 
+	public List<OnlineLectureUplaodVO> getUserUploadList() {
+		return userUploadList;
+	}
+
+	public void setUserUploadList(List<OnlineLectureUplaodVO> userUploadList) {
+		this.userUploadList = userUploadList;
+	}
+
 	@Override
 	public String toString() {
 		return "UsersVO [userNo=" + userNo + ", adminId=" + adminId + ", userId=" + userId + ", userPw=" + userPw
@@ -156,7 +167,8 @@ public class UsersVO {
 				+ userEmail + ", userZipcode=" + userZipcode + ", userAddress=" + userAddress + ", userAddressDetails="
 				+ userAddressDetails + ", userCreateDate=" + userCreateDate + ", userEmailReceivedStatus="
 				+ userEmailReceivedStatus + ", autoLogin=" + autoLogin + ", sessionId=" + sessionId + ", limitTime="
-				+ limitTime + "]";
+				+ limitTime + ", userUploadList=" + userUploadList + "]";
 	}
+
 
 }

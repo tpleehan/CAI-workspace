@@ -187,15 +187,19 @@
 
 .user-star-check{
 	color: orange;
-	font-size: large;
-  
+	font-size: 1.5rem;
+	cursor: pointer;
 }
+
+.user-star-check:not(.on){
+	color: #ccc;
+}
+
+.user-star-check.on{
+	color: orange;
+}
+  
 </style>
-
-
-
-
-
 
 
 <div id="wrapper">
@@ -246,8 +250,6 @@
 					</form>
                 </div>
             </div>
-            
-            
         </section>
 
         <hr>
@@ -259,21 +261,15 @@
                         <iframe class="embed-responsive-item" src="<c:url value='/lecture/videoDisplay?videoFileLoca=${lectureArticle.videoFileLoca}&videoFilename=${lectureArticle.videoFilename}' />"></iframe>
                     </div>
                     
-                    
-                    
-                <div class="row clearfix">
-                    <div class="container" id="detail-middle">
-                        
-                        
-                        <div class="col-md-12 detail-text"> 
-                        		 
-                            <p>${lectureArticle.lectureContent }    </p>
-                            
-                            
-                        </div>
-                    </div> 
-                </div>
-                    
+	                <div class="row clearfix">
+	                    <div class="container" id="detail-middle">
+	                        
+	                        <div class="col-md-12 detail-text"> 
+	                        	<div id="viewer"></div>
+                            	<input type="hidden" id="view" value="${lectureArticle.lectureContent }">
+	                        </div>
+	                    </div> 
+	                </div>
 
                 </div>
             </div>
@@ -352,12 +348,14 @@
                         <div class="detail-reply-wrap">
                             
                             <div class="detail-reply-content">
-                                <div class="user-star"> 
-                                    <span class="glyphicon glyphicon-star user-star-check"></span>
-                                    <span class="glyphicon glyphicon-star user-star-check"></span>
-                                    <span class="glyphicon glyphicon-star user-star-check"></span>
-                                    <span class="glyphicon glyphicon-star user-star-check"></span>
-                                    <span class="glyphicon glyphicon-star user-star-check"></span> &nbsp;
+                                <div class="user-star" id="star"> 
+                                    <span class="user-star-check" data-star="1">★</span>
+                                    <span class="user-star-check" data-star="2">★</span>
+                                    <span class="user-star-check" data-star="3">★</span>
+                                    <span class="user-star-check" data-star="4">★</span>
+                                    <span class="user-star-check" data-star="5">★</span>
+                                    <input type="hidden" name="startPoint" id="startPoint">
+									<br>
                                     <p> 체크해 주세요</p>
                                 </div>
                                        
@@ -397,6 +395,35 @@
 <script>
 	$(function() {
 		
+	 	var view = $('#view').val()
+	 	 
+	 	const viewer = toastui.Editor.factory({
+	 		  el: document.querySelector('#viewer'),
+	          viewer: true,
+	          height: '500px',
+	          initialValue: view
+	 	});
+	 	
+	 	console.log(view)
+	 	
+	    function ToView() {
+	        viewer.getMarkdown(viewer.setHTML());
+	    };	
+	     
+
+			
+	    $('.user-star>span').click(function(){
+            $(this).parent().children('span.on').removeClass('on');
+            $(this).addClass('on').prevAll('span').addClass('on');
+            var point = $(this).attr('data-star');
+            
+		    console.log(point);
+		    $("#point").val(point); // 히든 인풋에 값 저장.
+		    console.log(point);
+		    return false;
+	    });
+		
+		// 장바구니 버튼 이벤트
 		$('#btn-cart').click(function() {
 			
 			const login = '${login}';
@@ -405,18 +432,22 @@
 				alert('로그인 후 이용하세요.');
 				location.assign('/');
 			} else {
-				const check = confirm('강의를 담았습니다. 장바구니 페이지로 이동할까요?');
+				const check = confirm('강의를 담겠습니까?');
 				if(check) {
-					location.assign('/order/carts');
+					document.addCartForm.submit();
 				}
 			}
 			
-			
 		}); // 장바구니 버튼 이벤트
 		
+		// 구매하기 버튼
 		$('#btn-purchase').click(function() {
 			
-			$('#addCartForm').submit();
+			const check = confirm('강의를 구매하시겠습니까?');
+			if(check) {
+				$('#addCartForm').attr('action', '<c:url value="/order/addPurchases" />')
+				$('#addCartForm').submit();
+			}
 		}); // 구매하기 버튼 이벤트
 		
 	}); // jQuery 끝

@@ -193,6 +193,8 @@
 <%@ include file="../include/header.jsp"%>
 
 	<div class="wrapper">
+	
+
 
 		<section>
 			<div class="container">
@@ -258,6 +260,7 @@
 						</div>
 					</c:when>
 					<c:otherwise>
+
 						<div class="carts">
 							<div class="row">
 								<div class="col-sm-8">
@@ -268,75 +271,31 @@
 										</div>
 										<div class="product-list">
 											<div class="product_item_container">
-												<div class="product_item">
-													<div class="product_thumbnail">
-														<img src="<c:url value='/img/java.png' />" alt="java">
-													</div>
-													<div class="product-column-info">
-														<div class="product_title">
-															<a href="#">강의제목: 자바 참 쉽다!</a>
-															<div class="course-deadline">
-																(수강기한: <span>무제한</span>)
-															</div>
+												<c:forEach var="cart" items="${carts}">
+													<div class="product_item">
+														<div class="product_thumbnail">
+															<img src="<c:url value='/img/java.png' />" alt="java">
 														</div>
-														<div class="product-menu">
-															<div class="product-amount">
-																<span>₩121,000</span>
+														<div class="product-column-info">
+															<div class="product_title">
+																<a href="#">강의제목: ${cart.LECTURETITLE}</a>
+																<div class="course-deadline">
+																	(수강기한: <span>무제한</span>)
+																</div>
 															</div>
-															<div class="product-menu-button">
-																<button class="btn-remove">
-																	<span>바구니에서 삭제</span>
-																</button>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="product_item">
-													<div class="product_thumbnail">
-														<img src="<c:url value='/img/html.png' />" alt="java">
-													</div>
-													<div class="product-column-info">
-														<div class="product_title">
-															<a href="#">강의제목: 웹개발</a>
-															<div class="course-deadline">
-																(수강기한: <span>무제한</span>)
-															</div>
-														</div>
-														<div class="product-menu">
-															<div class="product-amount">
-																<span>₩121,000</span>
-															</div>
-															<div class="product-menu-button">
-																<button class="btn-remove">
-																	<span>바구니에서 삭제</span>
-																</button>
+															<div class="product-menu">
+																<div class="product-amount">
+																	<span>₩${cart.LECTUREPRICE}</span>
+																</div>
+																<div class="product-menu-button">
+																	<button class="btn-remove">
+																		<span>바구니에서 삭제</span>
+																	</button>
+																</div>
 															</div>
 														</div>
 													</div>
-												</div>
-												<div class="product_item">
-													<div class="product_thumbnail">
-														<img src="<c:url value='/img/spring.png' />" alt="java">
-													</div>
-													<div class="product-column-info">
-														<div class="product_title">
-															<a href="#">강의제목: 스프링 배우기</a>
-															<div class="course-deadline">
-																(수강기한: <span>무제한</span>)
-															</div>
-														</div>
-														<div class="product-menu">
-															<div class="product-amount">
-																<span>₩121,000</span>
-															</div>
-															<div class="product-menu-button">
-																<button class="btn-remove">
-																	<span>바구니에서 삭제</span>
-																</button>
-															</div>
-														</div>
-													</div>
-												</div>
+												</c:forEach>
 											</div>
 										</div>
 									</div>

@@ -23,7 +23,7 @@ public interface IFreeBoardService {
 	void update(CommunitiesVO vo);
 	
 	//삭제
-	void delete(int bno);
+	void delete(int communityNo);
 
 	
 }

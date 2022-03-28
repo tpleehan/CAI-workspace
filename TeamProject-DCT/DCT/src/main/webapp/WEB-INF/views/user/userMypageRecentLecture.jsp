@@ -72,7 +72,7 @@
 
 
     <div id="wrapper">
-        <header data-include-path="./include/header.html"></header>
+        
 
         <section>
             <div class="mypage_header">
@@ -144,7 +144,7 @@
                                 <div class="my-lectures">
                                     <div>
                                         <ul class="my-lectures-part">
-                                            <li class="my-question"><b>보유한 강의</b></li>
+                                            <li class="my-question"><b>내가 올린 강의</b></li>
                                             <li class="my-free"><a href="<c:url value='/user/userMypageConfirmation' />">수강확인증</a></li>
                                             <li class="my-study"><a href="<c:url value='#' />">수료증</a></li>
                                         </ul>
@@ -179,117 +179,59 @@
                             </div>
 
                             <section>
-                                <div class="container">
-                                    <ul class="row">
-                                        <li class="col-md-3 col-sm-6 col-xs-12">
-                                            <div class="lec-list-inner">
-                                                <img src="/img/spring.png" alt="spring">
-                                                <div class="lec-content clearfix">
-                                                    <div class="card-content">
-                                                        <div class="course-title-wrapper">
-                                                            <span>강의명</span><br>
-                                                            <span class="lecture-progress"> 진도율: </span>
-                                                            <progress class="progress is-link" value="8"
-                                                                max="100">n%</progress>
-                                                            <span class="time-limit"> 기한: </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    <ul class="row">
-                                        <li class="col-md-3 col-sm-6 col-xs-12">
-                                            <div class="lec-list-inner">
-                                                <img src="/img/spring.png" alt="spring">
-                                                <div class="lec-content clearfix">
-                                                    <div class="card-content">
-                                                        <div class="course-title-wrapper">
-                                                            <span>강의명</span><br>
-                                                            <span class="lecture-progress"> 진도율: </span>
-                                                            <progress class="progress is-link" value="8"
-                                                                max="100">n%</progress>
-                                                            <span class="time-limit"> 기한: </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    <ul class="row">
-                                        <li class="col-md-3 col-sm-6 col-xs-12">
-                                            <div class="lec-list-inner">
-                                                <img src="/img/spring.png" alt="spring">
-                                                <div class="lec-content clearfix">
-                                                    <div class="card-content">
-                                                        <div class="course-title-wrapper">
-                                                            <span>강의명</span><br>
-                                                            <span class="lecture-progress"> 진도율: </span>
-                                                            <progress class="progress is-link" value="8"
-                                                                max="100">n%</progress>
-                                                            <span class="time-limit"> 기한: </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    <ul class="row">
-                                        <li class="col-md-3 col-sm-6 col-xs-12">
-                                            <div class="lec-list-inner">
-                                                <img src="/img/spring.png" alt="spring">
-                                                <div class="lec-content clearfix">
-                                                    <div class="card-content">
-                                                        <div class="course-title-wrapper">
-                                                            <span>강의명</span><br>
-                                                            <span class="lecture-progress"> 진도율: </span>
-                                                            <progress class="progress is-link" value="8"
-                                                                max="100">n%</progress>
-                                                            <span class="time-limit"> 기한: </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    <ul class="row">
-                                        <li class="col-md-3 col-sm-6 col-xs-12">
-                                            <div class="lec-list-inner">
-                                                <img src="/img/spring.png" alt="spring">
-                                                <div class="lec-content clearfix">
-                                                    <div class="card-content">
-                                                        <div class="course-title-wrapper">
-                                                            <span>강의명</span><br>
-                                                            <span class="lecture-progress"> 진도율: </span>
-                                                            <progress class="progress is-link" value="8"
-                                                                max="100">n%</progress>
-                                                            <span class="time-limit"> 기한: </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    <ul class="row">
-                                        <li class="col-md-3 col-sm-6 col-xs-12">
-                                            <div class="lec-list-inner">
-                                                <img src="/img/spring.png" alt="spring">
-                                                <div class="lec-content clearfix">
-                                                    <div class="card-content">
-                                                        <div class="course-title-wrapper">
-                                                            <span>강의명</span><br>
-                                                            <span class="lecture-progress"> 진도율: </span>
-                                                            <progress class="progress is-link" value="8"
-                                                                max="100">n%</progress>
-                                                            <span class="time-limit"> 기한: </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                     </ul>
-                                </div>
+	                            <div class="container">
+		                                   											
+											<ul class="row">
+												 <c:forEach var="vo" items="${myUploadlist.userUploadList }">
+													<li class="col-md-3 col-sm-6 col-xs-12">
+													
+														<a href="<c:url value='/lecture/lectureUpdate?lectureNo=${vo.lectureNo}' />">
+																<div class="lec-list-inner">
+																	<img src="<c:url value='/lecture/lectureDisplay?thumbnailFileLoca=${vo.thumbnailFileLoca}&thumbnailFilename=${vo.thumbnailFilename}' />">
+																	<div class="lec-content clearfix">
+																		<div class="lec-info">
+																			<span>${vo.lectureTitle}</span> 
+																			<span>${vo.lectureWriter}</span> 
+																			<span>별점칸</span>
+																			<br> <span class="time">${vo.lectureCreateDate }</span>
+																		</div>
+																		<div class="lec-price">
+																			<strong>${vo.lecturePrice }</strong>
+																		</div>
+																	</div>
+																</div>
+															</a>
+												    </li>
+												
+												 </c:forEach>
+											</ul>
+											<!--ul close-->	                                        
+														 
+
+                                </div> <!-- container close -->
+                                
+                                
+                                
                             </section>
+                            
+                            
+                            
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section> <!--  전체 section  -->
     </div>
     
 <%@ include file="../include/footer.jsp"%>
+
+
+
+<script>
+
+
+
+
+
+</script>
+

@@ -197,14 +197,8 @@
                         </div>
                      </div>
 
-
                   </div>  
 
-                  
-                       
-
-
-                  
             </div> <!--middle-part close -->
 
                   <div class="col-md-2 eva-right-part">

@@ -100,7 +100,7 @@
 								<tr>
 									<td class="t-title">글쓴이</td>
 									<td><input type="text" class="form-control"
-										value="${article.userNo}" readonly></td>
+										value="${article.userName}" readonly></td>
 								</tr>
 								<tr>
 									<td class="t-title">제목</td>
@@ -123,7 +123,7 @@
 							
 							<input id="list-btn" class="btn" type="button" value="목록">&nbsp;&nbsp;
 
-							<c:if test="${login.name == article.userNo}">
+							<c:if test="${login.userName == article.userName}">
 								<input id="mod-btn" class="btn btn-warning" type="button" value="수정">&nbsp;&nbsp;
 		         				<input class="btn btn-danger" type="submit" value="삭제"
 									onclick="return confirm('정말로 삭제하시겠습니까?')">&nbsp;&nbsp;
@@ -196,11 +196,12 @@
 		//수정 버튼 클릭 이벤트 처리
 		$('#mod-btn').click(function() {
 			$('#formObj').attr({
-				'action': '',
+				'action': '<c:url value="/board/freeBoardModify" />',
 				'method': 'get'
 			});
 			$('#formObj').submit();
 		});
 	});
+	
 	
 </script>

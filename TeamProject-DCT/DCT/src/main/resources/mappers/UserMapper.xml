@@ -19,7 +19,32 @@
 		<result property="userEmailReceivedStatus" column="USER_EMAIL_RECEIVED_STATUS"/>
 		<result property="sessionId" column="SESSION_ID"/>
 		<result property="limitTime" column="LIMIT_TIME"/>
+		
+		<collection property="userUploadList" resultMap="list"></collection>	
 	</resultMap>
+	
+	<resultMap type="com.spring.dct.vo.OnlineLectureUplaodVO" id="list">
+		<result property="lectureNo" column="lecture_no" />
+  		<result property="userNo" column="user_no" />
+		<result property="categoryNo" column="category_no" />	
+		<result property="adminId" column="admin_id" />	
+		<result property="lectureWriter" column="lecture_writer" />
+		<result property="lectureTitle" column="lecture_title" />	
+		<result property="lectureContent" column="lecture_content" />	
+		<result property="lecturePrice" column="lecture_price" />	
+		<result property="lectureDiscountPrice" column="lecture_discount_price" />	
+		<result property="lectureLike" column="lecture_like" />	
+		<result property="thumbnailUploadpath" column="thumbnail_uploadpath" />	
+		<result property="thumbnailFileLoca" column="thumbnail_fileloca" />	
+		<result property="thumbnailFilename" column="thumbnail_filename" />	
+		<result property="thumbnailFilerealname" column="thumbnail_filerealname" />	
+		<result property="videoUploadpath" column="video_uploadpath" />	
+		<result property="videoFileLoca" column="video_fileloca" />	
+		<result property="videoFilename" column="video_filename" />	
+		<result property="videoFilerealname" column="video_filerealname" />	
+		<result property="lectureCreateDate" column="LECTURE_CREATE_DATE" />	
+	</resultMap>
+
 
 	<!-- 아이디 중복 확인 -->
 	<!-- int idCheck(String id); -->
@@ -50,6 +75,18 @@
 		SELECT * FROM USERS
 		WHERE USER_ID = #{id} 
 		AND USER_PW = #{pw}
+	</select>
+	
+	<!-- 회원이 등록한 게시물 가져오기 -->
+	<select id="getUploadList" resultMap="userInfo"> 
+		SELECT  u.USER_NO, u.USER_ID, u.USER_PW, u.USER_NAME, u.USER_NICK, u.USER_PHONE, u.USER_EMAIL, u.USER_ZIPCODE, u.USER_ADDRESS, u.USER_ADDRESS_DETAILS, 
+		o.lecture_no, o.user_no, o.lecture_writer, o.lecture_title, o.thumbnail_fileloca, o.thumbnail_filename, o.video_fileloca, o.video_filerealname, 
+		o.category_no, o.lecture_price, o.lecture_create_date
+		
+		FROM USERS u LEFT OUTER JOIN onlinelecture_upload o
+		ON u.USER_NO = o.user_no
+		WHERE USER_ID = #{id} 
+		ORDER BY o.lecture_no DESC
 	</select>
 	
 	<!-- 회원 정보 수정 -->

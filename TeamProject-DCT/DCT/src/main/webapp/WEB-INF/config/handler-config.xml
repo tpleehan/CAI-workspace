@@ -6,11 +6,20 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="adminLoginSuccessHandler" class="com.spring.dct.handler.AdminLoginSuccessHandler" />
+	<bean id="boardAuthHandler" class="com.spring.dct.util.interceptor.BoardAuthHandler" />
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/admin/adminLogin"/>
 			<ref bean="adminLoginSuccessHandler"/>
-		</mvc:interceptor>		
+		</mvc:interceptor>	
+	
+		<mvc:interceptor>
+			<mvc:mapping path="/board/freeBoardModify" /> <!-- 수정페이지 이동 -->
+			<mvc:mapping path="/board/freeBoardUpdate" /> <!-- 수정 요청 -->
+			<mvc:mapping path="/board/freeBoardDelete" /> <!-- 삭제 요청 -->
+			<ref bean="boardAuthHandler" />
+		</mvc:interceptor>
+
 	</mvc:interceptors>
 </beans>

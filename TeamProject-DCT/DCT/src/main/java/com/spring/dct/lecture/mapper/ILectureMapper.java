@@ -2,7 +2,6 @@ package com.spring.dct.lecture.mapper;
 
 import java.util.List;
 
-import com.spring.dct.vo.OnlineLecturesVO;
 import com.spring.dct.util.PageVO;
 import com.spring.dct.vo.OnlineLectureUplaodVO;
 
@@ -21,7 +20,7 @@ public interface ILectureMapper {
 	OnlineLectureUplaodVO getContent(int lectureNo);
 
 	// 수정
-	void update(OnlineLecturesVO vo);
+	void update(OnlineLectureUplaodVO vo);
 
 	// 삭제
 	void delete(int LectureNo);
