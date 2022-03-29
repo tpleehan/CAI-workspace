@@ -36,6 +36,7 @@
 	<mybatis-spring:scan base-package="com.spring.dct.cart.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.dct.mentoring.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.dct.notice.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.dct.freeReply.mapper"/>
 	
 	<!-- mybatis xml파일을 빈으로 등록하기 위한 스캔 설정 (base-package="인터페이스 경로 작성") -->
 	<!-- 

@@ -61,21 +61,24 @@ public class BoardController {
 
 	// 글 상세보기 처리
 	@GetMapping("/freeBoardDetail")
-	public void getContent(@RequestParam("bno") int bno, @ModelAttribute("p") PageVO vo, Model model) {
-		model.addAttribute("article", service.getContent(bno));
+	public void getContent(@RequestParam("communityNo") int communityNo, @ModelAttribute("p") PageVO vo, Model model) {
+		System.out.println("글 상세보기" + service.getContent(communityNo));
+		model.addAttribute("article", service.getContent(communityNo));
 	}
 
 	// 글 수정 페이지 이동 처리
 	@GetMapping("/freeBoardModify")
-	public void modify(@RequestParam("bno") int bno, Model model) {
-		model.addAttribute("article", service.getContent(bno));
+	public void modify(@RequestParam("communityNo") int communityNo, Model model) {
+		model.addAttribute("article", service.getContent(communityNo));
 	}
 
 	// 글 수정 처리
 	@PostMapping("/freeBoardUpdate")
 	public String freeBoardUpdate(CommunitiesVO vo, RedirectAttributes ra) {
+		System.out.println("글 수정처리: "+ vo);
+		
 		service.update(vo);
-		ra.addFlashAttribute("msg", "updateSuccess");
+		ra.addFlashAttribute("msg", "수정이 완료되었습니다.");
 
 		return "redirect:/board/freeBoardDetail?communityNo=" + vo.getCommunityNo();
 	}

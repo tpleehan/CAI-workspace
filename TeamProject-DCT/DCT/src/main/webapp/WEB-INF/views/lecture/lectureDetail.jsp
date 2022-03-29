@@ -242,6 +242,8 @@
 	                               	<input type="hidden" name="lectureTitle" value="${lectureArticle.lectureTitle}">
 	                               	<input type="hidden" name="lecturePrice" value="${lectureArticle.lecturePrice}">
 	                               	<input type="hidden" name="lectureDiscountPrice" value="${lectureArticle.lectureDiscountPrice}">
+	                               	<input type="hidden" name="thumbnailFileLoca" value="${lectureArticle.thumbnailFileLoca}">
+	                               	<input type="hidden" name="thumbnailFilename" value="${lectureArticle.thumbnailFilename}">
 	                                <button type="button" id="btn-cart" class="left btn btn-default detail-btn">장바구니</button>
 	                                <button type="button" id="btn-purchase" class="right btn btn-primary detail-btn">구매하기</button>
 	                            </div>
@@ -434,7 +436,8 @@
 			} else {
 				const check = confirm('강의를 담겠습니까?');
 				if(check) {
-					document.addCartForm.submit();
+					alert('장바구니에 정상적으로 담았습니다.');
+					$('#addCartForm').submit();
 				}
 			}
 			

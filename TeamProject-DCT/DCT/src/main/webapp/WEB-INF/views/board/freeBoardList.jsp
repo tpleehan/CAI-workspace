@@ -12,25 +12,47 @@
 section.community-header {
 	color: aliceblue;
 	font-size: 30px;
-	background-color: rgb(61, 58, 58);
+	background-color: rgb(144, 173, 211);
 	padding: 1em 0;
 }
 /* ---------- */
-/* 메뉴 */
-section.community-body nav.community-body-nav ul h6 {
-	color: purple;
-	font-size: 16px;
-	margin: 40px 0;
+
+nav.community-body-nav {
+    background-color: #424242;
+    padding: 0px;
+    font-weight: bold;
 }
 
-section.community-body nav.community-body-nav ul li {
-	margin: 20px 0;
+nav.community-body-nav ul h6 {
+    color: #D4D4D4;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 20px 0 20px 15px;
+    margin: 0;
+    border-top: 1px solid #D4D4D4;
+    border-bottom: 1px solid #D4D4D4;
 }
 
-section.community-body nav.community-body-nav ul li span {
-	color: plum;
-	font-size: 20px;
+nav.community-body-nav ul li {
+    padding: 10px 0;
+    height: 53px;
 }
+
+nav.community-body-nav ul li span {
+    color: #D4D4D4;
+    font-size: 13px;
+    padding: 0 0 0 20px;
+}
+
+nav.community-body-nav ul li a {
+    text-decoration-line: none;
+}
+
+nav.community-body-nav ul li:hover {
+    background-color: #666666;
+    transition: 0.5s;
+}
+
 /* ---------- */
 .community-body-content {
 	padding: 0;
@@ -55,16 +77,37 @@ section.community-body nav.community-body-nav ul li span {
 
 .community-body .community-body-content-list .board-head th {
 	text-align: center;
+	font-size: 16px;
 }
 
-.community-body .community-body-content-list .board-body .board-viewDate
+.community-body .community-body-content-list .board-body .title {
+	font-size: 14px;
+}
+
+.community-body .community-body-content-list .board-body .title a {
+	text-decoration-line: none;
+	color: #424242;
+}
+
+.community-body .community-body-content-list .board-body .title a:hover
 	{
+	text-decoration-line: underline;
+	color: rgb(50, 109, 205);
+}
+
+.community-body .community-body-content-list .board-body .writer {
+	font-size: 14px;
+}
+
+.community-body .community-body-content-list .board-body .date {
 	text-align: center;
+	font-size: 14px;
 }
 
 .community-body .community-body-content .pagination-list {
 	text-align: center;
 }
+
 </style>
 
 <div id="wrapper">
@@ -83,24 +126,22 @@ section.community-body nav.community-body-nav ul li span {
 		<div class="container">
 			<div class="row">
 				<nav class="community-body-nav col-md-2">
-					<ul class="">
-						<h6 class="">Dreams Come True</h6>
-						<li class=""><a href="#"><span>공지사항</span></a></li>
-						<li class=""><a href="#"><span>사이트 소개</span></a></li>
-					</ul>
-					<ul class="">
-						<h6 class="">커뮤니티</h6>
-						<li class=""><a href="<c:url value='/board/qnaBoardList' />"
-							class=""><span>질문 &amp; 답변</span></a></li>
-						<li class=""><a href="<c:url value='/board/freeBoardList' />"
-							class=""><span>자유게시판</span></a></li>
-					</ul>
-					<ul class="">
-						<h6 class="">후기</h6>
-						<li class=""><a href="#"><span>수강평</span></a></li>
-						<li class=""><a href="#"><span>멘토링 후기</span></a></li>
-					</ul>
-				</nav>
+                    <ul class="">
+                        <h6>Dreams Come True</h6>
+                        <li><a href="<c:url value='/notice/noticeList' />"><span>공지사항</span></a></li>
+                        <li><a href="<c:url value='/notice/introduce' />"><span>사이트 소개</span></a></li>
+                    </ul>
+                    <ul>
+                        <h6>강의</h6>
+                        <li><a href="<c:url value='/lecture/lecturePage' />"><span>전체 강의</span></a></li>
+                        <li><a href="<c:url value='/lecture/lectureEva' />"><span>수강평</span></a></li>
+                    </ul>
+                    <ul>
+                        <h6>커뮤니티</h6>
+                        <li><a href="<c:url value='/board/freeBoardList' />"><span>자유게시판</span></a></li>
+                        <li><a href="<c:url value='/notice/frequentqna' />"><span>자주묻는 질문</span></a></li>
+                    </ul>
+                </nav>
 
 				<div class="community-body-content col-md-10">
 					<div class="search-text">
@@ -156,7 +197,7 @@ section.community-body nav.community-body-nav ul li span {
 								<c:forEach var="vo" items="${boardList}">
 	                                <tr>
 	                                    <td>
-	                                    	<a href="<c:url value='/board/freeBoardDetail?bno=${vo.communityNo}&pageNum=${pc.paging.pageNum}&keyword=${pc.paging.keyword}&condition=${pc.paging.condition}' />">
+	                                    	<a href="<c:url value='/board/freeBoardDetail?communityNo=${vo.communityNo}&pageNum=${pc.paging.pageNum}&keyword=${pc.paging.keyword}&condition=${pc.paging.condition}' />">
 	                                    	${vo.communityTitle}
 	                                    	</a>
 	                                    </td>

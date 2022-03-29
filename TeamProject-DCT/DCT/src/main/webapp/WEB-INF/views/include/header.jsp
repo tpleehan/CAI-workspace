@@ -72,7 +72,7 @@
 						<li><a role="button" href="<c:url value='/lecture/lecturePage' />" class="btn-lecture"><span>강의</span></a></li>
 						<li><a role="button" href="<c:url value='/lecture/mentoringList' />" class="btn-mentoring"><span>멘토링</span></a></li>
 						<li><a role="button" href="<c:url value='/board/freeBoardList' />" class="btn-community"><span>커뮤니티</span></a></li>
-						<li><a role="button" href="#" class="btn-notice"><span>공지사항</span></a></li>
+						<li><a role="button" href="<c:url value='/notice/noticeList' />" class="btn-notice"><span>공지사항</span></a></li>
 						<div class="effect"></div>
 				</div>
 				<div class="navbar-right">

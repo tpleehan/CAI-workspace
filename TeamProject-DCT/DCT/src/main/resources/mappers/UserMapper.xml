@@ -80,7 +80,7 @@
 	<!-- 회원이 등록한 게시물 가져오기 -->
 	<select id="getUploadList" resultMap="userInfo"> 
 		SELECT  u.USER_NO, u.USER_ID, u.USER_PW, u.USER_NAME, u.USER_NICK, u.USER_PHONE, u.USER_EMAIL, u.USER_ZIPCODE, u.USER_ADDRESS, u.USER_ADDRESS_DETAILS, 
-		o.lecture_no, o.user_no, o.lecture_writer, o.lecture_title, o.thumbnail_fileloca, o.thumbnail_filename, o.video_fileloca, o.video_filerealname, 
+		o.lecture_no, o.user_no, o.lecture_writer, o.lecture_title, o.thumbnail_fileloca, o.thumbnail_filename, o.video_fileloca, o.video_filename, 
 		o.category_no, o.lecture_price, o.lecture_create_date
 		
 		FROM USERS u LEFT OUTER JOIN onlinelecture_upload o

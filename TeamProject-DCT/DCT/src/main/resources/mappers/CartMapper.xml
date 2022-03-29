@@ -32,7 +32,7 @@
 	</update>
 	
 	<!-- 장바구니에 담긴 강의 찾기 (사용자 + 강의) -->
-	<select id="getCartItem" resultMap="cart">
+	<select id="getCartItem">
 		select
 			CART_NO AS cartNo,
 			LECTURE_NO AS lectureNo,
@@ -70,7 +70,7 @@
 	</select>
 		
 	<!--  장바구니에 담긴 상품 찾기 (사용자) -->
-	<select id="getCartItemsByUserNo" resultType="map">
+	<select id="getCartItemsByUserNo" resultMap="cart">
 		SELECT
 			c.CART_NO					as cartNo,
 			c.LECTURE_NO				as lectureNo,

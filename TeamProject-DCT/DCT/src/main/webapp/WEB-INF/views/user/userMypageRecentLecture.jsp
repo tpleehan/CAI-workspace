@@ -66,6 +66,24 @@
         border-radius: 0;
         margin-top: 0.4rem;
     }
+    
+    .modal-dialog { 
+    	width: 100%; 
+    	height: 100%; 
+    	margin: 0; 
+    	padding: 0; 
+   	}
+	
+	.modal-body {
+		margin-top:10px;
+	}
+
+	.modal-content {
+		width:1100px;
+		height:800px;
+	}
+
+    
     </style>
 
 <%@ include file="../include/header.jsp"%>
@@ -200,7 +218,35 @@
 																		</div>
 																	</div>
 																</div>
-															</a>
+														</a>
+														
+														<!-- 모달창 -->
+														<button class="btn btn-default" data-target="#uploadVideo" data-toggle="modal">강의	출력버튼</button><br/>
+														<div class="modal fade modal-xl" id="uploadVideo">
+														  <div class="modal-dialog" style="max-width: 100%; width: auto; display: table;">
+														    <div class="modal-content" style="width:1100px; height:800px;">
+														      <!-- header -->
+														      <div class="modal-header">
+														        <!-- 닫기(x) 버튼 -->
+														        <button type="button" class="close" data-dismiss="modal">×</button>
+														        <!-- header title -->
+														        <h4 class="modal-title">${vo.lectureTitle}</h4>
+														      </div>
+														      <!-- body -->
+														      	<div class="modal-body" style="margin-top:10px;">
+														        	<div class="embed-responsive embed-responsive-16by9 video">
+											                       	 	<iframe class="embed-responsive-item" src="<c:url value='/lecture/videoDisplay?videoFileLoca=${vo.videoFileLoca}&videoFilename=${vo.videoFilename}' />"></iframe>
+											                    	</div>  
+														      	</div>
+														      <!-- Footer -->
+														      <div class="modal-footer">
+														        	${vo.lectureWriter}
+														        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+														      </div>
+														    </div>
+														  </div>
+														</div>
+
 												    </li>
 												
 												 </c:forEach>

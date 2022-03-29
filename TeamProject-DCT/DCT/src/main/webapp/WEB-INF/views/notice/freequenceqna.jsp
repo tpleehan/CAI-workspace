@@ -163,22 +163,22 @@ section.community-body nav.community-body-nav ul li span {
 		<div class="container">
 			<div class="row">
 				<nav class="community-body-nav col-md-2">
-					<ul class="">
-						<h6 class="">Dreams Come True</h6>
-						<li class=""><a href="#"><span>공지사항</span></a></li>
-						<li class=""><a href="#"><span>사이트 소개</span></a></li>
-					</ul>
-					<ul class="">
-						<h6 class="">커뮤니티</h6>
-						<li class=""><a href="#"><span>질문 &amp; 답변</span></a></li>
-						<li class=""><a href="#"><span>자유게시판</span></a></li>
-					</ul>
-					<ul class="">
-						<h6 class="">후기</h6>
-						<li class=""><a href="#"><span>수강평</span></a></li>
-						<li class=""><a href="#"><span>멘토링 후기</span></a></li>
-					</ul>
-				</nav>
+                    <ul class="">
+                        <h6>Dreams Come True</h6>
+                        <li><a href="<c:url value='/notice/noticeList' />"><span>공지사항</span></a></li>
+                        <li><a href="<c:url value='/notice/introduce' />"><span>사이트 소개</span></a></li>
+                    </ul>
+                    <ul>
+                        <h6>강의</h6>
+                        <li><a href="<c:url value='/lecture/lecturePage' />"><span>전체 강의</span></a></li>
+                        <li><a href="<c:url value='/lecture/lectureEva' />"><span>수강평</span></a></li>
+                    </ul>
+                    <ul>
+                        <h6>커뮤니티</h6>
+                        <li><a href="<c:url value='/board/freeBoardList' />"><span>자유게시판</span></a></li>
+                        <li><a href="<c:url value='/notice/frequentqna' />"><span>자주묻는 질문</span></a></li>
+                    </ul>
+                </nav>
 
 				<div class="community-body-content col-md-10">
 					<div class="search-text">

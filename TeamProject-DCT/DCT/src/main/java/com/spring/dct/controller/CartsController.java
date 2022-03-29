@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.dct.cart.service.ICartService;
 import com.spring.dct.vo.CartsVO;
@@ -25,29 +26,30 @@ public class CartsController {
 	
 	// 장바구니에 담기
 	@PostMapping("/addCart")
-	public String addCarts(CartsVO vo, Model model, int userNo) {
-		service.addCart(vo);
-		System.out.println("addCarts POST ");
-		return "redirect:/lecture/lecturePage"; 
+	public String addCarts(CartsVO vo, Model model, int userNo, HttpSession session, RedirectAttributes ra) {
+		System.out.println("carts post");
 		
+		service.addCart(vo);
+		
+		model.addAttribute("carts", service.getCartItemsByUserNo(userNo));
+		
+		return "redirect:/order/carts";
 	}
 	
+	//구매하기
 	@PostMapping("/addPurchases")
 	public String addPurchases(CartsVO vo, Model model, HttpSession session) {
 		
-		System.out.println("addPurchases POST 매핑");
-		System.out.println(vo.getUserNo());
-		System.out.println(vo.getCartAmount());
-		System.out.println(vo.getLectureNo());
+		service.addCart(vo);
+		
 		int userNo = ((UsersVO) session.getAttribute("login")).getUserNo();
-		System.out.println("userNo " + userNo);
 		
 		model.addAttribute("carts", service.getCartItemsByUserNo(userNo));
-		System.out.println("service가 무너ㅑ: " + service.getCartItemsByUserNo(userNo));
 		
 		
 		return "order/carts";
 		
 	}
+	
 	
 }

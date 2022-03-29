@@ -80,7 +80,7 @@
 
 .lec-content .lec-info span {
 	display: block;
-	color: black;
+	color:black;
 }
 
 .lec-content .lec-info {
@@ -89,7 +89,7 @@
 
 .lec-content .lec-price {
 	float: right;
-	color: black;
+	color:black;
 }
 
 .lec-like {
@@ -116,7 +116,6 @@
 .pagination {
 	margin: 0; /*페이지 네이션의 기본 마진 0*/
 }
-
 </style>
 
 
@@ -135,11 +134,16 @@
 		
 		<div class="lecture">
 			<div class="list-group menulist col-md-2">
-				<a href="<c:url value='/lecture/lecturePage' />" class="list-group-item active" style="background:black; font-size: 15px; border: none;">전체 강의</a> 
-				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 1 }' />" class="list-group-item" name="catergoryNum" style="font-size: 15px; border: none;"> 프로그램밍</a> 
-				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 2 }' />" class="list-group-item" style="font-size: 15px; border: none;">요리</a> 
-				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 3 }' />" class="list-group-item" style="font-size: 15px; border: none;">여행</a>
-				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 4 }' />" class="list-group-item" style="font-size: 15px; border: none;">DIY</a>
+				<a href="<c:url value='/lecture/lecturePage' />" class="list-group-item active"
+				style="background: black; font-size: 15px; border: none;">전체 강의</a> 
+				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 1 }' />" class="list-group-item" name="catergoryNum"
+				style="font-size: 15px; border: none;"> 프로그램밍</a> 
+				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 2 }' />" class="list-group-item"
+				style="font-size: 15px; border: none;">요리</a> 
+				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 3 }' />" class="list-group-item"
+				style="font-size: 15px; border: none;">여행</a>
+				<a href="<c:url value='/lecture/lecturePage?categoryNum=${pc.paging.categoryNum = 4 }' />" class="list-group-item"
+				style="font-size: 15px; border: none;">DIY</a>
 			</div>
 		
 
@@ -197,11 +201,14 @@
 
 							<ul class="row" id="adm-ul">
 								<a href="<c:url value='/lecture/lectureWrite' /> ">
-								<button type="button" class="adm-btn btn-primary" style="background:#424242; border:1px solid #fff; font-size: 14px;">글쓰기</button>
-								</a>
-								<button type="button" class="adm-btn btn-danger" style="background:#c9c9c9; border:1px solid #fff; font-size: 14px;">삭제</button>
-
+								<button	type="button" class="adm-btn btn-primary" 
+								style="background: #424242; border: 1px solid #fff; font-size: 14px;">글쓰기</button></a>
+								
+								<button type="button" class="adm-btn btn-danger" 
+								style="background: #c9c9c9; border: 1px solid #fff; font-size: 14px;">삭제</button>
+					
 							</ul>
+
 
 
 							<hr>
@@ -225,11 +232,6 @@
 											</div>
 										</a>
 
-										<div class="lec-like clearfix">
-											<span class="lec-like-span">종아요</span> <span
-												class="lec-heart"><button type="button"
-													class="glyphicon glyphicon-heart">${vo.lectureLike}</button></span>
-										</div></li>
 								</c:forEach>
 
 

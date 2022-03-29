@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <style>
 
@@ -70,7 +71,7 @@
 	}
 	
 	.product-info {
-		font-size: 18px;
+		font-size: 16px;
 		color: #000;
 		font-weight: 700;
 		padding: 10px;
@@ -129,9 +130,9 @@
 		background-color: #fff;
 		box-shadow: 0 2px 3px rgb(0 10 18 / 10%), 0 0 0 1px rgb(0 10 18 / 10%);
 		color: #454545;
-		max-width: 100%;;
-		
+		max-width: 100%;
 	}
+	
 	.total_amount_container {
 		padding: 15px;
 	}
@@ -145,7 +146,7 @@
 	}
 	.total_amount_container .field {
 		padding: 3px;
-		height: 50px;
+		height: 60px;
 		margin-bottom: 10px;
 	}
 	.total_amount_container label {
@@ -157,15 +158,14 @@
 		display: block;
 		border: 1px solid;
 		padding: 5px;
+		margin-top: 8px;
 		width: 100%;
 		background: #dbdbdb;
 	}
 	
 	.total_amount_container .field button {
-		width: 49%;
+		width: 48%;
 		height: 40px;
-	    padding-right: 3px;
-	    padding-left: 3px;
 	    border-radius: 4px;
 	}
 	
@@ -187,7 +187,6 @@
 	}
 
 
-
 </style>
 
 <%@ include file="../include/header.jsp"%>
@@ -202,39 +201,16 @@
 					<div class="cart-left">
 						<h1>장바구니</h1>
 					</div>
-					<div class="cart-right">
-						<ul>
-							<li>장바구니 <i class="fa-solid fa-arrow-right-long"></i></li>
-							<li>결제 <i class="fa-solid fa-arrow-right-long"></i></li>
-							<li>결제 완료</li>
-						</ul>
-					</div>
 				</div>
 				<div class="row">
 					<div class="coupon">
-						<a href="#">내 쿠폰함
+						<a href="#">결제
 							<i class="fa-solid fa-ticket"></i>
 						</a>
 						<i class="fa-solid fa-chevron-right"></i>
-						<a href="#">내 위시리스트
+						<a href="#">결제 하기
 							<i class="fa-solid fa-heart"></i>
 						</a>
-					</div>
-					<div class="point">
-						<a href="#">포인트 적립
-							<i class="fa-solid fa-piggy-bank"></i>
-						</a>
-						<a href="#">쿠폰 이용 안내
-							<i class="fa-solid fa-circle-question"></i>
-						</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-coupon-row">
-						<div>
-							<input class="input-coupon" type="text" placeholder="보유한 쿠폰코드를 입력하세요.">
-							<button type="button" class="btn btn-success">버튼</button>
-						</div>
 					</div>
 				</div>
 				
@@ -273,24 +249,14 @@
 											<div class="product_item_container">
 												<c:forEach var="cart" items="${carts}">
 													<div class="product_item">
-														<div class="product_thumbnail">
-															<img src="<c:url value='/img/java.png' />" alt="java">
-														</div>
 														<div class="product-column-info">
 															<div class="product_title">
 																<a href="#">강의제목: ${cart.LECTURETITLE}</a>
-																<div class="course-deadline">
-																	(수강기한: <span>무제한</span>)
-																</div>
 															</div>
 															<div class="product-menu">
 																<div class="product-amount">
-																	<span>₩${cart.LECTUREPRICE}</span>
-																</div>
-																<div class="product-menu-button">
-																	<button class="btn-remove">
-																		<span>바구니에서 삭제</span>
-																	</button>
+																	<span id="lecPrice"><fmt:formatNumber value="${cart.LECTUREPRICE}" pattern="#,###"/></span>원
+																	<button class="btn btn-danger">삭제</button>
 																</div>
 															</div>
 														</div>
@@ -301,32 +267,29 @@
 									</div>
 								</div>
 								<div class="col-sm-4">
-									<form class="carts_payments">
+									<form action="<c:url value='/purchase/paymentCompleted' />" method="post" id="paymentForm" class="carts_payments"  >
 										<div class="carts-content">
 											<div class="total_amount_container">
 												<div class="total_amount">
 													<h2>총계</h2>
-													<span>
-														<del>₩253,000</del>
-														₩237,600
-													</span>
+													<span id="totalPrice"></span>
 												</div>
 												<div class="field">
 													<label class="label">이름</label>
-													<input type="text" value="김아무개">
+													<input type="text" value="${login.userName} ">
 												</div>
 												
 												<div class="field">
 													<label class="label">
 														<span>휴대폰 번호 (-없이 숫자만 입력)</span>
-														<input type="text" value="01012345678">
+														<input type="text" value="${login.userPhone }">
 													</label>
 												</div>
 												
 												<div class="field">
 													<label class="label">
 														<span>이메일 주소</span>
-														<input type="text" value="이메일 주소">
+														<input type="text" value="${login.userEmail }">
 													</label>
 												</div>
 												
@@ -344,8 +307,8 @@
 												
 												<div class="field">
 													<label class="checkbox">
-														<input type="checkbox">
-														(필수) 구매조건 및 개인정보취급방침 동의 (보기)
+														<input type="checkbox" id="agreeCheckBtn">
+														(필수) 구매조건 및 개인정보취급방침 동의
 														<div class="agree">
 															<span class="">구매조건 및 결제대행 서비스 약관 동의하여야 합니다.</span>
 														</div>
@@ -354,7 +317,11 @@
 											</div>
 										</div>
 										<div class="btn-make-payment">
-											<button class="btn btn-success" type="submit">결제하기</button>
+			                               	<input type="hidden" name="userNo" value="${login.userNo}">
+			                               	<input type="hidden" name="lectureNo" value="${lectureArticle.lectureNo}">
+			                               	
+			                               	<input type="hidden" name="purchaseTotalPrice" value="1">
+											<button class="btn btn-success" type="button" id="paymentBtn">결제하기</button>
 										</div>
 									</form>
 								</div>
@@ -370,3 +337,37 @@
 	</div>
 
 <%@ include file="../include/footer.jsp"%>
+
+<script>
+	$(function() {
+		
+		// 결제하기 버튼 이벤트
+		$('#paymentBtn').click(function() {
+			
+			const agreeCheck = $('#agreeCheckBtn').is(':checked');
+			if(!agreeCheck) {
+				alert('구매조건 동의 체크가 되어 있지 않습니다. 확인해주세요.');
+			} else {
+				const check = confirm('결제하시겠습니까?');
+				if(check) {
+					alert('정상적으로 구매가 완료 되었습니다.');
+					$('#paymentForm').submit();
+				}
+			}
+			
+		}); // 결제하기 버튼 이벤트
+		
+		let sum = 0;
+		$('#lecPrice').each(function() {
+			
+			sum += parseInt($('#lecPrice').text());
+			console.log(sum);
+		});
+		$('#totalPrice').text(sum);
+		
+			
+		
+	}); // jQuery 끝
+	
+
+</script>

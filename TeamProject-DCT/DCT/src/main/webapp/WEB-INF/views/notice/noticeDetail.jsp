@@ -7,11 +7,11 @@
 	/* ---------------------- 공지사항상세 ---------------------- */
 	/* 타이틀 */
 	section.community-header {
-		color: aliceblue;
-		font-size: 30px;
-		background-color: rgb(61, 58, 58);
-		padding: 1em 0;
-	}
+    color: aliceblue;
+    font-size: 30px;
+    background-color: rgb(226, 188, 106);
+    padding: 1em 0;
+    }
 	/* ---------- */
 	.board-content .board-content-body .t-title {
 		padding: 14px 8px;

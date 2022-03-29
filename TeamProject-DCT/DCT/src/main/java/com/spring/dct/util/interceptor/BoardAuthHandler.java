@@ -26,16 +26,16 @@ public class BoardAuthHandler implements HandlerInterceptor {
 		
 		System.out.println("게시판 권한 인터셉터 발동!");
 		
-		CommunitiesVO comVo = new CommunitiesVO();
+		String writer = request.getParameter("userName");
 		
 		HttpSession session = request.getSession();
 		UsersVO vo = (UsersVO) session.getAttribute("login");
 		
-		System.out.println("화면에서 넘어오는 값: " + comVo);
+		System.out.println("화면에서 넘어오는 값: " + writer);
 		System.out.println("세션에 저장된 값: " + vo);
 		
 		if(vo != null) {
-			if(comVo.getUserName().equals(vo.getUserName()) ) {
+			if(writer.equals(vo.getUserName())) {
 				return true; //컨트롤러로 요청의 진입을 허용.
 			} 
 		}

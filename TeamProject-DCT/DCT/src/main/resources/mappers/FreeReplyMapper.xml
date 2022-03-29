@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="com.spring.dct.freeReply.mapper.IFreeReplyMapper">
+
+	<resultMap type="com.spring.dct.vo.freeReplyVO"	id="freeReplyMap">
+		<id property="rno" column="reply_no" />
+		<result property="userNo" column="user_no" />
+		<result property="communityNo" column="community_no" />
+		<result property="replyWriter" column="reply_writer" />
+		<result property="replyText" column="reply_text" />
+		<result property="replyDate" column="reply_date" />
+		<result property="updateDate" column="update_date" />
+	</resultMap>
+		
+
+	
+	<insert id="regist">
+		INSERT INTO freereply
+		(reply_no, community_no, user_no, reply_writer, reply_text, reply_date)
+		VALUES(freereply_seq.NEXTVAL, #{communityNo}, #{userNo}, #{replyWriter}, #{replyText}, sysdate)
+	</insert>
+
+	<select id="getList" resultMap="freeReplyMap">
+		SELECT * FROM	
+			(
+			SELECT ROWNUM AS rn, tbl.* FROM
+				(
+				SELECT * FROM freereply
+				WHERE community_no = #{communityNo}
+				ORDER BY reply_no DESC
+				) tbl
+			)
+		<![CDATA[
+		WHERE rn > (#{paging.pageNum} - 1) * #{paging.countPerPage}
+		AND rn <= #{paging.pageNum} * #{paging.countPerPage}
+		]]>
+	</select>
+
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM freereply
+		WHERE community_no = #{communityNo}
+	</select>
+
+	<select id="userCheck" resultType="int">
+		SELECT COUNT(*) FROM freereply
+		WHERE reply_no = #{rno} AND user_no = #{userNo}
+	<!-- 비밀번호는 같을 수 있기 때문에 rno랑 같이 비교해야 한다. -->
+	</select>
+
+	
+	<update id="update">
+		UPDATE freereply
+		SET reply_text =#{replyText}, 
+			update_date = sysdate
+		WHERE reply_no = #{rno}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM freereply
+		WHERE reply_no = #{rno}
+	</delete>
+
+</mapper>

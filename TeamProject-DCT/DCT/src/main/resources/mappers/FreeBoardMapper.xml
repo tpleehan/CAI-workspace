@@ -6,8 +6,7 @@
 <mapper
 	namespace="com.spring.dct.freeboard.mapper.IFreeBoardMapper">
 
-	<resultMap type="com.spring.dct.vo.CommunitiesVO"
-		id="BoardMap">
+	<resultMap type="com.spring.dct.vo.CommunitiesVO"	id="BoardMap">
 		<id property="communityNo" column="community_no" />
 		<result property="userNo" column="user_no" />
 		<result property="communityTitle" column="community_title" />

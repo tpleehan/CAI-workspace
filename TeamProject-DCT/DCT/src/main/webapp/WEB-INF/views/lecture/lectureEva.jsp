@@ -42,8 +42,7 @@
         float: left;
     }
 
-
-
+	
 </style>
 
 <div class="container">
@@ -52,50 +51,23 @@
 
          <div class="container lec-eva">
             <div class="col-md-2 eva-left-part">
-                <ul>
-                    <span class="eva-main">
-                        <li>함께 공부 해요</li>
-                    </span>
-                    <a href="#"><span class="eva-normal">
-                        <li>&nbsp;&nbsp;&nbsp;자유 주제</li>
-                    </span></a>
-                    <a href="#"><span class="eva-normal">
-                        <li>&nbsp;&nbsp;&nbsp;스터디</li>
-                    </span></a>
-                    <span class="eva-main">
-                        <li>후기</li>
-                    </span>
-                    <a href="#"><span class="eva-normal">
-                        <li>&nbsp;&nbsp;&nbsp;강의후기 </li>
-                    </span></a>
-                    <a href="#"><span class="eva-normal">
-                        <li>&nbsp;&nbsp;&nbsp;멘토링 후기</li>
-                    </span></a>
-                    <span class="eva-main">
-                        <li>DCT</li>
-                    </span>
-                    
-                    <a href="#"><span class="eva-normal">
-                        <li>&nbsp;&nbsp;&nbsp;공지사항</li>
-                    </span></a>
-                    
-                    <a href="#"><span class="eva-normal">
-                        <li>&nbsp;&nbsp;&nbsp; 인프런 소개</li>
-                    </span></a>
-                    
-                    <a href="#"><span class="eva-normal">
-                        <li>&nbsp;&nbsp;&nbsp;Q&A</li>
-                    </span></a>
-                    <a href="#"><span class="eva-normal">
-                        <li>&nbsp;&nbsp;&nbsp;자주하는 질문</li>
-                    </span></a>
-                    <a href="#"><span class="eva-normal">
-                        <li>&nbsp;&nbsp;&nbsp;문의하기</li>
-                    </span></a>
-                    <a href="#"><span class="eva-normal">
-                        <li>&nbsp;&nbsp;&nbsp;건의사항</li>
-                    </span></a>
-                </ul>
+                <nav class="community-body-nav col-md-2">
+                    <ul class="">
+                        <h6>Dreams Come True</h6>
+                        <li><a href="<c:url value='/notice/noticeList' />"><span>공지사항</span></a></li>
+                        <li><a href="<c:url value='/notice/introduce' />"><span>사이트 소개</span></a></li>
+                    </ul>
+                    <ul>
+                        <h6>강의</h6>
+                        <li><a href="<c:url value='/lecture/lecturePage' />"><span>전체 강의</span></a></li>
+                        <li><a href="<c:url value='/lecture/lectureEva' />"><span>수강평</span></a></li>
+                    </ul>
+                    <ul>
+                        <h6>커뮤니티</h6>
+                        <li><a href="<c:url value='/board/freeBoardList' />"><span>자유게시판</span></a></li>
+                        <li><a href="<c:url value='/notice/frequentqna' />"><span>자주묻는 질문</span></a></li>
+                    </ul>
+                </nav>
 
             </div> <!-- left part close-->
 

@@ -53,17 +53,17 @@ section.community-header {
 								<tbody class="t-control">
 									<tr>
 										<td class="t-title">글쓴이</td>
-										<td><input type="text" class="form-control"
+										<td><input type="text" class="form-control" name="userName"
 											value="${article.userName}" readonly></td>
 									</tr>
 									<tr>
 										<td class="t-title">제목</td>
-										<td><input type="text" class="form-control"
+										<td><input type="text" class="form-control" name="communityTitle"
 											value="${article.communityTitle}"></td>
 									</tr>
 									<tr>
 										<td class="t-title">내용</td>
-										<td><textarea class="form-control" rows="20">${article.communityContent}</textarea>
+										<td><textarea class="form-control" name="communityContent" rows="20">${article.communityContent}</textarea>
 										</td>
 									</tr>
 								</tbody>
@@ -86,6 +86,10 @@ section.community-header {
 
 
 <script>
+	
+
+	
+
 	//목록 이동 처리
 	$(function() {
 		$('#listBtn').click(function() {
@@ -103,11 +107,11 @@ section.community-header {
 
 	const $updateBtn = document.getElementById('updateBtn');
 	$updateBtn.onclick = function() {
-		if (document.updateForm.communityTitle.value === '') {
+		if (document.updateForm.communityTitle.value == '') {
 			alert('제목은 필수 항목 입니다.');
 			document.updateForm.communityTitle.focus();
 			return;
-		} else if (document.updateForm.communityContent.value === '') {
+		} else if (document.updateForm.communityContent.value == '') {
 			alert('내용은 필수 항목 입니다.');
 			document.updateForm.communityContent.focus();
 			return;
